@@ -13,9 +13,6 @@ dependencies:
 
   json_annotation: ^0.2.3
   shared_preferences: ^0.4.2
-  jvanila_flutter:
-      #path: ../jvanila_flutter
-      git: git://github.com/pavan2you/flutter-mvp-framework
 
 dev_dependencies:
   flutter_test:
