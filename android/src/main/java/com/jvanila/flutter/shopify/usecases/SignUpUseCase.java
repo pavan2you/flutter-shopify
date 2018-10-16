@@ -32,14 +32,14 @@ public class SignUpUseCase extends ShopifyCallUseCase {
         mPluginContext.api.instance.signUp(firstName, lastName, email, password, phone, new ApiCallback<Unit>() {
             @Override
             public void onResult(Unit unit) {
-                result.success(true);
+                result.success("success");
             }
 
             @Override
             public void onFailure(Error error) {
                 //Customer accounts not allowed
                 System.out.println("onFailure -- " + error);
-                result.success(false);
+                result.success(error.getMessage());
             }
         });
     }
