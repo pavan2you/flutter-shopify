@@ -38,6 +38,7 @@ public class SignUpUseCase extends ShopifyCallUseCase {
             @Override
             public void onFailure(Error error) {
                 //Customer accounts not allowed
+                System.out.println("onFailure -- " + error);
                 result.success(false);
             }
         });
