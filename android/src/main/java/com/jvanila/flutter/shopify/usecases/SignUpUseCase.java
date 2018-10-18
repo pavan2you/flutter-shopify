@@ -25,7 +25,7 @@ public class SignUpUseCase extends ShopifyCallUseCase {
     protected void call(MethodCall input, final MethodChannel.Result result) {
         String firstName = input.argument(ARG_FIRST_NAME);
         String lastName = input.argument(ARG_LAST_NAME);
-        String email = input.argument(ARG_EMAIL);
+        final String email = input.argument(ARG_EMAIL);
         String password = input.argument(ARG_PASSWORD);
         String phone = input.argument(ARG_PHONE);
 
@@ -40,6 +40,7 @@ public class SignUpUseCase extends ShopifyCallUseCase {
                 //Customer accounts not allowed
                 System.out.println("onFailure -- " + error);
                 result.success(error.getMessage());
+//                result.error("SignUpUseCase.onFailure", "", error);
             }
         });
     }
