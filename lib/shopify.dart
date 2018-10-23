@@ -217,9 +217,9 @@ class Shopify {
     args[kArgPassword] = password;
     args[kArgPhone] = phone;
 
-    final dynamic response = await _channel.invokeMethod(kMethodSignUp, args);
+    return await _channel.invokeMethod(kMethodSignUp, args);
 
-    return response;
+//     return response;
   }
 
   static Future<bool> signIn(String email, String password) async {
