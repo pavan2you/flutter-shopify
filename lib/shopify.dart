@@ -207,7 +207,7 @@ class Shopify {
   /////////////////////////////////  ONBOARDING  ///////////////////////////////
   //////////////////////////////////////////////////////////////////////////////
 
-  static Future<bool> signUp(String firstName, String lastName, String email,
+  static Future<String> signUp(String firstName, String lastName, String email,
       String password, String phone) async {
 
     Map<dynamic, dynamic> args = new Map();
@@ -217,8 +217,7 @@ class Shopify {
     args[kArgPassword] = password;
     args[kArgPhone] = phone;
 
-    final bool response = await _channel.invokeMethod(kMethodSignUp, args);
-
+    String response =  await _channel.invokeMethod(kMethodSignUp, args);
     return response;
   }
 

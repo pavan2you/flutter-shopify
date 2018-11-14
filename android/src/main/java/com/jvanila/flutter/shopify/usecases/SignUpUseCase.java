@@ -25,20 +25,22 @@ public class SignUpUseCase extends ShopifyCallUseCase {
     protected void call(MethodCall input, final MethodChannel.Result result) {
         String firstName = input.argument(ARG_FIRST_NAME);
         String lastName = input.argument(ARG_LAST_NAME);
-        String email = input.argument(ARG_EMAIL);
+        final String email = input.argument(ARG_EMAIL);
         String password = input.argument(ARG_PASSWORD);
         String phone = input.argument(ARG_PHONE);
 
         mPluginContext.api.instance.signUp(firstName, lastName, email, password, phone, new ApiCallback<Unit>() {
             @Override
             public void onResult(Unit unit) {
-                result.success(true);
+                result.success("success");
             }
 
             @Override
             public void onFailure(Error error) {
                 //Customer accounts not allowed
-                result.success(false);
+                System.out.println("onFailure -- " + error);
+                result.success(error.getMessage());
+//                result.error("SignUpUseCase.onFailure", "", error);
             }
         });
     }

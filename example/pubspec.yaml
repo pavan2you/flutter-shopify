@@ -16,6 +16,8 @@ dev_dependencies:
 
   shopify:
     path: ../
+  jvanila_flutter:
+      git: git://github.com/pavan2you/flutter-mvp-framework
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec

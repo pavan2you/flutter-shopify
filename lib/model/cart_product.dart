@@ -46,20 +46,20 @@ class CartProduct extends DataObject with _$CartProductSerializerMixin  {
   @override
   bool operator ==(object) {
 
-    if (this == object) {
+    /*if (this == object) {
       return true;
-    }
+    }*/
     if (object == null || toString() != object.toString()) {
       return false;
     }
 
-    CartProduct cartProduct = object;
+    /*CartProduct cartProduct = object;
 
     if (productVariant != cartProduct.productVariant) return false;
     if (title != cartProduct.title) return false;
     if (currency != cartProduct.currency)
       return false;
-    if (quantity != cartProduct.quantity) return false;
+    if (quantity != cartProduct.quantity) return false;*/
 
     return true;
   }

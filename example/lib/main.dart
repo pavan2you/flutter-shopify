@@ -232,7 +232,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> signUp() async {
-    bool val = await Shopify.signUp("pragna", "katreddy", "pragna.0303@gmail.com", "12345", "+918985940000");
+    String val = await Shopify.signUp("pragna", "katreddy", "pragna.0303@gmail.com", "12345", "+918985940000");
     print('Result - $val');
   }
 
