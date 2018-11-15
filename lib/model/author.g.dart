@@ -6,13 +6,15 @@ part of 'author.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Author _$AuthorFromJson(Map<String, dynamic> json) => new Author(
-    firstName: json['firstName'] as String,
-    lastName: json['lastName'] as String,
-    fullName: json['fullName'] as String,
-    email: json['email'] as String,
-    bio: json['bio'] as String)
-  ..crudOperation = json['crudOperation'] as String;
+Author _$AuthorFromJson(Map<String, dynamic> json) {
+  return new Author(
+      firstName: json['firstName'] as String,
+      lastName: json['lastName'] as String,
+      fullName: json['fullName'] as String,
+      email: json['email'] as String,
+      bio: json['bio'] as String)
+    ..crudOperation = json['crudOperation'] as String;
+}
 
 abstract class _$AuthorSerializerMixin {
   String get crudOperation;
