@@ -6,12 +6,14 @@ part of 'state.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-State _$StateFromJson(Map<String, dynamic> json) => new State(
-    id: json['id'] as int,
-    countryId: json['countryId'] as int,
-    code: json['code'] as String,
-    name: json['name'] as String)
-  ..crudOperation = json['crudOperation'] as String;
+State _$StateFromJson(Map<String, dynamic> json) {
+  return new State(
+      id: json['id'] as int,
+      countryId: json['countryId'] as int,
+      code: json['code'] as String,
+      name: json['name'] as String)
+    ..crudOperation = json['crudOperation'] as String;
+}
 
 abstract class _$StateSerializerMixin {
   String get crudOperation;

@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
 //    getProductVariants();
 //    searchProductList();
 
-//    getCategories();
+    getCategories();
 //    getCategoryDetails();
 
 //    getArticleList(); //ArticleList is itself empty
@@ -85,7 +85,7 @@ class _MyAppState extends State<MyApp> {
 //    getCardToken(); //exception
 //    completeCheckoutByCard(); //exception
 
-  startShopping();
+//  startShopping();
   }
 
   Future<void> startShopping() async {
@@ -232,7 +232,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> signUp() async {
-    bool val = await Shopify.signUp("pragna", "katreddy", "pragna.0303@gmail.com", "12345", "+918985940000");
+    String val = await Shopify.signUp("pragna", "katreddy", "pragna.0303@gmail.com", "12345", "+918985940000");
     print('Result - $val');
   }
 

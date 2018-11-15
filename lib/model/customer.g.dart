@@ -6,19 +6,21 @@ part of 'customer.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Customer _$CustomerFromJson(Map<String, dynamic> json) => new Customer(
-    id: json['id'] as String,
-    email: json['email'] as String,
-    firstName: json['firstName'] as String,
-    lastName: json['lastName'] as String,
-    phone: json['phone'] as String,
-    isAcceptsMarketing: json['isAcceptsMarketing'] as bool,
-    addressList: (json['addressList'] as List)
-        .map((e) => new Address.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    defaultAddress:
-        new Address.fromJson(json['defaultAddress'] as Map<String, dynamic>))
-  ..crudOperation = json['crudOperation'] as String;
+Customer _$CustomerFromJson(Map<String, dynamic> json) {
+  return new Customer(
+      id: json['id'] as String,
+      email: json['email'] as String,
+      firstName: json['firstName'] as String,
+      lastName: json['lastName'] as String,
+      phone: json['phone'] as String,
+      isAcceptsMarketing: json['isAcceptsMarketing'] as bool,
+      addressList: (json['addressList'] as List)
+          .map((e) => new Address.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      defaultAddress:
+          new Address.fromJson(json['defaultAddress'] as Map<String, dynamic>))
+    ..crudOperation = json['crudOperation'] as String;
+}
 
 abstract class _$CustomerSerializerMixin {
   String get crudOperation;

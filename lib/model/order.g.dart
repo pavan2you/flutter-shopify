@@ -6,21 +6,23 @@ part of 'order.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Order _$OrderFromJson(Map<String, dynamic> json) => new Order(
-    id: json['id'] as String,
-    currency: json['currency'] as String,
-    email: json['email'] as String,
-    orderNumber: json['orderNumber'] as int,
-    subtotalPrice: (json['subtotalPrice'] as num).toDouble(),
-    totalShippingPrice: (json['totalShippingPrice'] as num).toDouble(),
-    totalPrice: (json['totalPrice'] as num).toDouble(),
-    processedAt: json['processedAt'] as String,
-    orderProducts: (json['orderProducts'] as List)
-        .map((e) => new OrderProduct.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    address: new Address.fromJson(json['address'] as Map<String, dynamic>),
-    paginationValue: json['paginationValue'] as String)
-  ..crudOperation = json['crudOperation'] as String;
+Order _$OrderFromJson(Map<String, dynamic> json) {
+  return new Order(
+      id: json['id'] as String,
+      currency: json['currency'] as String,
+      email: json['email'] as String,
+      orderNumber: json['orderNumber'] as int,
+      subtotalPrice: (json['subtotalPrice'] as num).toDouble(),
+      totalShippingPrice: (json['totalShippingPrice'] as num).toDouble(),
+      totalPrice: (json['totalPrice'] as num).toDouble(),
+      processedAt: DateTime.parse(json['processedAt'] as String),
+      orderProducts: (json['orderProducts'] as List)
+          .map((e) => new OrderProduct.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      address: new Address.fromJson(json['address'] as Map<String, dynamic>),
+      paginationValue: json['paginationValue'] as String)
+    ..crudOperation = json['crudOperation'] as String;
+}
 
 abstract class _$OrderSerializerMixin {
   String get crudOperation;
@@ -31,7 +33,7 @@ abstract class _$OrderSerializerMixin {
   double get subtotalPrice;
   double get totalShippingPrice;
   double get totalPrice;
-  String get processedAt;
+  DateTime get processedAt;
   List<OrderProduct> get orderProducts;
   Address get address;
   String get paginationValue;
@@ -44,7 +46,7 @@ abstract class _$OrderSerializerMixin {
         'subtotalPrice': subtotalPrice,
         'totalShippingPrice': totalShippingPrice,
         'totalPrice': totalPrice,
-        'processedAt': processedAt,
+        'processedAt': processedAt.toIso8601String(),
         'orderProducts': orderProducts,
         'address': address,
         'paginationValue': paginationValue

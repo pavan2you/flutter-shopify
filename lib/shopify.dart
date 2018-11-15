@@ -130,10 +130,19 @@ class Shopify {
     final String responseJson = await _channel.invokeMethod(
       kMethodGetCategoryList, args,);
     final responseMap = json.decode(responseJson).cast<Map<String, dynamic>>();
+
     final List<Category> response = responseMap.map<Category>((json) =>
-        Category.fromJson(json),).toList();
+        getCategory(json),).toList();
 
     return response;
+  }
+
+  static Category getCategory(json) {
+    var image = json['image'];
+    if (image == null) {
+      json['image'] = new Map<String, dynamic>();
+    }
+    return Category.fromJson(json);
   }
 
   static Future<Category> getCategoryDetails(String id, int perPage,
@@ -148,6 +157,10 @@ class Shopify {
     final String responseJson = await _channel.invokeMethod(
       kMethodGetCategoryDetails, args,);
     final responseMap = json.decode(responseJson);
+    var image = responseMap['image'];
+    if (image == null) {
+      responseMap['image'] = new Map<String, dynamic>();
+    }
     final Category response = Category.fromJson(responseMap);
 
     return response;
@@ -283,6 +296,11 @@ class Shopify {
   static Future<Customer> getCustomer() async {
     final String responseJson = await _channel.invokeMethod(kMethodGetCustomer);
     final responseMap = json.decode(responseJson);
+    //dirty fix to avoid null pointer.
+    var address = responseMap['defaultAddress'];
+    if (address == null) {
+      responseMap['defaultAddress'] = new Map<String, dynamic>();
+    }
     final Customer response = Customer.fromJson(responseMap);
     return response;
   }

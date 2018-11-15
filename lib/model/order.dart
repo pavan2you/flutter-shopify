@@ -11,11 +11,12 @@ class Order extends DataObject with _$OrderSerializerMixin {
   String id;
   String currency;
   String email;
+  //using this for status
   int orderNumber;
   double subtotalPrice;
   double totalShippingPrice;
   double totalPrice;
-  String processedAt;
+  DateTime processedAt;
   List<OrderProduct> orderProducts;
   Address address;
   String paginationValue;
