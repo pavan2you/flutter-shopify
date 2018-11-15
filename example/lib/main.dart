@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
 //    getProductVariants();
 //    searchProductList();
 
-//    getCategories();
+    getCategories();
 //    getCategoryDetails();
 
 //    getArticleList(); //ArticleList is itself empty
@@ -85,7 +85,7 @@ class _MyAppState extends State<MyApp> {
 //    getCardToken(); //exception
 //    completeCheckoutByCard(); //exception
 
-  startShopping();
+//  startShopping();
   }
 
   Future<void> startShopping() async {

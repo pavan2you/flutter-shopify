@@ -6,31 +6,33 @@ part of 'product.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Product _$ProductFromJson(Map<String, dynamic> json) => new Product(
-    id: json['id'] as String,
-    title: json['title'] as String,
-    productDescription: json['productDescription'] as String,
-    additionalDescription: json['additionalDescription'] as String,
-    currency: json['currency'] as String,
-    price: (json['price'] as num).toDouble(),
-    hasAlternativePrice: json['hasAlternativePrice'] as bool,
-    discount: json['discount'] as String,
-    vendor: json['vendor'] as String,
-    type: json['type'] as String,
-    createdAt: json['createdAt'] as String,
-    updatedAt: json['updatedAt'] as String,
-    tags: (json['tags'] as List).map((e) => e as String).toList(),
-    images: (json['images'] as List)
-        .map((e) => new ImageDTO.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    options: (json['options'] as List)
-        .map((e) => new ProductOption.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    variants: (json['variants'] as List)
-        .map((e) => new ProductVariant.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    paginationValue: json['paginationValue'] as String)
-  ..crudOperation = json['crudOperation'] as String;
+Product _$ProductFromJson(Map<String, dynamic> json) {
+  return new Product(
+      id: json['id'] as String,
+      title: json['title'] as String,
+      productDescription: json['productDescription'] as String,
+      additionalDescription: json['additionalDescription'] as String,
+      currency: json['currency'] as String,
+      price: (json['price'] as num).toDouble(),
+      hasAlternativePrice: json['hasAlternativePrice'] as bool,
+      discount: json['discount'] as String,
+      vendor: json['vendor'] as String,
+      type: json['type'] as String,
+      createdAt: json['createdAt'] as String,
+      updatedAt: json['updatedAt'] as String,
+      tags: (json['tags'] as List).map((e) => e as String).toList(),
+      images: (json['images'] as List)
+          .map((e) => new ImageDTO.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      options: (json['options'] as List)
+          .map((e) => new ProductOption.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      variants: (json['variants'] as List)
+          .map((e) => new ProductVariant.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      paginationValue: json['paginationValue'] as String)
+    ..crudOperation = json['crudOperation'] as String;
+}
 
 abstract class _$ProductSerializerMixin {
   String get crudOperation;

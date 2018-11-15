@@ -6,13 +6,14 @@ part of 'order_product.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-OrderProduct _$OrderProductFromJson(Map<String, dynamic> json) =>
-    new OrderProduct(
-        title: json['title'] as String,
-        productVariant: new ProductVariant.fromJson(
-            json['productVariant'] as Map<String, dynamic>),
-        quantity: json['quantity'] as int)
-      ..crudOperation = json['crudOperation'] as String;
+OrderProduct _$OrderProductFromJson(Map<String, dynamic> json) {
+  return new OrderProduct(
+      title: json['title'] as String,
+      productVariant: new ProductVariant.fromJson(
+          json['productVariant'] as Map<String, dynamic>),
+      quantity: json['quantity'] as int)
+    ..crudOperation = json['crudOperation'] as String;
+}
 
 abstract class _$OrderProductSerializerMixin {
   String get crudOperation;
