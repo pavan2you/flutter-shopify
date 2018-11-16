@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:shopify/model/address.dart';
 import 'package:shopify/model/category.dart';
+import 'package:shopify/model/delivery_info.dart';
 import 'package:shopify/model/image.dart';
 import 'package:shopify/model/offer_product.dart';
 import 'package:shopify/model/order.dart';
@@ -219,6 +220,24 @@ class MockShopify {
     return categories;
   }
 
+  static Future<DeliveryInfo> fetchDeliveryInfo() async {
+    DeliveryInfo deliveryInfo = new DeliveryInfo();
+    deliveryInfo.minDeliveryCharges = 20.0;
+    deliveryInfo.numberOfShipments = 1;
+    deliveryInfo.availableDeliverySlots = [];
+
+    deliveryInfo.availableDeliverySlots.add("Tomorrow");
+    deliveryInfo.availableDeliverySlots.add("9.00 AM-11.30 AM");
+    deliveryInfo.availableDeliverySlots.add("11.30 AM-1.00 PM");
+    deliveryInfo.availableDeliverySlots.add("1.00 PM-3.30 PM");
+    deliveryInfo.availableDeliverySlots.add("3.30 PM-5.00 PM");
+    deliveryInfo.availableDeliverySlots.add("5.00 PM-7.30 PM");
+    deliveryInfo.availableDeliverySlots.add("7.30 PM-10.00 PM");
+
+    deliveryInfo.defaultSelectedDeliverySlot = "Tomorrow 11.30 AM-1.00 PM";
+    return deliveryInfo;
+  }
+
   static List<Store> getMockStores() {
     List<Store> stores = new List();
 
@@ -282,7 +301,7 @@ class MockShopify {
 
     orders.add(new Order(
         id: "3",
-        processedAt :  new DateTime.utc(2018, 7, 03, 03, 15),
+        processedAt : new DateTime.utc(2018, 7, 03, 03, 15),
         orderNumber: 3,
         address: getMockAddress(2),
         orderProducts: await getMockOrderProducts()));
@@ -307,7 +326,7 @@ class MockShopify {
         primaryAddress: "Flat No. 8/16/12",
         secondAddress: "Andhra Bank Layout",
         city: "Visakhapatnam",
-        /*state : "AP",*/ country: "India",
+/*state : "AP",*/ country: "India",
         firstName: "user",
         lastName: "B",
         zip: "123456",
@@ -318,7 +337,7 @@ class MockShopify {
         primaryAddress: "Flat No. 8/16/12",
         secondAddress: "Jai Andhra Layout",
         city: "Hyderabad",
-        /*state : "TS",*/ country: "India",
+/*state : "TS",*/ country: "India",
         firstName: "user",
         lastName: "C",
         zip: "234561",
@@ -329,7 +348,7 @@ class MockShopify {
         primaryAddress: "Flat No. 8/16/12",
         secondAddress: "Lawyers Layout",
         city: "Ongole",
-        /*state : "AP",*/ country: "India",
+/*state : "AP",*/ country: "India",
         firstName: "user",
         lastName: "D",
         zip: "345612",
@@ -340,7 +359,7 @@ class MockShopify {
         primaryAddress: "Flat No. 3/4/12",
         secondAddress: "CR Layout",
         city: "Vijayawada",
-        /*state : "AP",*/ country: "India",
+/*state : "AP",*/ country: "India",
         firstName: "Employee",
         lastName: "E",
         zip: "456123",
@@ -408,7 +427,7 @@ class MockShopify {
     productVariant.title = "Olive";
     productVariant.price = 45.0;
     productVariant.isAvailable = true;
-//    productVariant.selectedOptions = "";
+// productVariant.selectedOptions = "";
     productVariant.image = new ImageDTO();
     productVariant.productImage = new ImageDTO();
     productVariant.image.src = "https://cdn.shopify.com/s/files/1/0083/1664/9531/products/snowpeak_headlamp_458e50f4-a354-423e-ad48-a83c47878792.jpg?v=1534769365";
