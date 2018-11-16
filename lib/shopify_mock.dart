@@ -223,6 +223,7 @@ class MockShopify {
   static Future<DeliveryInfo> fetchDeliveryInfo() async {
     DeliveryInfo deliveryInfo = new DeliveryInfo();
     deliveryInfo.minDeliveryCharges = 20.0;
+    deliveryInfo.minPriceForFreeDelivery = 1500.0;
     deliveryInfo.numberOfShipments = 1;
     deliveryInfo.availableDeliverySlots = [];
 

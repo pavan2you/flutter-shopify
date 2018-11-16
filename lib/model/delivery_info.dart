@@ -6,4 +6,5 @@ class DeliveryInfo extends DataObject {
   List<String> availableDeliverySlots;
   int numberOfShipments;
   String defaultSelectedDeliverySlot;
+  double minPriceForFreeDelivery;
 }
