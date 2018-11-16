@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:shopify/model/category.dart';
+import 'package:shopify/model/delivery_info.dart';
 import 'package:shopify/model/image.dart';
 import 'package:shopify/model/offer_product.dart';
 import 'package:shopify/model/order.dart';
@@ -213,5 +214,23 @@ class MockShopify {
     eggs.image.id = "assets/images/c_staples.jpg";
     categories.add(eggs);
     return categories;
+  }
+
+  static Future<DeliveryInfo> fetchDeliveryInfo() async {
+    DeliveryInfo deliveryInfo = new DeliveryInfo();
+    deliveryInfo.minDeliveryCharges = 20.0;
+    deliveryInfo.numberOfShipments = 1;
+    deliveryInfo.availableDeliverySlots = [];
+
+    deliveryInfo.availableDeliverySlots.add("Tomorrow");
+    deliveryInfo.availableDeliverySlots.add("9.00 AM-11.30 AM");
+    deliveryInfo.availableDeliverySlots.add("11.30 AM-1.00 PM");
+    deliveryInfo.availableDeliverySlots.add("1.00 PM-3.30 PM");
+    deliveryInfo.availableDeliverySlots.add("3.30 PM-5.00 PM");
+    deliveryInfo.availableDeliverySlots.add("5.00 PM-7.30 PM");
+    deliveryInfo.availableDeliverySlots.add("7.30 PM-10.00 PM");
+
+    deliveryInfo.defaultSelectedDeliverySlot = "Tomorrow 11.30 AM-1.00 PM";
+    return deliveryInfo;
   }
 }
