@@ -295,14 +295,19 @@ class Shopify {
 
   static Future<Customer> getCustomer() async {
     final String responseJson = await _channel.invokeMethod(kMethodGetCustomer);
-    final responseMap = json.decode(responseJson);
-    //dirty fix to avoid null pointer.
-    var address = responseMap['defaultAddress'];
-    if (address == null) {
-      responseMap['defaultAddress'] = new Map<String, dynamic>();
+    if (responseJson.contains("onFailure")) {
+      return null;
     }
-    final Customer response = Customer.fromJson(responseMap);
-    return response;
+    else {
+      final responseMap = json.decode(responseJson);
+      //dirty fix to avoid null pointer.
+      var address = responseMap['defaultAddress'];
+      if (address == null) {
+        responseMap['defaultAddress'] = new Map<String, dynamic>();
+      }
+      final Customer response = Customer.fromJson(responseMap);
+      return response;
+    }
   }
 
   static Future<bool> setDefaultShippingAddress(String addressId) async {

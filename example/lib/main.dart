@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
 //    getProductVariants();
 //    searchProductList();
 
-    getCategories();
+//    getCategories();
 //    getCategoryDetails();
 
 //    getArticleList(); //ArticleList is itself empty
@@ -59,7 +59,7 @@ class _MyAppState extends State<MyApp> {
 //    changePassword();
 
 //    getCountries();
-//    getCustomer();
+    getCustomer();
 
 //    createCustomerAddress();
 //    setDefaultShippingAddress();
