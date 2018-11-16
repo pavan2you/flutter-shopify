@@ -1,11 +1,15 @@
 import 'dart:async';
 
+import 'package:shopify/model/address.dart';
 import 'package:shopify/model/category.dart';
 import 'package:shopify/model/delivery_info.dart';
 import 'package:shopify/model/image.dart';
 import 'package:shopify/model/offer_product.dart';
 import 'package:shopify/model/order.dart';
+import 'package:shopify/model/order_product.dart';
 import 'package:shopify/model/product.dart';
+import 'package:shopify/model/product_variant.dart';
+import 'package:shopify/model/store.dart';
 import 'package:shopify/shopify_constants.dart';
 
 class MockShopify {
@@ -232,5 +236,204 @@ class MockShopify {
 
     deliveryInfo.defaultSelectedDeliverySlot = "Tomorrow 11.30 AM-1.00 PM";
     return deliveryInfo;
+  }
+
+  static List<Store> getMockStores() {
+    List<Store> stores = new List();
+
+    stores.add(new Store(
+        storeId: "560011",
+        storeName: "TOW - Jaya Nagar III block",
+        storeAddress: "Store is not avaliable but delivery is avaliable"));
+
+    stores.add(new Store(
+        storeId: "560034",
+        storeName: "TOW - Jakkasandra - Koramangala",
+        storeAddress: "#44, 100 Feet Rd, 4th Block, Koramangala 4th Block,"
+            " Koramangala, Bengaluru, Karnataka"));
+
+    stores.add(new Store(
+        storeId: "560041",
+        storeName: "TOW - Jaya Nagar T block",
+        storeAddress: "Store is not avaliable but delivery is avaliable"));
+
+    stores.add(new Store(
+        storeId: "560070",
+        storeName: "TOW - Jaya Nagar",
+        storeAddress: "Store is not avaliable but delivery is avaliable"));
+
+    stores.add(new Store(
+        storeId: "560076",
+        storeName: "TOW - Doddakammanahalli",
+        storeAddress: "Store is not avaliable but delivery is avaliable"));
+
+    stores.add(new Store(
+        storeId: "560078",
+        storeName: "TOW - JP Nagar",
+        storeAddress: "58, 15th Cross Rd, Jeewan Griha Colony, 2nd Phase,"
+            " JP Nagar, Bengaluru, Karnataka"));
+
+    stores.add(new Store(
+        storeId: "560095",
+        storeName: "TOW - HSR",
+        storeAddress: "No. 483, 17th Cross, 27th Main Rd, Opposite Nift,"
+            "Sector 2, HSR Layout, Bengaluru, Karnataka"));
+
+    return stores;
+  }
+
+  static Future<List<Order>> getMockOrderList() async {
+    List<Order> orders = new List();
+
+    orders.add(new Order(
+        id: "1",
+        processedAt : new DateTime.utc(2018, 10, 03, 06, 17),
+        orderNumber: 1,
+        orderProducts: await getMockOrderProducts(),
+        address: getMockAddress(0)));
+
+    orders.add(new Order(
+        id: "2",
+        processedAt : new DateTime.utc(2018, 9, 04, 09, 16),
+        orderNumber: 2,
+        address: getMockAddress(1),
+        orderProducts: await getMockOrderProducts()));
+
+    orders.add(new Order(
+        id: "3",
+        processedAt : new DateTime.utc(2018, 7, 03, 03, 15),
+        orderNumber: 3,
+        address: getMockAddress(2),
+        orderProducts: await getMockOrderProducts()));
+
+    orders.add(new Order(
+        id: "4",
+        processedAt : new DateTime.utc(2018, 8, 02, 07, 14),
+        orderNumber: 4,
+        address: getMockAddress(3),
+        orderProducts: await getMockOrderProducts()));
+
+    return orders;
+  }
+
+  static List<Address> getMockAddresses() {
+    List<Address> address = new List();
+
+    address.add(getDummyAddress());
+
+    address.add(new Address(
+        id: "2",
+        primaryAddress: "Flat No. 8/16/12",
+        secondAddress: "Andhra Bank Layout",
+        city: "Visakhapatnam",
+/*state : "AP",*/ country: "India",
+        firstName: "user",
+        lastName: "B",
+        zip: "123456",
+        phone: "1234567890"));
+
+    address.add(new Address(
+        id: "3",
+        primaryAddress: "Flat No. 8/16/12",
+        secondAddress: "Jai Andhra Layout",
+        city: "Hyderabad",
+/*state : "TS",*/ country: "India",
+        firstName: "user",
+        lastName: "C",
+        zip: "234561",
+        phone: "2345678901"));
+
+    address.add(new Address(
+        id: "4",
+        primaryAddress: "Flat No. 8/16/12",
+        secondAddress: "Lawyers Layout",
+        city: "Ongole",
+/*state : "AP",*/ country: "India",
+        firstName: "user",
+        lastName: "D",
+        zip: "345612",
+        phone: "3456789012"));
+
+    address.add(new Address(
+        id: "5",
+        primaryAddress: "Flat No. 3/4/12",
+        secondAddress: "CR Layout",
+        city: "Vijayawada",
+/*state : "AP",*/ country: "India",
+        firstName: "Employee",
+        lastName: "E",
+        zip: "456123",
+        phone: "4567890123"));
+
+    return address;
+  }
+
+  static Address getDummyAddress() {
+    Address address1 = new Address();
+    address1.id = "1";
+    address1.primaryAddress = "Flat No. 33,16/12";
+    address1.secondAddress = "Vijaya Bank Layout";
+    address1.city = "Bangalore";
+    address1.state = "Karnataka";
+    address1.country = "India";
+    address1.firstName = "user";
+    address1.lastName = "A";
+    address1.zip = "560076";
+    address1.phone = "910123456789";
+    return address1;
+  }
+
+  static Address getMockAddress(int index) {
+    List<Address> addresses = getMockAddresses();
+
+    Address address = new Address();
+
+    address.id = addresses[index].id;
+    address.primaryAddress = addresses[index].primaryAddress;
+    address.secondAddress = addresses[index].secondAddress;
+    address.city = addresses[index].city;
+    address.state = addresses[index].state;
+    address.country = addresses[index].country;
+    address.firstName = addresses[index].firstName;
+    address.lastName = addresses[index].lastName;
+    address.zip = addresses[index].zip;
+    address.phone = addresses[index].phone;
+
+    return address;
+  }
+
+  static Future<List<OrderProduct>> getMockOrderProducts() async {
+    List<OrderProduct> orderProducts = new List();
+
+    orderProducts.add(new OrderProduct(
+        title: "1", productVariant: getMockProductVariant(), quantity: 1));
+
+    orderProducts.add(new OrderProduct(
+        title: "2", productVariant: getMockProductVariant(), quantity: 2));
+
+    orderProducts.add(new OrderProduct(
+        title: "3", productVariant: getMockProductVariant(), quantity: 3));
+
+    orderProducts.add(new OrderProduct(
+        title: "4", productVariant: getMockProductVariant(), quantity: 4));
+
+    return orderProducts;
+  }
+
+  static ProductVariant getMockProductVariant() {
+    ProductVariant productVariant = new ProductVariant();
+
+    productVariant.id = "123";
+    productVariant.title = "Olive";
+    productVariant.price = 45.0;
+    productVariant.isAvailable = true;
+// productVariant.selectedOptions = "";
+    productVariant.image = new ImageDTO();
+    productVariant.productImage = new ImageDTO();
+    productVariant.image.src = "https://cdn.shopify.com/s/files/1/0083/1664/9531/products/snowpeak_headlamp_458e50f4-a354-423e-ad48-a83c47878792.jpg?v=1534769365";
+    productVariant.productImage.src = "https://cdn.shopify.com/s/files/1/0083/1664/9531/products/snowpeak_headlamp_458e50f4-a354-423e-ad48-a83c47878792.jpg?v=1534769365";
+    productVariant.productId = "eyJsYXN0X2lkIjoxNDc4MTY4OTY5Mjc1LCJsYXN0X3ZhbHVlIjoiMCJ9";
+
+    return productVariant;
   }
 }
