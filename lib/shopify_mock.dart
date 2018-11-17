@@ -324,7 +324,7 @@ class MockShopify {
 
     address.add(new Address(
         id: "2",
-        primaryAddress: "Flat No. 8/16/12",
+        address: "Flat No. 8/16/12",
         secondAddress: "Andhra Bank Layout",
         city: "Visakhapatnam",
 /*state : "AP",*/ country: "India",
@@ -335,7 +335,7 @@ class MockShopify {
 
     address.add(new Address(
         id: "3",
-        primaryAddress: "Flat No. 8/16/12",
+        address: "Flat No. 8/16/12",
         secondAddress: "Jai Andhra Layout",
         city: "Hyderabad",
 /*state : "TS",*/ country: "India",
@@ -346,7 +346,7 @@ class MockShopify {
 
     address.add(new Address(
         id: "4",
-        primaryAddress: "Flat No. 8/16/12",
+        address: "Flat No. 8/16/12",
         secondAddress: "Lawyers Layout",
         city: "Ongole",
 /*state : "AP",*/ country: "India",
@@ -357,7 +357,7 @@ class MockShopify {
 
     address.add(new Address(
         id: "5",
-        primaryAddress: "Flat No. 3/4/12",
+        address: "Flat No. 3/4/12",
         secondAddress: "CR Layout",
         city: "Vijayawada",
 /*state : "AP",*/ country: "India",
@@ -372,7 +372,7 @@ class MockShopify {
   static Address getDummyAddress() {
     Address address1 = new Address();
     address1.id = "1";
-    address1.primaryAddress = "Flat No. 33,16/12";
+    address1.address = "Flat No. 33,16/12";
     address1.secondAddress = "Vijaya Bank Layout";
     address1.city = "Bangalore";
     address1.state = "Karnataka";
@@ -390,7 +390,7 @@ class MockShopify {
     Address address = new Address();
 
     address.id = addresses[index].id;
-    address.primaryAddress = addresses[index].primaryAddress;
+    address.address = addresses[index].address;
     address.secondAddress = addresses[index].secondAddress;
     address.city = addresses[index].city;
     address.state = addresses[index].state;

@@ -336,7 +336,7 @@ class Shopify {
 
     Map<dynamic, dynamic> args = new Map();
     args[kArgAddressId] = addressId;
-    args[kArgPrimaryAddress] = address.primaryAddress;
+    args[kArgPrimaryAddress] = address.address;
     args[kArgSecondAddress] = address.secondAddress;
     args[kArgCity] = address.city;
     args[kArgState] = address.state;
@@ -426,7 +426,7 @@ class Shopify {
     Map<dynamic, dynamic> args = new Map();
     args[kArgCheckoutId] = checkoutId;
     args[kArgAddressId] = address.id;
-    args[kArgPrimaryAddress] = address.primaryAddress;
+    args[kArgPrimaryAddress] = address.address;
     args[kArgSecondAddress] = address.secondAddress;
     args[kArgCity] = address.city;
     args[kArgState] = address.state;
@@ -514,7 +514,7 @@ class Shopify {
     args[email] = email;
 
     args[kArgAddressId] = address.id;
-    args[kArgPrimaryAddress] = address.primaryAddress;
+    args[kArgPrimaryAddress] = address.address;
     args[kArgSecondAddress] = address.secondAddress;
     args[kArgCity] = address.city;
     args[kArgState] = address.state;

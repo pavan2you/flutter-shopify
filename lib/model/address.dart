@@ -8,7 +8,7 @@ part 'address.g.dart';
 @JsonSerializable(nullable: false)
 class Address extends DataObject with _$AddressSerializerMixin {
   String id;
-  String primaryAddress;
+  String address;
   String secondAddress;
   String city;
   String state;
@@ -18,7 +18,7 @@ class Address extends DataObject with _$AddressSerializerMixin {
   String zip;
   String phone;
 
-  Address({this.id, this.primaryAddress, this.secondAddress, this.city,
+  Address({this.id, this.address, this.secondAddress, this.city,
     this.country, this.firstName, this.lastName, this.zip, this.phone});
 
   factory Address.fromJson(Map<String, dynamic> json) => _$AddressFromJson(json);
@@ -32,7 +32,7 @@ class Address extends DataObject with _$AddressSerializerMixin {
   Map<String, dynamic> toMap([Map<String, dynamic> map]) {
     var map = new Map<String, dynamic>();
     map["id"] = id;
-    map["primaryAddress"] = primaryAddress;
+    map["address"] = address;
     map["secondAddress"] = secondAddress;
     map["city"] = city;
     map["country"] = country;
@@ -49,7 +49,7 @@ class Address extends DataObject with _$AddressSerializerMixin {
   int _getHashCode() {
     int result = id.hashCode;
 
-    result = 31 * result + primaryAddress.hashCode;
+    result = 31 * result + address.hashCode;
     result = 31 * result + (secondAddress != null ? secondAddress.hashCode : 0);
     result = 31 * result + city.hashCode;
     result = 31 * result + (state != null ? state.hashCode : 0);
@@ -71,19 +71,19 @@ class Address extends DataObject with _$AddressSerializerMixin {
       return false;
     }
 
-    Address address = object;
+    Address addr = object;
 
-    if (id != address.id) return false;
-    if (primaryAddress != address.primaryAddress) return false;
-    if (secondAddress != address?.secondAddress)
+    if (id != addr.id) return false;
+    if (address != addr.address) return false;
+    if (secondAddress != addr?.secondAddress)
       return false;
-    if (city != address.city) return false;
-    if (state != address?.state) return false;
-    if (country != address.country) return false;
-    if (firstName != address.firstName) return false;
-    if (lastName != address.lastName) return false;
-    if (zip != address.zip) return false;
-    if (phone != address?.phone) return false;
+    if (city != addr.city) return false;
+    if (state != addr?.state) return false;
+    if (country != addr.country) return false;
+    if (firstName != addr.firstName) return false;
+    if (lastName != addr.lastName) return false;
+    if (zip != addr.zip) return false;
+    if (phone != addr?.phone) return false;
 
     return true;
   }
@@ -92,7 +92,7 @@ class Address extends DataObject with _$AddressSerializerMixin {
   String toString() {
     return "Address{ " +
         " id ='" + id + '\'' +
-        ", address ='" + primaryAddress + '\'' +
+        ", address ='" + address + '\'' +
         ", secondAddress ='" + secondAddress + '\'' +
         ", city ='" + city + '\'' +
         ", state ='" + state + '\'' +
