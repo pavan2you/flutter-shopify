@@ -71,7 +71,7 @@ class Order extends DataObject with _$OrderSerializerMixin {
   @override
   bool operator ==(object) {
 
-    if (this == object) {
+    /*if (this == object) {
       return true;
     }
     if (object == null || toString() != object.toString()) {
@@ -92,6 +92,12 @@ class Order extends DataObject with _$OrderSerializerMixin {
     if (orderProducts != order.orderProducts) return false;
     if (address != order?.address) return false;
     if (paginationValue != order?.paginationValue) return false;
+
+    return true;*/
+
+    Order order = object;
+
+    if (id != order.id) return false;
 
     return true;
   }
