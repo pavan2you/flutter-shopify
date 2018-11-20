@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/library/gateway/gateway.iml" filepath="$PROJECT_DIR$/library/gateway/gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/shopify.iml" filepath="$PROJECT_DIR$/shopify.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/shopifylibrary/shopifylibrary.iml" filepath="$PROJECT_DIR$/library/shopifylibrary/shopifylibrary.iml" />
     </modules>
   </component>
 </project>
