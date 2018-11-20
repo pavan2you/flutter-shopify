@@ -296,7 +296,7 @@ class MockShopify {
     orders.add(new Order(
         id: "2",
         processedAt : new DateTime.utc(2018, 9, 04, 09, 16),
-        orderNumber: 2,
+        orderNumber: 4,
         address: getMockAddress(1),
         orderProducts: await getMockOrderProducts()));
 
