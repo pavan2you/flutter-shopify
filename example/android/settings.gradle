@@ -1,4 +1,4 @@
-include ':app'
+include ':app', ':gateway', ':shopifylibrary'
 
 def flutterProjectRoot = rootProject.projectDir.parentFile.toPath()
 

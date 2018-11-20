@@ -38,7 +38,7 @@ class _MyAppState extends State<MyApp> {
         "1e5f1c6facb67ef0bf9e0c4af642d192",
         "5c3061bb2e053642fc1422409ccbb89e");
 
-//    getProductsList(); //variantList is coming  null in this call
+    getProductsList(); //variantList is coming  null in this call
 //    getProduct(); //variantList is present in individual product call
 //    getProductVariants();
 //    searchProductList();
