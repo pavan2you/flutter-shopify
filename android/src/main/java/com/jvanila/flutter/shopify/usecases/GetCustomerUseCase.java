@@ -35,6 +35,7 @@ public class GetCustomerUseCase extends ShopifyCallUseCase {
             @Override
             public void onFailure(Error error) {
                 //Unauthorised
+                result.success("onFailure -- " + error);
                 System.out.println("onFailure -- " + error);
             }
         });

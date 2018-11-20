@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
 //    getProductVariants();
 //    searchProductList();
 
-    getCategories();
+//    getCategories();
 //    getCategoryDetails();
 
 //    getArticleList(); //ArticleList is itself empty
@@ -52,7 +52,7 @@ class _MyAppState extends State<MyApp> {
 //    getShopInfo();
 
 //    signUp(); // phone no with country code is mandatory
-//    signIn();
+    signIn();
 //    signOut();
 //    isLoggedIn(); // is always false
 //    forgotPassword();
@@ -61,7 +61,7 @@ class _MyAppState extends State<MyApp> {
 //    getCountries();
 //    getCustomer();
 
-//    createCustomerAddress();
+    createCustomerAddress();
 //    setDefaultShippingAddress();
 //    editCustomerAddress();
 //    deleteCustomerAddress();
@@ -269,8 +269,7 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> createCustomerAddress() async {
     Address address = new Address();
-    address.id = "3";
-    address.primaryAddress = "primary address";
+    address.address = "primary address";
     address.secondAddress = "second Address";
     address.city = "blr city";
     address.state = "Karnataka";
@@ -286,7 +285,7 @@ class _MyAppState extends State<MyApp> {
   Future<void> editCustomerAddress() async {
     Address address = new Address();
     address.id = "Z2lkOi8vc2hvcGlmeS9NYWlsaW5nQWRkcmVzcy83OTcwMTE2MDc2MTE/bW9kZWxfbmFtZT1DdXN0b21lckFkZHJlc3MmY3VzdG9tZXJfYWNjZXNzX3Rva2VuPTZDUEtFaUJxRk9LdEVpQTRIYks1MHdCVTJubkI3Yzc3NW84ZXNnZUxfMUVFbEFtOWhRcExzRFgyOEozejhkTnE2SFRwX2J4SThqc0NlcTlIUE9mWW9vM3F4bXdraUs3aktJQ1E0SVVzMktqS19RLVFCeDhWdW9sWjRDNjdkbjVRWTJROUJkSHYxaGpSQUlELXlsb19YaDBiZGRZWjB2alltdE5Ueklsbm5ZZnlwSzlaM09adVdmUXVFRVlLeE9NYkFTbG5lTGhDNDgyQ1J0QUhTYS1ZTl9yS3dQNW9RbVVmb0QxRDRlaHZlbGdNS0hVY0xtcEgzOHJMWUJKbDJBazI=";
-    address.primaryAddress = "primary address changed";
+    address.address = "primary address changed";
     address.secondAddress = "second Address changed";
     address.city = "blr city";
     address.state = "Karnataka";
@@ -356,7 +355,7 @@ class _MyAppState extends State<MyApp> {
   Future<void> setShippingAddress() async {
     Address address = new Address();
     address.id = "Z2lkOi8vc2hvcGlmeS9NYWlsaW5nQWRkcmVzcy83OTcwMTE2MDc2MTE/bW9kZWxfbmFtZT1DdXN0b21lckFkZHJlc3MmY3VzdG9tZXJfYWNjZXNzX3Rva2VuPTZDUEtFaUJxRk9LdEVpQTRIYks1MHdCVTJubkI3Yzc3NW84ZXNnZUxfMUVFbEFtOWhRcExzRFgyOEozejhkTnE2SFRwX2J4SThqc0NlcTlIUE9mWW9vM3F4bXdraUs3aktJQ1E0SVVzMktqS19RLVFCeDhWdW9sWjRDNjdkbjVRWTJROUJkSHYxaGpSQUlELXlsb19YaDBiZGRZWjB2alltdE5Ueklsbm5ZZnlwSzlaM09adVdmUXVFRVlLeE9NYkFTbG5lTGhDNDgyQ1J0QUhTYS1ZTl9yS3dQNW9RbVVmb0QxRDRlaHZlbGdNS0hVY0xtcEgzOHJMWUJKbDJBazI=";
-    address.primaryAddress = "primary address changed";
+    address.address = "primary address changed";
     address.secondAddress = "second Address changed";
     address.city = "blr city";
     address.state = "Karnataka";
@@ -398,7 +397,7 @@ class _MyAppState extends State<MyApp> {
 
     Address address = new Address();
     address.id = "Z2lkOi8vc2hvcGlmeS9NYWlsaW5nQWRkcmVzcy83OTcwMTE2MDc2MTE/bW9kZWxfbmFtZT1DdXN0b21lckFkZHJlc3MmY3VzdG9tZXJfYWNjZXNzX3Rva2VuPTZDUEtFaUJxRk9LdEVpQTRIYks1MHdCVTJubkI3Yzc3NW84ZXNnZUxfMUVFbEFtOWhRcExzRFgyOEozejhkTnE2SFRwX2J4SThqc0NlcTlIUE9mWW9vM3F4bXdraUs3aktJQ1E0SVVzMktqS19RLVFCeDhWdW9sWjRDNjdkbjVRWTJROUJkSHYxaGpSQUlELXlsb19YaDBiZGRZWjB2alltdE5Ueklsbm5ZZnlwSzlaM09adVdmUXVFRVlLeE9NYkFTbG5lTGhDNDgyQ1J0QUhTYS1ZTl9yS3dQNW9RbVVmb0QxRDRlaHZlbGdNS0hVY0xtcEgzOHJMWUJKbDJBazI=";
-    address.primaryAddress = "primary address changed";
+    address.address = "primary address changed";
     address.secondAddress = "second Address changed";
     address.city = "blr city";
     address.state = "Karnataka";
