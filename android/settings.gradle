@@ -1,4 +1,1 @@
 rootProject.name = 'shopify'
-include ':shopifylibrary', ':gateway'
-project(':shopifylibrary').projectDir = new File('library/shopifylibrary')
-project(':gateway').projectDir = new File('library/gateway')

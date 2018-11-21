@@ -16,6 +16,7 @@ class Category extends DataObject with _$CategorySerializerMixin {
   String updatedAt;
   List<Product> productList;
   String paginationValue;
+  int categoryNumber;
 
   Category({this.id, this.title, this.categoryDescription,
     this.additionalDescription, /*this.image,*/ this.updatedAt,
