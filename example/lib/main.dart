@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:shopify/domain/initialize_params.dart';
 import 'package:shopify/shopify.dart';
 import 'package:shopify/model/address.dart';
 import 'package:shopify/model/article.dart';
@@ -33,10 +34,12 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void>  initShopify() async {
-    await Shopify.initialize("porganicworld.myshopify.com",
-        "62761bc137e3dac4c66d1d1a93d8dab3",
-        "1e5f1c6facb67ef0bf9e0c4af642d192",
-        "5c3061bb2e053642fc1422409ccbb89e");
+    ShopifyInitializeParams params = new ShopifyInitializeParams();
+    params.domainName = "porganicworld.myshopify.com";
+    params.accessToken = "62761bc137e3dac4c66d1d1a93d8dab3";
+    params.apiKey = "1e5f1c6facb67ef0bf9e0c4af642d192";
+    params.apiPassword = "5c3061bb2e053642fc1422409ccbb89e";
+    await Shopify.initialize(params);
 
     getProductsList(); //variantList is coming  null in this call
 //    getProduct(); //variantList is present in individual product call
@@ -52,7 +55,7 @@ class _MyAppState extends State<MyApp> {
 //    getShopInfo();
 
 //    signUp(); // phone no with country code is mandatory
-    signIn();
+//    signIn();
 //    signOut();
 //    isLoggedIn(); // is always false
 //    forgotPassword();
@@ -61,7 +64,7 @@ class _MyAppState extends State<MyApp> {
 //    getCountries();
 //    getCustomer();
 
-    createCustomerAddress();
+//    createCustomerAddress();
 //    setDefaultShippingAddress();
 //    editCustomerAddress();
 //    deleteCustomerAddress();
@@ -85,7 +88,7 @@ class _MyAppState extends State<MyApp> {
 //    getCardToken(); //exception
 //    completeCheckoutByCard(); //exception
 
-//  startShopping();
+  startShopping();
   }
 
   Future<void> startShopping() async {

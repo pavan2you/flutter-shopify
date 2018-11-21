@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
+import 'package:shopify/domain/initialize_params.dart';
 import 'package:shopify/model/address.dart';
 import 'package:shopify/model/article.dart';
 import 'package:shopify/model/card.dart';
@@ -34,14 +35,13 @@ class Shopify {
   /////////////////////////////////  INITIALIZE  ///////////////////////////////
   //////////////////////////////////////////////////////////////////////////////
 
-  static Future<String> initialize(String baseDomain,
-      String storefrontAccessToken, String apiKey, String apiPassword) async {
+  static Future<String> initialize(ShopifyInitializeParams params) async {
 
     Map<dynamic, dynamic> args = new Map();
-    args[kArgBaseDomain] = baseDomain;
-    args[kArgStorefrontAccessToken] = storefrontAccessToken;
-    args[kArgApiKey] = apiKey;
-    args[kArgApiPassword] = apiPassword;
+    args[kArgBaseDomain] = params.domainName;
+    args[kArgStorefrontAccessToken] = params.accessToken;
+    args[kArgApiKey] = params.apiKey;
+    args[kArgApiPassword] = params.apiPassword;
 
     return await _channel.invokeMethod(kMethodInitialize, args);
   }
