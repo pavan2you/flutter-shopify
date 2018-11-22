@@ -606,7 +606,7 @@ class ShopifyApi : Api {
                                                     })
                                                     .variants({ it.first(ITEMS_COUNT) }) { productVariantConnectionQuery ->
                                                         productVariantConnectionQuery.edges { productVariantEdgeQuery ->
-                                                            productVariantEdgeQuery.node({ it.price() })
+                                                            productVariantEdgeQuery.node({ QueryHelper.getDefaultProductVariantQuery(it)})
                                                         }
                                                     }
                                             })
