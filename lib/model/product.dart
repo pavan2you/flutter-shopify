@@ -26,6 +26,7 @@ class Product extends DataObject with _$ProductSerializerMixin {
   List<ProductOption> options;
   List<ProductVariant> variants;
   String paginationValue;
+  ProductVariant selectedVariant;
 
   Product({this.id, this.title, this.productDescription,
     this.additionalDescription, this.currency, this.price,

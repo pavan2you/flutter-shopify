@@ -64,7 +64,7 @@ class Address extends DataObject with _$AddressSerializerMixin {
   @override
   bool operator ==(object) {
 
-    if (this == object) {
+    /*if (this == object) {
       return true;
     }
     if (object == null || toString() != object.toString()) {
@@ -84,6 +84,12 @@ class Address extends DataObject with _$AddressSerializerMixin {
     if (lastName != addr.lastName) return false;
     if (zip != addr.zip) return false;
     if (phone != addr?.phone) return false;
+
+    return true;*/
+
+    Address addr = object;
+
+    if (id != addr.id) return false;
 
     return true;
   }
