@@ -20,8 +20,8 @@ android {
             debuggable true
             jniDebuggable false
             renderscriptDebuggable false
-            renderscriptOptimLevel 3
             minifyEnabled false
+            pseudoLocalesEnabled false
             zipAlignEnabled true
         }
     }
@@ -29,7 +29,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "com.android.support.test:runner:$testRunnerVersion"
 }
