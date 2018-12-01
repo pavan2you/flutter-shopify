@@ -166,6 +166,7 @@ const String kMethodGetCardToken = "getCardToken";
 
 
 // Checkout
+const String kArgCheckoutJson = "checkoutJson";
 
 // Checkout Arguments
 const String kArgWebUrl = "webUrl";
