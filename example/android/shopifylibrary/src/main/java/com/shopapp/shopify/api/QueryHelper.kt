@@ -81,6 +81,7 @@ internal object QueryHelper {
             .city()
             .province()
             .zip()
+            .company()
             .phone()
     }
 
