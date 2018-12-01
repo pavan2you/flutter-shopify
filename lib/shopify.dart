@@ -503,26 +503,14 @@ class Shopify {
       Address address, String creditCardValueToken) async {
 
     Map<dynamic, dynamic> args = new Map();
-    args[kArgCheckoutId] = checkout.checkoutId;
-    args[kArgWebUrl] = checkout.webUrl;
-    args[kArgRequiresShipping] = checkout.requiresShipping;
-    args[kArgSubtotalPrice] = checkout.subtotalPrice;
-    args[kArgTotalPrice] = checkout.totalPrice;
-    args[kArgTaxPrice] = checkout.taxPrice;
-    args[kArgCheckoutCurrency] = checkout.currency;
 
-    args[email] = email;
+    String addressJson = json.encode(address);
+    args[kArgAddressJson] = addressJson;
 
-    args[kArgAddressId] = address.id;
-    args[kArgPrimaryAddress] = address.address;
-    args[kArgSecondAddress] = address.secondAddress;
-    args[kArgCity] = address.city;
-    args[kArgState] = address.state;
-    args[kArgCountry] = address.country;
-    args[kArgFirstName] = address.firstName;
-    args[kArgLastName] = address.lastName;
-    args[kArgZip] = address.zip;
-    args[kArgPhone] = address.phone;
+    String checkoutJson = json.encode(checkout);
+    args[kArgCheckoutJson] = checkoutJson;
+
+    args[kArgEmail] = email;
 
     args[kArgCreditCardValueToken] = creditCardValueToken;
 
@@ -548,9 +536,19 @@ class Shopify {
 
     final String responseJson = await _channel.invokeMethod(
       kMethodGetOrders, args,);
-    final responseMap = json.decode(responseJson).cast<Map<String, dynamic>>();
-    final List<Order> response = responseMap.map<Order>((json) =>
-        Order.fromJson(json)).toList();
+
+    List<Order> response;
+    if (responseJson.contains("No Orders")) {
+      response = new List();
+    }
+    else if (responseJson.contains("onFailure")) {
+      response = null;
+    }
+    else {
+      final responseMap = json.decode(responseJson).cast<Map<String, dynamic>>();
+      response = responseMap.map<Order>((json) =>
+          Order.fromJson(json)).toList();
+    }
 
     return response;
   }

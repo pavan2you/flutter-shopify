@@ -17,6 +17,7 @@ class ProductVariant extends DataObject with _$ProductVariantSerializerMixin  {
   ImageDTO image;
   ImageDTO productImage;
   String productId;
+  int noOfQuantities;
 
   ProductVariant({this.id, this.title, this.price, this.isAvailable,
     this.selectedOptions, this.image, this.productImage, this.productId});

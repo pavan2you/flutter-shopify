@@ -37,11 +37,15 @@ public class GetOrdersUseCase extends ShopifyCallUseCase {
 
                     result.success(ordersJsonString);
                 }
+                else {
+                    result.success("No Orders");
+                }
             }
 
             @Override
             public void onFailure(Error error) {
                 System.out.println("onFailure -- " + error);
+                result.success("onFailure -- " + error);
             }
         });
     }
