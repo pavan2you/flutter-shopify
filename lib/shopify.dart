@@ -565,5 +565,53 @@ class Shopify {
 
     return response;
   }
+
+  ////////////////////////// SHARE AND EARN ////////////////////////////////
+
+  static int getMockMinOrderToAvailEarning() {
+    return 200;
+  }
+
+  static int getMockTotalEarning() {
+    return 150;
+  }
+
+  static String getMockMessageToShare() {
+    return 'Hello, \n\n Please check this following link for wide '
+        'range of Organic products at an afforable price range.\n\nRegards '
+        '\nTOW.';
+  }
+
+//////////////////////// CUSTOMER SERVICE ////////////////////////////////
+
+  static String getMockCustomerServiceEmail() {
+    return "hello@theorganicworld.com";
+  }
+
+  static String getMockCustomerServiceNumber() {
+    return "08026581708";
+  }
+
+/////////////////////////////// ABOUT ////////////////////////////////////
+
+  static String getMockAboutTow() {
+    return " The Organic World was started with the mission "
+        "to make a positive and progressive difference to the world we live "
+        "in. Locally sourced and organically grown produce benefit individuals "
+        "and communities. And these not only improve a person’s general well "
+        "being but also bring in socio-economic benefits working its way up "
+        "from the grassroots level. \n\n The company was launched in 2013 to "
+        "give customers the most remarkable organic shopping experience for "
+        "all your daily needs from beans to jeans and bathing soaps to "
+        "cushion covers. Innovation has always been the companion of all our "
+        "ventures and we see no reason to make an exception at The "
+        "Organic World. \n\n Organic Products are often associated only with "
+        "fruits & vegetables, grocery and dairy & farm products. However, "
+        "there is a lot more to organic living than just consuming organic "
+        "food products. We aim to introduce a whole new dimension of organic "
+        "retail to our customers through apparel, home needs and personal "
+        "care products. Choose Better - two words that sum up our principal "
+        "intention.";
+  }
 }
 
