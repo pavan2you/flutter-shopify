@@ -13,10 +13,12 @@ data class Address(
     val firstName: String,
     val lastName: String,
     val zip: String,
+    val company: String,
     val phone: String?
 ) : Parcelable {
 
     constructor(source: Parcel) : this(
+        source.readString(),
         source.readString(),
         source.readString(),
         source.readString(),
@@ -41,6 +43,7 @@ data class Address(
         writeString(firstName)
         writeString(lastName)
         writeString(zip)
+        writeString(company)
         writeString(phone)
     }
 
@@ -57,6 +60,7 @@ data class Address(
         if (firstName != other.firstName) return false
         if (lastName != other.lastName) return false
         if (zip != other.zip) return false
+        if (company != other.company) return false
         if (phone != other.phone) return false
 
         return true
@@ -70,6 +74,7 @@ data class Address(
         result = 31 * result + firstName.hashCode()
         result = 31 * result + lastName.hashCode()
         result = 31 * result + zip.hashCode()
+        result = 31 * result + company.hashCode()
         result = 31 * result + (phone?.hashCode() ?: 0)
         return result
     }

@@ -17,6 +17,7 @@ object AddressAdapter {
             firstName = adaptee.firstName,
             lastName = adaptee.lastName,
             zip = adaptee.zip ?: Constant.DEFAULT_STRING,
+            company = adaptee.company ?: Constant.DEFAULT_STRING,
             phone = adaptee.phone
         )
     }

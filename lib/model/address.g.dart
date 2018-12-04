@@ -16,6 +16,7 @@ Address _$AddressFromJson(Map<String, dynamic> json) {
       firstName: json['firstName'] as String,
       lastName: json['lastName'] as String,
       zip: json['zip'] as String,
+      company: json['company'] as String,
       phone: json['phone'] as String)
     ..crudOperation = json['crudOperation'] as String
     ..state = json['state'] as String;
@@ -32,6 +33,7 @@ abstract class _$AddressSerializerMixin {
   String get firstName;
   String get lastName;
   String get zip;
+  String get company;
   String get phone;
   Map<String, dynamic> toJson() => <String, dynamic>{
         'crudOperation': crudOperation,
@@ -44,6 +46,7 @@ abstract class _$AddressSerializerMixin {
         'firstName': firstName,
         'lastName': lastName,
         'zip': zip,
+        'company': company,
         'phone': phone
       };
 }

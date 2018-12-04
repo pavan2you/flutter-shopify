@@ -66,7 +66,7 @@ class _MyAppState extends State<MyApp> {
 
 //    createCustomerAddress();
 //    setDefaultShippingAddress();
-//    editCustomerAddress();
+    editCustomerAddress();
 //    deleteCustomerAddress();
 
 //    editCustomerInfo();
@@ -227,6 +227,7 @@ class _MyAppState extends State<MyApp> {
   Future<void> signIn() async {
     bool val = await Shopify.signIn("imei355923070770619@gmail.com", "bFppaybqvWaD6CZdAtL5T7FN1XF2");
     print('Result - $val');
+    getCustomer();
   }
 
   Future<void> signOut() async {
@@ -296,6 +297,7 @@ class _MyAppState extends State<MyApp> {
     address.firstName = "pallavi";
     address.lastName = "s";
     address.zip = "560078";
+    address.company = "Office";
     address.phone = "+918985940000";
     bool val = await Shopify.editCustomerAddress(address.id, address);
     print('Result - $val');

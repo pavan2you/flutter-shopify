@@ -243,6 +243,7 @@ class ShopifyApi : Api {
                 .setFirstName(address.firstName)
                 .setLastName(address.lastName)
                 .setPhone(address.phone)
+                .setCompany(address.company)
                 .setZip(address.zip)
 
             val mutation = Storefront.mutation {
@@ -284,6 +285,7 @@ class ShopifyApi : Api {
                     .setFirstName(address.firstName)
                     .setLastName(address.lastName)
                     .setPhone(address.phone)
+                    .setCompany(address.company)
                     .setZip(address.zip)
 
                 it.customerAddressUpdate(session.accessToken, ID(addressId), mailingAddressInput, {
@@ -868,6 +870,7 @@ class ShopifyApi : Api {
             .setFirstName(address.firstName)
             .setLastName(address.lastName)
             .setPhone(address.phone)
+            .setCompany(address.company)
             .setZip(address.zip)
 
         val checkoutQuery = Storefront.mutation {

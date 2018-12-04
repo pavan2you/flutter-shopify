@@ -16,10 +16,12 @@ class Address extends DataObject with _$AddressSerializerMixin {
   String firstName;
   String lastName;
   String zip;
+  String company;
   String phone;
 
   Address({this.id, this.address, this.secondAddress, this.city,
-    this.country, this.firstName, this.lastName, this.zip, this.phone});
+    this.country, this.firstName, this.lastName,
+    this.zip, this.company, this.phone});
 
   factory Address.fromJson(Map<String, dynamic> json) => _$AddressFromJson(json);
 
@@ -39,6 +41,7 @@ class Address extends DataObject with _$AddressSerializerMixin {
     map["firstName"] = firstName;
     map["lastName"] = lastName;
     map["zip"] = zip;
+    map["company"] = company;
     map["phone"] = phone;
     return map;
   }
@@ -57,6 +60,7 @@ class Address extends DataObject with _$AddressSerializerMixin {
     result = 31 * result + firstName.hashCode;
     result = 31 * result + lastName.hashCode;
     result = 31 * result + zip.hashCode;
+    result = 31 * result + company.hashCode;
     result = 31 * result + (phone != null ? phone.hashCode : 0);
     return result;
   }
@@ -83,6 +87,7 @@ class Address extends DataObject with _$AddressSerializerMixin {
     if (firstName != addr.firstName) return false;
     if (lastName != addr.lastName) return false;
     if (zip != addr.zip) return false;
+    if (company != addr.company) return false;
     if (phone != addr?.phone) return false;
 
     return true;*/
@@ -106,6 +111,7 @@ class Address extends DataObject with _$AddressSerializerMixin {
         ", firstName ='" + firstName + '\'' +
         ", lastName ='" + lastName + '\'' +
         ", zip ='" + zip + '\'' +
+        ", company ='" + company + '\'' +
         ", phone ='" + phone + '\'' +
         '}';
   }

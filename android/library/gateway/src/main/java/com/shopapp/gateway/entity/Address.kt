@@ -4,29 +4,31 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class Address(
-    val id: String = NO_ID,
-    val address: String,
-    val secondAddress: String?,
-    val city: String,
-    val country: String,
-    val state: String?,
-    val firstName: String,
-    val lastName: String,
-    val zip: String,
-    val phone: String?
+        val id: String = NO_ID,
+        val address: String,
+        val secondAddress: String?,
+        val city: String,
+        val country: String,
+        val state: String?,
+        val firstName: String,
+        val lastName: String,
+        val zip: String,
+        val company: String,
+        val phone: String?
 ) : Parcelable {
 
     constructor(source: Parcel) : this(
-        source.readString(),
-        source.readString(),
-        source.readString(),
-        source.readString(),
-        source.readString(),
-        source.readString(),
-        source.readString(),
-        source.readString(),
-        source.readString(),
-        source.readString()
+            source.readString(),
+            source.readString(),
+            source.readString(),
+            source.readString(),
+            source.readString(),
+            source.readString(),
+            source.readString(),
+            source.readString(),
+            source.readString(),
+            source.readString(),
+            source.readString()
     )
 
     override fun describeContents() = 0
@@ -41,6 +43,7 @@ data class Address(
         writeString(firstName)
         writeString(lastName)
         writeString(zip)
+        writeString(company)
         writeString(phone)
     }
 
@@ -57,6 +60,7 @@ data class Address(
         if (firstName != other.firstName) return false
         if (lastName != other.lastName) return false
         if (zip != other.zip) return false
+        if (company != other.company) return false
         if (phone != other.phone) return false
 
         return true
@@ -70,6 +74,7 @@ data class Address(
         result = 31 * result + firstName.hashCode()
         result = 31 * result + lastName.hashCode()
         result = 31 * result + zip.hashCode()
+        result = 31 * result + company.hashCode()
         result = 31 * result + (phone?.hashCode() ?: 0)
         return result
     }

@@ -344,6 +344,7 @@ class Shopify {
     args[kArgFirstName] = address.firstName;
     args[kArgLastName] = address.lastName;
     args[kArgZip] = address.zip;
+    args[kArgCompany] = address.company;
     args[kArgPhone] = address.phone;
 
     final bool response = await _channel.invokeMethod(
