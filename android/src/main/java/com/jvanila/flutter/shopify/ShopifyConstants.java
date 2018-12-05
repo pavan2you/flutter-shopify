@@ -30,6 +30,8 @@ class ShopifyConstants {
 
     static final String METHOD_IS_LOGGED_IN = "isLoggedIn";
 
+    static final String METHOD_GET_ACCESS_TOKEN = "getAccessToken";
+
     static final String METHOD_FORGOT_PASSWORD = "forgotPassword";
 
     static final String METHOD_CHANGE_PASSWORD = "changePassword";
