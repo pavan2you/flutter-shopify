@@ -244,6 +244,11 @@ class Shopify {
     return response;
   }
 
+  static Future<String> getAccessToken() async {
+    String response =  await _channel.invokeMethod(kMethodGetAccessToken);
+    return response;
+  }
+
   static Future<bool> signOut() async {
     final bool response = await _channel.invokeMethod(kMethodSignOut);
     return response;

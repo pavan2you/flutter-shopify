@@ -56,6 +56,7 @@ class _MyAppState extends State<MyApp> {
 
 //    signUp(); // phone no with country code is mandatory
     signIn();
+    getAccessToken();
 //    signOut();
 //    isLoggedIn(); // is always false
 //    forgotPassword();
@@ -66,7 +67,7 @@ class _MyAppState extends State<MyApp> {
 
 //    createCustomerAddress();
 //    setDefaultShippingAddress();
-    editCustomerAddress();
+//    editCustomerAddress();
 //    deleteCustomerAddress();
 
 //    editCustomerInfo();
@@ -74,7 +75,7 @@ class _MyAppState extends State<MyApp> {
 //    updateCustomerSettings();
 
 //    getOrder(); //PlatformException and null pointer exception
-    getOrders(); //onFailure -- com.shopapp.gateway.entity.Error$NonCritical: Unauthorized
+//    getOrders(); //onFailure -- com.shopapp.gateway.entity.Error$NonCritical: Unauthorized
 
 //    createCheckout();
 //    getCheckout();
@@ -227,7 +228,12 @@ class _MyAppState extends State<MyApp> {
   Future<void> signIn() async {
     bool val = await Shopify.signIn("imei355923070770619@gmail.com", "bFppaybqvWaD6CZdAtL5T7FN1XF2");
     print('Result - $val');
-    getCustomer();
+//    getCustomer();
+  }
+
+  Future<void> getAccessToken() async {
+    String val = await Shopify.getAccessToken();
+    print('Result - $val');
   }
 
   Future<void> signOut() async {

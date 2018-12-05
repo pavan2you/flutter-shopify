@@ -68,6 +68,9 @@ const String kMethodSignOut = "signOut";
 //isLoggedIn Method Call
 const String kMethodIsLoggedIn = "isLoggedIn";
 
+//getAccessToken Method Call
+const String kMethodGetAccessToken = "getAccessToken";
+
 //Forgot Password Method Call
 const String kMethodForgotPassword = "forgotPassword";
 
