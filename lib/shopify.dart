@@ -548,10 +548,48 @@ class Shopify {
     else {
       final responseMap = json.decode(responseJson).cast<Map<String, dynamic>>();
       response = responseMap.map<Order>((json) =>
-          Order.fromJson(json)).toList();
+          getOrder1(json),).toList();
     }
 
     return response;
+  }
+
+  static Order getOrder1(dynamic item) {
+
+    if (item['totalShippingPrice'] == null) {
+      item['totalShippingPrice'] = 0.0;
+    }
+
+    if (item['subtotalPrice'] == null) {
+      item['subtotalPrice'] = 0.0;
+    }
+
+    if (item['totalPrice'] == null) {
+      item['totalPrice'] = 0.0;
+    }
+
+    if (item['address'] == null) {
+      item['address'] = new Map<String, dynamic>();
+    }
+
+    item['processedAt'] = "20120227";
+
+    return Order.fromJson(item);
+  }
+
+  static Address getDummyAddress() {
+    Address address1 = new Address();
+    address1.id = "1";
+    address1.address = "Flat No. 33,16/12";
+    address1.secondAddress = "Vijaya Bank Layout";
+    address1.city = "Bangalore";
+    address1.state = "Karnataka";
+    address1.country = "India";
+    address1.firstName = "user";
+    address1.lastName = "A";
+    address1.zip = "560076";
+    address1.phone = "910123456789";
+    return address1;
   }
 
   static Future<Order> getOrder(String orderId) async {
