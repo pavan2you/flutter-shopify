@@ -86,6 +86,7 @@ const String kArgSecondAddress = "secondAddress";
 const String kArgCity = "city";
 const String kArgState = "state";
 const String kArgCountry = "country";
+const String kArgCompany = "company";
 const String kArgZip = "zip";
 
 //Get Customer Method Call
@@ -166,6 +167,7 @@ const String kMethodGetCardToken = "getCardToken";
 
 
 // Checkout
+const String kArgCheckoutJson = "checkoutJson";
 
 // Checkout Arguments
 const String kArgWebUrl = "webUrl";

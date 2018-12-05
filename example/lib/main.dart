@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:shopify/domain/initialize_params.dart';
 import 'package:shopify/shopify.dart';
 import 'package:shopify/model/address.dart';
 import 'package:shopify/model/article.dart';
@@ -33,10 +34,12 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void>  initShopify() async {
-    await Shopify.initialize("porganicworld.myshopify.com",
-        "62761bc137e3dac4c66d1d1a93d8dab3",
-        "1e5f1c6facb67ef0bf9e0c4af642d192",
-        "5c3061bb2e053642fc1422409ccbb89e");
+    ShopifyInitializeParams params = new ShopifyInitializeParams();
+    params.domainName = "porganicworld.myshopify.com";
+    params.accessToken = "62761bc137e3dac4c66d1d1a93d8dab3";
+    params.apiKey = "1e5f1c6facb67ef0bf9e0c4af642d192";
+    params.apiPassword = "5c3061bb2e053642fc1422409ccbb89e";
+    await Shopify.initialize(params);
 
 //    getProductsList(); //variantList is coming  null in this call
 //    getProduct(); //variantList is present in individual product call
@@ -61,9 +64,9 @@ class _MyAppState extends State<MyApp> {
 //    getCountries();
 //    getCustomer();
 
-    createCustomerAddress();
+//    createCustomerAddress();
 //    setDefaultShippingAddress();
-//    editCustomerAddress();
+    editCustomerAddress();
 //    deleteCustomerAddress();
 
 //    editCustomerInfo();
@@ -71,7 +74,7 @@ class _MyAppState extends State<MyApp> {
 //    updateCustomerSettings();
 
 //    getOrder(); //PlatformException and null pointer exception
-//    getOrders(); //onFailure -- com.shopapp.gateway.entity.Error$NonCritical: Unauthorized
+    getOrders(); //onFailure -- com.shopapp.gateway.entity.Error$NonCritical: Unauthorized
 
 //    createCheckout();
 //    getCheckout();
@@ -222,8 +225,9 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> signIn() async {
-    bool val = await Shopify.signIn("pallavis@purnatva.com", "abc123-");
+    bool val = await Shopify.signIn("imei355923070770619@gmail.com", "bFppaybqvWaD6CZdAtL5T7FN1XF2");
     print('Result - $val');
+    getCustomer();
   }
 
   Future<void> signOut() async {
@@ -293,6 +297,7 @@ class _MyAppState extends State<MyApp> {
     address.firstName = "pallavi";
     address.lastName = "s";
     address.zip = "560078";
+    address.company = "Office";
     address.phone = "+918985940000";
     bool val = await Shopify.editCustomerAddress(address.id, address);
     print('Result - $val');
@@ -393,7 +398,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> completeCheckoutByCard() async {
-    Checkout checkout = await Shopify.getCheckout("Z2lkOi8vc2hvcGlmeS9DaGVja291dC9hNjc0NjY4MDcwZThhMjcyNzAyZmM0ZWMwYTAwOTNhMj9rZXk9Nzc2YzJkNWJmZWY2OTNlZjMxY2U0NmViMDBjMjMyMGY=");
+    Checkout checkout = await Shopify.getCheckout("Z2lkOi8vc2hvcGlmeS9DaGVja291dC8zYzA3NGI5ZjYyNDA5MmVhYWFkMzM4MTkxNDVlMDBhZT9rZXk9N2I3MDkwNGEyMDQ1NzkzYmZmMzFiOGI1NmQ1ZTgzMTE=");
 
     Address address = new Address();
     address.id = "Z2lkOi8vc2hvcGlmeS9NYWlsaW5nQWRkcmVzcy83OTcwMTE2MDc2MTE/bW9kZWxfbmFtZT1DdXN0b21lckFkZHJlc3MmY3VzdG9tZXJfYWNjZXNzX3Rva2VuPTZDUEtFaUJxRk9LdEVpQTRIYks1MHdCVTJubkI3Yzc3NW84ZXNnZUxfMUVFbEFtOWhRcExzRFgyOEozejhkTnE2SFRwX2J4SThqc0NlcTlIUE9mWW9vM3F4bXdraUs3aktJQ1E0SVVzMktqS19RLVFCeDhWdW9sWjRDNjdkbjVRWTJROUJkSHYxaGpSQUlELXlsb19YaDBiZGRZWjB2alltdE5Ueklsbm5ZZnlwSzlaM09adVdmUXVFRVlLeE9NYkFTbG5lTGhDNDgyQ1J0QUhTYS1ZTl9yS3dQNW9RbVVmb0QxRDRlaHZlbGdNS0hVY0xtcEgzOHJMWUJKbDJBazI=";

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
+import 'package:shopify/domain/initialize_params.dart';
 import 'package:shopify/model/address.dart';
 import 'package:shopify/model/article.dart';
 import 'package:shopify/model/card.dart';
@@ -34,14 +35,13 @@ class Shopify {
   /////////////////////////////////  INITIALIZE  ///////////////////////////////
   //////////////////////////////////////////////////////////////////////////////
 
-  static Future<String> initialize(String baseDomain,
-      String storefrontAccessToken, String apiKey, String apiPassword) async {
+  static Future<String> initialize(ShopifyInitializeParams params) async {
 
     Map<dynamic, dynamic> args = new Map();
-    args[kArgBaseDomain] = baseDomain;
-    args[kArgStorefrontAccessToken] = storefrontAccessToken;
-    args[kArgApiKey] = apiKey;
-    args[kArgApiPassword] = apiPassword;
+    args[kArgBaseDomain] = params.domainName;
+    args[kArgStorefrontAccessToken] = params.accessToken;
+    args[kArgApiKey] = params.apiKey;
+    args[kArgApiPassword] = params.apiPassword;
 
     return await _channel.invokeMethod(kMethodInitialize, args);
   }
@@ -344,6 +344,7 @@ class Shopify {
     args[kArgFirstName] = address.firstName;
     args[kArgLastName] = address.lastName;
     args[kArgZip] = address.zip;
+    args[kArgCompany] = address.company;
     args[kArgPhone] = address.phone;
 
     final bool response = await _channel.invokeMethod(
@@ -503,26 +504,14 @@ class Shopify {
       Address address, String creditCardValueToken) async {
 
     Map<dynamic, dynamic> args = new Map();
-    args[kArgCheckoutId] = checkout.checkoutId;
-    args[kArgWebUrl] = checkout.webUrl;
-    args[kArgRequiresShipping] = checkout.requiresShipping;
-    args[kArgSubtotalPrice] = checkout.subtotalPrice;
-    args[kArgTotalPrice] = checkout.totalPrice;
-    args[kArgTaxPrice] = checkout.taxPrice;
-    args[kArgCheckoutCurrency] = checkout.currency;
 
-    args[email] = email;
+    String addressJson = json.encode(address);
+    args[kArgAddressJson] = addressJson;
 
-    args[kArgAddressId] = address.id;
-    args[kArgPrimaryAddress] = address.address;
-    args[kArgSecondAddress] = address.secondAddress;
-    args[kArgCity] = address.city;
-    args[kArgState] = address.state;
-    args[kArgCountry] = address.country;
-    args[kArgFirstName] = address.firstName;
-    args[kArgLastName] = address.lastName;
-    args[kArgZip] = address.zip;
-    args[kArgPhone] = address.phone;
+    String checkoutJson = json.encode(checkout);
+    args[kArgCheckoutJson] = checkoutJson;
+
+    args[kArgEmail] = email;
 
     args[kArgCreditCardValueToken] = creditCardValueToken;
 
@@ -548,11 +537,59 @@ class Shopify {
 
     final String responseJson = await _channel.invokeMethod(
       kMethodGetOrders, args,);
-    final responseMap = json.decode(responseJson).cast<Map<String, dynamic>>();
-    final List<Order> response = responseMap.map<Order>((json) =>
-        Order.fromJson(json)).toList();
+
+    List<Order> response;
+    if (responseJson.contains("No Orders")) {
+      response = new List();
+    }
+    else if (responseJson.contains("onFailure")) {
+      response = null;
+    }
+    else {
+      final responseMap = json.decode(responseJson).cast<Map<String, dynamic>>();
+      response = responseMap.map<Order>((json) =>
+          getOrder1(json),).toList();
+    }
 
     return response;
+  }
+
+  static Order getOrder1(dynamic item) {
+
+    if (item['totalShippingPrice'] == null) {
+      item['totalShippingPrice'] = 0.0;
+    }
+
+    if (item['subtotalPrice'] == null) {
+      item['subtotalPrice'] = 0.0;
+    }
+
+    if (item['totalPrice'] == null) {
+      item['totalPrice'] = 0.0;
+    }
+
+    if (item['address'] == null) {
+      item['address'] = new Map<String, dynamic>();
+    }
+
+    item['processedAt'] = "20120227";
+
+    return Order.fromJson(item);
+  }
+
+  static Address getDummyAddress() {
+    Address address1 = new Address();
+    address1.id = "1";
+    address1.address = "Flat No. 33,16/12";
+    address1.secondAddress = "Vijaya Bank Layout";
+    address1.city = "Bangalore";
+    address1.state = "Karnataka";
+    address1.country = "India";
+    address1.firstName = "user";
+    address1.lastName = "A";
+    address1.zip = "560076";
+    address1.phone = "910123456789";
+    return address1;
   }
 
   static Future<Order> getOrder(String orderId) async {

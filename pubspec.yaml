@@ -11,6 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  #http: ^0.12.0
+
   json_annotation: ^0.2.3
   shared_preferences: ^0.4.2
   jvanila_flutter:
