@@ -18,8 +18,11 @@ class _WebViewExampleState extends PresentableStateView<WebViewExample>
     implements IWebView {
   TextEditingController controller = TextEditingController();
   FlutterWebviewPlugin flutterWebviewPlugin = FlutterWebviewPlugin();
+
   var urlString =
       "https://porganicworld.myshopify.com/8316649531/checkouts/0482481819e1a198c11cf7d78e754af5?key=dd406cd3070d1b918a4acd5de66309ea";
+
+  var url1 = "https://porganicworld.myshopify.com/8316649531/checkouts/f22296b6795a5f2d5facc6ec08d63380?key=af945df96b779b4c6fc26d60e68d1022";
 
   Customer customer;
   WebViewPresenter thisPresenter;
