@@ -179,6 +179,15 @@ class ShopifyApi : Api {
         callback.onResult(getSession() != null)
     }
 
+    override fun getAccessToken(callback: ApiCallback<String>) {
+        val accessData = getSession()
+        if (accessData != null) {
+            callback.onResult(accessData.accessToken);
+        } else {
+            callback.onFailure(Error.NonCritical(UNAUTHORIZED_ERROR))
+        }
+    }
+
     override fun forgotPassword(email: String, callback: ApiCallback<Unit>) {
 
         val mutationQuery = Storefront.mutation {
