@@ -120,6 +120,7 @@ const String kMethodUpdateCustomerSettings = "updateCustomerSettings";
 // Order Arguments
 const String kArgOrderId = "orderId";
 const String kMethodGetOrders = "getOrders";
+const String kMethodGetOrder = "getOrder";
 
 // Checkout Arguments
 const String kArgCheckout = "checkout";
