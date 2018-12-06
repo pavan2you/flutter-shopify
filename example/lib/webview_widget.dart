@@ -18,12 +18,18 @@ class _WebViewExampleState extends PresentableStateView<WebViewExample>
     implements IWebView {
   TextEditingController controller = TextEditingController();
   FlutterWebviewPlugin flutterWebviewPlugin = FlutterWebviewPlugin();
+
   var urlString =
-      "https://porganicworld.myshopify.com/8316649531/checkouts/bddbb3289897deb4cc1a1d1025432575?key=c2a1ce7f6cbfb94db3cad29a40118bcc";
+      "https://porganicworld.myshopify.com/8316649531/checkouts/0482481819e1a198c11cf7d78e754af5?key=dd406cd3070d1b918a4acd5de66309ea";
+
+  var url1 = "https://porganicworld.myshopify.com/8316649531/checkouts/f22296b6795a5f2d5facc6ec08d63380?key=af945df96b779b4c6fc26d60e68d1022";
 
   Customer customer;
   WebViewPresenter thisPresenter;
   bool isLoading = false;
+  String accessToken;
+
+  Map<String, String> additionalHttpHeaders = new Map();
 
   _WebViewExampleState([BuildContext context]) : super(context);
   launchUrl() {
@@ -54,7 +60,7 @@ class _WebViewExampleState extends PresentableStateView<WebViewExample>
 
 
   String buildUrl() {
-    if (customer != null) {
+    /*if (customer != null) {
       urlString = urlString +
           "&checkout[email_or_phone]=" +
           customer.email +
@@ -74,8 +80,15 @@ class _WebViewExampleState extends PresentableStateView<WebViewExample>
           customer.defaultAddress.state +
           "&checkout[shipping_address][zip]=" +
           customer.defaultAddress.zip;
-    }
+    }*/
     return urlString;
+  }
+
+  Map buildHeaders() {
+    if (accessToken != null) {
+      additionalHttpHeaders['X-Shopify-Customer-Access-Token'] = accessToken;
+    }
+    return additionalHttpHeaders;
   }
 
   @override
@@ -91,6 +104,7 @@ class _WebViewExampleState extends PresentableStateView<WebViewExample>
         ),
         url: buildUrl(),
         withZoom: false,
+        headers: buildHeaders(),
 
       );
     }
@@ -104,6 +118,11 @@ class _WebViewExampleState extends PresentableStateView<WebViewExample>
   @override
   void setLoading(bool isLoading) {
     this.isLoading = isLoading;
+  }
+
+  @override
+  void setAccessToken(String token) {
+    this.accessToken = token;
   }
 
 }

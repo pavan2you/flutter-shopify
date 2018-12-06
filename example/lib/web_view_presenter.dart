@@ -33,6 +33,8 @@ class WebViewPresenter extends Presenter<IWebView> {
 
   Future<void> signIn() async {
     await Shopify.signIn("imei355923070770619@gmail.com", "bFppaybqvWaD6CZdAtL5T7FN1XF2");
+    String token = await Shopify.getAccessToken();
+    view.setAccessToken(token);
     getCustomer();
   }
 
