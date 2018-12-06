@@ -1,6 +1,8 @@
 package com.jvanila.flutter.shopify.usecases;
 
 import com.jvanila.flutter.plugin.arch.PluginContext;
+import com.shopapp.gateway.ApiCallback;
+import com.shopapp.gateway.entity.Error;
 import com.shopapp.shopify.api.ShopifyApi;
 
 import io.flutter.plugin.common.MethodCall;
@@ -13,24 +15,22 @@ public class GetAccessTokenUseCase extends ShopifyCallUseCase {
     }
 
     @Override
-    protected void call(MethodCall input, final MethodChannel.Result result) {
+    protected void call(final MethodCall input, final MethodChannel.Result result) {
 
- /*mPluginContext.api.instance.getAccessToken(new ApiCallback<String>() {
+        mPluginContext.api.instance.getAccessToken(new ApiCallback<String>() {
+            @Override
+            public void onResult(String token) {
+                System.out.println("AccessToken -- " + token);
+                result.success(token);
+            }
 
-     @Override
+            @Override
+            public void onFailure(Error error) {
+                System.out.println("onFailure -- " + error);
+                result.error(error.getLocalizedMessage(),input.method,"");
+            }
+        });
 
-        public void onResult(String token) {
-        result.success( token);
-        }
-
-
-     @Override
-     public void onFailure(@NotNull Error error) {
-
-     }
-
-        });*/
-
-        result.success("a4a78e07552b76eab90dba533d60e318");
+        //result.success("a4a78e07552b76eab90dba533d60e318");
     }
 }

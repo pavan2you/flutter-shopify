@@ -32,6 +32,8 @@ interface Api {
 
     fun isLoggedIn(callback: ApiCallback<Boolean>)
 
+    fun getAccessToken(callback: ApiCallback<String>)
+
     fun forgotPassword(email: String, callback: ApiCallback<Unit>)
 
     fun getCustomer(callback: ApiCallback<Customer?>)
