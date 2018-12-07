@@ -23,13 +23,13 @@ class MockShopify {
     List<Order> orders = new List();
     Order order1 = new Order();
     order1.id = "1";
-    order1.processedAt = new DateTime.utc(2018, 10, 03, 09, 18);
+    order1.processedAt = "Dec 01, 2018";
     order1.orderNumber = 2; // need to change wrt status
     orders.add(order1);
 
     Order order2 = new Order();
     order2.id = "2";
-    order2.processedAt = new DateTime.utc(2018, 11, 12, 19, 25);;
+    order2.processedAt = "Dec 02, 2018";
     order2.orderNumber = 1; // need to change wrt status
     orders.add(order2);
 
@@ -288,28 +288,28 @@ class MockShopify {
 
     orders.add(new Order(
         id: "1",
-        processedAt : new DateTime.utc(2018, 10, 03, 06, 17),
+        processedAt : "Dec 01, 2018",
         orderNumber: 1,
         orderProducts: await getMockOrderProducts(),
         address: getMockAddress(0)));
 
     orders.add(new Order(
         id: "2",
-        processedAt : new DateTime.utc(2018, 9, 04, 09, 16),
+        processedAt : "Dec 02, 2018",
         orderNumber: 4,
         address: getMockAddress(1),
         orderProducts: await getMockOrderProducts()));
 
     orders.add(new Order(
         id: "3",
-        processedAt : new DateTime.utc(2018, 7, 03, 03, 15),
+        processedAt : "Dec 03, 2018",
         orderNumber: 3,
         address: getMockAddress(2),
         orderProducts: await getMockOrderProducts()));
 
     orders.add(new Order(
         id: "4",
-        processedAt : new DateTime.utc(2018, 8, 02, 07, 14),
+        processedAt : "Dec 04, 2018",
         orderNumber: 4,
         address: getMockAddress(3),
         orderProducts: await getMockOrderProducts()));

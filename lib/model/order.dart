@@ -16,7 +16,7 @@ class Order extends DataObject with _$OrderSerializerMixin {
   double subtotalPrice;
   double totalShippingPrice;
   double totalPrice;
-  DateTime processedAt;
+  String processedAt;
   List<OrderProduct> orderProducts;
   Address address;
   String paginationValue;

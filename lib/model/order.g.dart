@@ -15,7 +15,7 @@ Order _$OrderFromJson(Map<String, dynamic> json) {
       subtotalPrice: (json['subtotalPrice'] as num).toDouble(),
       totalShippingPrice: (json['totalShippingPrice'] as num).toDouble(),
       totalPrice: (json['totalPrice'] as num).toDouble(),
-      processedAt: DateTime.parse(json['processedAt'] as String),
+      processedAt: json['processedAt'] as String,
       orderProducts: (json['orderProducts'] as List)
           .map((e) => new OrderProduct.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -33,7 +33,7 @@ abstract class _$OrderSerializerMixin {
   double get subtotalPrice;
   double get totalShippingPrice;
   double get totalPrice;
-  DateTime get processedAt;
+  String get processedAt;
   List<OrderProduct> get orderProducts;
   Address get address;
   String get paginationValue;
@@ -46,7 +46,7 @@ abstract class _$OrderSerializerMixin {
         'subtotalPrice': subtotalPrice,
         'totalShippingPrice': totalShippingPrice,
         'totalPrice': totalPrice,
-        'processedAt': processedAt.toIso8601String(),
+        'processedAt': processedAt,
         'orderProducts': orderProducts,
         'address': address,
         'paginationValue': paginationValue
