@@ -8,9 +8,7 @@ apply plugin: 'jacoco-android'
 group = 'com.github.rubygarage'
 
 android {
-
     compileSdkVersion 26
-
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 26
@@ -18,6 +16,12 @@ android {
         versionName "1.0.3"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+    profile {
+debuggable true
+        jniDebuggable false
+    }
     }
 }
 
@@ -38,6 +42,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+
     // implementation 'com.github.rubygarage:shopapp-android:1.0.5'
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"

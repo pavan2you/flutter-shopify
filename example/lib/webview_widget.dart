@@ -54,8 +54,8 @@ class _WebViewExampleState extends PresentableStateView<WebViewExample>
 
     flutterWebviewPlugin.onUrlChanged.listen((String url) {
       print("URL - " + url);
-      _scaffoldKey.currentState.showSnackBar(const SnackBar
-        (content: const Text('You have Succefully completed placing Order..!')));
+//      _scaffoldKey.currentState.showSnackBar(const SnackBar
+//        (content: const Text('You have Succefully completed placing Order..!')));
     });
   }
 
