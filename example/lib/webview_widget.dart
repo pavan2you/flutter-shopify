@@ -26,11 +26,11 @@ class _WebViewExampleState extends PresentableStateView<WebViewExample>
 
   Customer customer;
   WebViewPresenter thisPresenter;
-  bool isLoading = false;
+  bool isLoading = true;
   String accessToken;
 
   Map<String, String> additionalHttpHeaders = new Map();
-
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
   _WebViewExampleState([BuildContext context]) : super(context);
   launchUrl() {
     setState(() {
@@ -54,6 +54,8 @@ class _WebViewExampleState extends PresentableStateView<WebViewExample>
 
     flutterWebviewPlugin.onUrlChanged.listen((String url) {
       print("URL - " + url);
+      _scaffoldKey.currentState.showSnackBar(const SnackBar
+        (content: const Text('You have Succefully completed placing Order..!')));
     });
   }
 
