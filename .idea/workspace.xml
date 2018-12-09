@@ -9,137 +9,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69c39370-5a4c-4735-9e3d-7e4db8931237" name="Default" comment="Added Accesstoken method support from">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+    <list default="true" id="69c39370-5a4c-4735-9e3d-7e4db8931237" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/library/gateway/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/library/gateway/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/library/shopifylibrary/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/library/shopifylibrary/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/java/com/shopapp/gateway/Api.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/java/com/shopapp/gateway/ApiCallback.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/java/com/shopapp/gateway/entity/Address.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/java/com/shopapp/gateway/entity/Article.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/java/com/shopapp/gateway/entity/Author.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/java/com/shopapp/gateway/entity/Card.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/java/com/shopapp/gateway/entity/CardType.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/java/com/shopapp/gateway/entity/CartProduct.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/java/com/shopapp/gateway/entity/Category.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/java/com/shopapp/gateway/entity/Checkout.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/java/com/shopapp/gateway/entity/Country.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/java/com/shopapp/gateway/entity/Customer.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/java/com/shopapp/gateway/entity/Error.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/java/com/shopapp/gateway/entity/Image.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/java/com/shopapp/gateway/entity/Order.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/java/com/shopapp/gateway/entity/OrderProduct.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/java/com/shopapp/gateway/entity/Policy.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/java/com/shopapp/gateway/entity/Product.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/java/com/shopapp/gateway/entity/ProductOption.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/java/com/shopapp/gateway/entity/ProductVariant.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/java/com/shopapp/gateway/entity/ShippingRate.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/java/com/shopapp/gateway/entity/Shop.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/java/com/shopapp/gateway/entity/SortType.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/java/com/shopapp/gateway/entity/State.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/java/com/shopapp/gateway/entity/VariantOption.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/res/drawable/ic_amex.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/res/drawable/ic_dc_card.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/res/drawable/ic_discover.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/res/drawable/ic_jcb_card.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/res/drawable/ic_master_card.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/res/drawable/ic_visa.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gateway/src/main/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/assets/countries.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/QueryHelper.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/ShopifyApi.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/AddressAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/ArticleAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/ArticleListAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/AuthorAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/CardAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/CategoryAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/CategoryListAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/CheckoutAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/CountryAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/CountryListAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/CustomerAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/ErrorAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/ImageAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/OrderAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/OrderListAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/OrderProductAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/PolicyAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/ProductAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/ProductListAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/ProductOptionListAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/ProductVariantAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/ShippingRateAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/ShopAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/StateAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/StateListAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/adapter/VariantOptionListAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/call/AdapterResult.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/call/MutationCallWrapper.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/call/QueryCallWrapper.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/entity/AccessData.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/entity/ApiCountry.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/entity/ApiCountryResponse.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/entity/ApiState.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/ext/ProductExtension.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/retrofit/CountriesService.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/api/retrofit/RestClient.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/constant/Constant.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/java/com/shopapp/shopify/util/AssetsReader.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/JodaTimeAndroidRule.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/StorefrontMockInstantiator.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/BaseShopifyApiTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/ShopifyApiAuthTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/ShopifyApiBlogTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/ShopifyApiCategoryTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/ShopifyApiCheckoutTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/ShopifyApiOrderTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/ShopifyApiProductTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/ShopifyApiShopTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/AddressAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/ArticleAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/ArticleListAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/AuthorAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/CardAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/CategoryAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/CategoryListAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/CheckoutAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/CountryAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/CountryListAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/CustomerAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/ErrorAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/ImageAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/OrderAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/OrderListAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/OrderProductAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/PolicyAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/ProductAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/ProductListAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/ProductOptionListAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/ProductVariantAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/ShippingRateAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/ShopAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/StateAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/StateListAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/adapter/VariantOptionListAdapterTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/call/MutationCallWrapperTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/api/call/QueryCallWrapperTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/java/com/shopapp/shopify/ext/ProductExtensionTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/shopifylibrary/src/test/resources/mockito-extensions/org.mockito.plugins.MockMaker" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -183,8 +54,8 @@
       <file leaf-file-name="webview_widget.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/example/lib/webview_widget.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="56" column="6" selection-start-line="56" selection-start-column="6" selection-end-line="57" selection-end-column="81" />
+            <state relative-caret-position="184">
+              <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -472,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1544369227987</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Refactored library">
+      <created>1544369890566</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1544369890566</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -487,8 +365,8 @@
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50080776" side_tool="true" weight="0.5167785" />
       <window_info anchor="bottom" id="Flutter Performance" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Dart Analysis" order="7" weight="0.32885906" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32943144" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.5735786" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32943144" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.5735786" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="right" id="Flutter Outline" order="3" />
       <window_info anchor="bottom" id="Logcat" order="7" weight="0.6208054" />
@@ -557,7 +435,8 @@
     <MESSAGE value="Fixed Webview URL change issue" />
     <MESSAGE value="Added Accesstoken method support from" />
     <MESSAGE value="updated webview" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated webview" />
+    <MESSAGE value="Refactored library" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored library" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1007,8 +886,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/example/lib/webview_widget.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="56" column="6" selection-start-line="56" selection-start-column="6" selection-end-line="57" selection-end-column="81" />
+        <state relative-caret-position="184">
+          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
