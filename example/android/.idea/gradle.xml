@@ -8,14 +8,15 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/../../android" />
+            <option value="$PROJECT_DIR$/../../android/library/gateway" />
+            <option value="$PROJECT_DIR$/../../android/library/shopifylibrary" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/gateway" />
-            <option value="$PROJECT_DIR$/shopifylibrary" />
             <option value="$PROJECT_DIR$/../../../../../flutter/.pub-cache/hosted/pub.dartlang.org/connectivity-0.3.2/android" />
+            <option value="$PROJECT_DIR$/../../../../../flutter/.pub-cache/hosted/pub.dartlang.org/flutter_webview_plugin-0.3.0+2/android" />
             <option value="$PROJECT_DIR$/../../../../../flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-0.4.1/android" />
             <option value="$PROJECT_DIR$/../../../../../flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.4.3/android" />
-            <option value="$PROJECT_DIR$/../../../../../flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-0.12.2+1/android" />
+            <option value="$PROJECT_DIR$/../../../../../flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-0.13.0/android" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
