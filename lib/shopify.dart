@@ -577,6 +577,21 @@ class Shopify {
       item['address'] = new Map<String, dynamic>();
     }
 
+    if (item['orderProducts'] != null) {
+      List<dynamic> list = item['orderProducts'];
+      list.forEach((item) {
+        if (item['productVariant'] == null) {
+          Map<String, dynamic> variantMap = new Map<String, dynamic>();
+          variantMap['price'] = 0;
+          variantMap['selectedOptions'] = new List();
+          variantMap['image'] = new Map<String, dynamic>();
+          variantMap['productImage'] = new Map<String, dynamic>();
+
+          item['productVariant'] = variantMap;
+        }
+      });
+    }
+
     return Order.fromJson(item);
   }
 
