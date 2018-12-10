@@ -6,7 +6,6 @@ group='com.github.rubygarage'
 
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
-
     compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
     defaultConfig {
         minSdkVersion globalConfiguration["androidMinSdkVersion"]
@@ -16,10 +15,20 @@ android {
 
         testInstrumentationRunner globalConfiguration["testInstrumentationRunner"]
     }
+    buildTypes {
+    profile {
+debuggable true
+        jniDebuggable false
+    }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "com.android.support.test:runner:$testRunnerVersion"

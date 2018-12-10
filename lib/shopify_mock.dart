@@ -222,7 +222,7 @@ class MockShopify {
 
   static Future<DeliveryInfo> fetchDeliveryInfo() async {
     DeliveryInfo deliveryInfo = new DeliveryInfo();
-    deliveryInfo.minDeliveryCharges = 20.0;
+    deliveryInfo.minDeliveryCharges = 10.0;
     deliveryInfo.minPriceForFreeDelivery = 1500.0;
     deliveryInfo.numberOfShipments = 1;
     deliveryInfo.availableDeliverySlots = [];
@@ -483,5 +483,85 @@ class MockShopify {
         "retail to our customers through apparel, home needs and personal "
         "care products. Choose Better - two words that sum up our principal "
         "intention.";
+  }
+
+  /////////////////////////////// OFFERS ////////////////////////////////////
+
+  static List<String> getMockThisWeekUrl() {
+    List<String> url = new List();
+
+    url.add("assets/images/vegetable.jpeg");
+    url.add("assets/images/dairy.jpg");
+    url.add("assets/images/meat.jpg");
+    url.add("assets/images/pluses.jpg");
+
+    return url;
+  }
+
+  static List<String> getMockThisWeekDiscount() {
+    List<String> discount = new List();
+
+    discount.add("15");
+    discount.add("10");
+    discount.add("5");
+    discount.add("25");
+
+    return discount;
+  }
+
+  static List<String> getMockThisWeekCategory() {
+    List<String> category = new List();
+
+    category.add("Vegetables");
+    category.add("Dairy");
+    category.add("Meat");
+    category.add("Pluses");
+
+    return category;
+  }
+
+  static List<String> getMockBankImageUrl() {
+    List<String> url = new List();
+
+    url.add("assets/images/hdfc.png");
+    url.add("assets/images/kotak.png");
+    url.add("assets/images/icici.png");
+    url.add("assets/images/hdfc.png");
+
+    return url;
+  }
+
+  static List<String> getMockBankTypeOfOffer() {
+    List<String> typeOfOffer = new List();
+
+    typeOfOffer.add("Cashback");
+    typeOfOffer.add("10% Discount");
+    typeOfOffer.add("5% Discount");
+    typeOfOffer.add("25% Discount");
+
+    return typeOfOffer;
+  }
+
+  static List<String> getMockBankConstraint() {
+    List<String> constraint = new List();
+
+    constraint.add("Min. Order 1500");
+    constraint.add("Max. Discount 200");
+    constraint.add("Max. Discount 200");
+    constraint.add("Max. Discount 500");
+
+    return constraint;
+  }
+
+  static String getMockOfferPrice() {
+    return "500";
+  }
+
+  static String getMockOfferUponThisPurchase() {
+    return "5000";
+  }
+
+  static String getMockOfferCode() {
+    return "DIS500";
   }
 }
