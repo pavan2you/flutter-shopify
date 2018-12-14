@@ -152,7 +152,10 @@ class Shopify {
     args[kArgCategoryId] = id;
     args[kArgPerPage] = perPage;
     args[kArgPaginationValue] = paginationValue;
-    args[kArgSortBy] = sortBy;
+
+    int sortByJson = sortBy.index;
+
+    args[kArgSortBy] = sortByJson;
 
     final String responseJson = await _channel.invokeMethod(
       kMethodGetCategoryDetails, args,);

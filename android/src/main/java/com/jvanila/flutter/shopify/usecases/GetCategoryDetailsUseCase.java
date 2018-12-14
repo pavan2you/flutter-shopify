@@ -32,9 +32,12 @@ public class GetCategoryDetailsUseCase extends ShopifyCallUseCase {
         String categoryId = input.argument(ARG_CATEGORY_ID);
         int perPage = input.argument(ARG_PER_PAGE);
         Object paginationValue = input.argument(ARG_PAGINATION_VALUE);
-        SortType sortType = input.argument(ARG_SORT_BY);
+//        SortType sortType = input.argument(ARG_SORT_BY);
 
-        mPluginContext.api.instance.getCategoryDetails(categoryId, perPage, paginationValue, sortType,
+        int sortByIndex = input.argument(ARG_SORT_BY);
+        SortType sortBy = getSortByValue(sortByIndex);
+
+        mPluginContext.api.instance.getCategoryDetails(categoryId, perPage, paginationValue, sortBy,
                 new ApiCallback<Category>() {
                     @Override
                     public void onResult(Category category) {
@@ -53,5 +56,21 @@ public class GetCategoryDetailsUseCase extends ShopifyCallUseCase {
                         System.out.println("onFailure -- " + error);
                     }
                 });
+    }
+
+    private SortType getSortByValue(int sortByIndex) {
+        switch (sortByIndex) {
+            case 1:
+                return  SortType.NAME;
+            case 2:
+                return  SortType.RECENT;
+            case 3:
+                return  SortType.RELEVANT;
+            case 4:
+                return  SortType.PRICE_HIGH_TO_LOW;
+            case 5:
+                return  SortType.PRICE_LOW_TO_HIGH;
+        }
+        return  SortType.NAME;
     }
 }
