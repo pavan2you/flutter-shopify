@@ -18,6 +18,7 @@ import 'package:shopify/model/product_variant.dart';
 import 'package:shopify/model/shipping_rate.dart';
 import 'package:shopify/model/shop.dart';
 import 'package:shopify/model/sort_type.dart';
+import 'package:shopify/stopwatch.dart';
 
 import 'shopify_constants.dart';
 
@@ -123,16 +124,32 @@ class Shopify {
   static Future<List<Category>> getCategoryList(int perPage,
       dynamic paginationValue) async {
 
+    StopWatch timer = new StopWatch();
+    print("TimeDebug: getCategoryList Start");
+
     Map<dynamic, dynamic> args = new Map();
     args[kArgPerPage] = perPage;
     args[kArgPaginationValue] = paginationValue;
 
+    print("TimeDebug: getCategoryList before invoke - ${timer.elapsedTime()}" );
+    StopWatch timer1 = new StopWatch();
     final String responseJson = await _channel.invokeMethod(
       kMethodGetCategoryList, args,);
-    final responseMap = json.decode(responseJson).cast<Map<String, dynamic>>();
 
-    final List<Category> response = responseMap.map<Category>((json) =>
+    print("TimeDebug: getCategoryList after invoke - ${timer1.elapsedTime()}" );
+
+    StopWatch timer2 = new StopWatch();
+    final responseMap = json.decode(responseJson).cast<Map<String, dynamic>>();
+    print("TimeDebug: getCategoryList after responseMap - ${timer2.elapsedTime()}" );
+
+    StopWatch timer3 = new StopWatch();
+    List<Category> response = responseMap.map<Category>((json) =>
         getCategory(json),).toList();
+    print("TimeDebug: getCategoryList after response - ${timer3.elapsedTime()}" );
+
+    if (response == null) {
+      response = new List();
+    }
 
     return response;
   }
@@ -152,7 +169,10 @@ class Shopify {
     args[kArgCategoryId] = id;
     args[kArgPerPage] = perPage;
     args[kArgPaginationValue] = paginationValue;
-    args[kArgSortBy] = sortBy;
+
+    int sortByJson = sortBy.index;
+
+    args[kArgSortBy] = sortByJson;
 
     final String responseJson = await _channel.invokeMethod(
       kMethodGetCategoryDetails, args,);
