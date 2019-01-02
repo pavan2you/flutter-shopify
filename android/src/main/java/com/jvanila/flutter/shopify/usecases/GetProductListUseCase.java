@@ -34,11 +34,14 @@ public class GetProductListUseCase extends ShopifyCallUseCase {
 
         int perPage = input.argument(ARG_PER_PAGE);
         Object paginationValue = input.argument(ARG_PAGINATION_VALUE);
-        SortType sortType = input.argument(ARG_SORT_BY);
+
         String keyword = input.argument(ARG_KEYWORD);
         String excludeKeyword = input.argument(ARG_EXCLUDE_KEYWORD);
 
-        mPluginContext.api.instance.getProductList(perPage, paginationValue, sortType,
+        int sortByIndex = input.argument(ARG_SORT_BY);
+        SortType sortBy = getSortByValue(sortByIndex);
+
+        mPluginContext.api.instance.getProductList(perPage, paginationValue, sortBy,
                 keyword, excludeKeyword, new ApiCallback<List<Product>>() {
 
                     @Override
@@ -57,5 +60,22 @@ public class GetProductListUseCase extends ShopifyCallUseCase {
                         System.out.println("onFailure -- " + error);
                     }
                 });
+    }
+
+    private SortType getSortByValue(int sortByIndex) {
+        switch(sortByIndex) {
+            case 1:
+                return SortType.NAME;
+            case 2:
+                return SortType.RECENT;
+            case 3:
+                return SortType.RELEVANT;
+            case 4:
+                return SortType.PRICE_HIGH_TO_LOW;
+            case 5:
+                return SortType.PRICE_LOW_TO_HIGH;
+            default:
+                return SortType.NAME;
+        }
     }
 }
