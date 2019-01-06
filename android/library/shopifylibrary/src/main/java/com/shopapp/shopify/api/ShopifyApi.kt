@@ -595,7 +595,7 @@ class ShopifyApi : Api {
                                 .updatedAt()
                                 .image({ QueryHelper.getDefaultImageQuery(it) })
                                 .products({ args ->
-                                    args.first(ITEMS_COUNT)
+                                    args.first(perPage)
                                     if (paginationValue != null) {
                                         args.after(paginationValue.toString())
                                     }
@@ -645,7 +645,7 @@ class ShopifyApi : Api {
         val query = Storefront.query { rootQuery ->
             rootQuery.shop { shopQuery ->
                 shopQuery.collections({ args ->
-                    args.first(ITEMS_COUNT)
+                    args.first(perPage)
                     if (paginationValue != null) {
                         args.after(paginationValue.toString())
                     }
