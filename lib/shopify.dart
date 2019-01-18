@@ -59,9 +59,12 @@ class Shopify {
     Map<dynamic, dynamic> args = new Map();
     args[kArgPerPage] = perPage;
     args[kArgPaginationValue] = paginationValue;
-    args[kArgSortBy] = sortBy;
+
     args[kArgKeyword] = keyword;
     args[kArgExcludeKeyword] = excludeKeyword;
+
+    int sortByJson = sortBy.index;
+    args[kArgSortBy] = sortByJson;
 
     final String responseJson = await _channel.invokeMethod(
       kMethodGetProductList, args);
