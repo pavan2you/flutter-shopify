@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:jvanila_flutter/jvanila.dart';
+import 'package:shopify/model/product.dart';
 import 'package:shopify/model/product_variant.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -12,6 +13,7 @@ class CartProduct extends DataObject with _$CartProductSerializerMixin  {
   String title;
   String currency;
   int quantity;
+  Product product;
 
   CartProduct({this.productVariant, this.title, this.currency, this.quantity});
 
@@ -30,6 +32,7 @@ class CartProduct extends DataObject with _$CartProductSerializerMixin  {
     map["productVariant"] = productVariant;
     return map;
   }
+
 
   @override
   int get hashCode => _getHashCode();
