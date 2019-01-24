@@ -127,28 +127,17 @@ class Shopify {
   static Future<List<Category>> getCategoryList(int perPage,
       dynamic paginationValue) async {
 
-    StopWatch timer = new StopWatch();
-    print("TimeDebug: getCategoryList Start");
-
     Map<dynamic, dynamic> args = new Map();
     args[kArgPerPage] = perPage;
     args[kArgPaginationValue] = paginationValue;
 
-    print("TimeDebug: getCategoryList before invoke - ${timer.elapsedTime()}" );
-    StopWatch timer1 = new StopWatch();
     final String responseJson = await _channel.invokeMethod(
       kMethodGetCategoryList, args,);
 
-    print("TimeDebug: getCategoryList after invoke - ${timer1.elapsedTime()}" );
-
-    StopWatch timer2 = new StopWatch();
     final responseMap = json.decode(responseJson).cast<Map<String, dynamic>>();
-    print("TimeDebug: getCategoryList after responseMap - ${timer2.elapsedTime()}" );
 
-    StopWatch timer3 = new StopWatch();
     List<Category> response = responseMap.map<Category>((json) =>
         getCategory(json),).toList();
-    print("TimeDebug: getCategoryList after response - ${timer3.elapsedTime()}" );
 
     if (response == null) {
       response = new List();
