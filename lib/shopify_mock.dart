@@ -549,7 +549,7 @@ class MockShopify {
   static List<String> getMockBankImageUrl() {
     List<String> url = new List();
 
-    url.add("assets/images/hdfc.png");
+//    url.add("assets/images/hdfc.png");
     url.add("assets/images/kotak.png");
     url.add("assets/images/icici.png");
     url.add("assets/images/hdfc.png");
@@ -560,7 +560,7 @@ class MockShopify {
   static List<String> getMockBankTypeOfOffer() {
     List<String> typeOfOffer = new List();
 
-    typeOfOffer.add("Cashback");
+//    typeOfOffer.add("Cashback");
     typeOfOffer.add("10% Discount");
     typeOfOffer.add("5% Discount");
     typeOfOffer.add("25% Discount");
@@ -568,10 +568,21 @@ class MockShopify {
     return typeOfOffer;
   }
 
+  static List<String> getMockBankTypeOfferCode() {
+    List<String> typeOfOffer = new List();
+
+//    typeOfOffer.add("HDFCCB");
+    typeOfOffer.add("K10DIS");
+    typeOfOffer.add("ICIC5DIS");
+    typeOfOffer.add("HDFC25DIS");
+
+    return typeOfOffer;
+  }
+
   static List<String> getMockBankConstraint() {
     List<String> constraint = new List();
 
-    constraint.add("Min. Order 1500");
+//    constraint.add("Min. Order 1500");
     constraint.add("Max. Discount 200");
     constraint.add("Max. Discount 200");
     constraint.add("Max. Discount 500");
@@ -596,7 +607,7 @@ class MockShopify {
   static List<String> getMockBankVoucherConstraint() {
     List<String> constraint = new List();
 
-    constraint.add("10% cashback. Transaction value min. Rs.1500");
+//    constraint.add("10% cashback. Transaction value min. Rs.1500");
     constraint.add("10% cashback. Transaction value min. Rs.2000");
     constraint.add("5% cashback. Transaction value min. Rs.1500");
     constraint.add("25% cashback. Transaction value min. Rs.1500");
