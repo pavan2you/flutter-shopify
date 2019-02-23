@@ -391,6 +391,10 @@ class Shopify {
     final String responseJson = await _channel.invokeMethod(
       kMethodEditCustomerInfo, args,);
     final responseMap = json.decode(responseJson);
+    var address = responseMap['defaultAddress'];
+    if (address == null) {
+      responseMap['defaultAddress'] = new Map<String, dynamic>();
+    }
     Customer response = Customer.fromJson(responseMap);
 
     return response;
