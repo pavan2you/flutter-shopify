@@ -373,7 +373,8 @@ class ShopifyApi : Api {
         }
     }
 
-    override fun editCustomerInfo(firstName: String, lastName: String, phone: String, callback: ApiCallback<Customer>) {
+    override fun editCustomerInfo(firstName: String, lastName: String, phone: String,
+                                  email: String, callback: ApiCallback<Customer>) {
         val session = getSession()
         if (session == null) {
             callback.onFailure(Error.NonCritical(UNAUTHORIZED_ERROR))
@@ -385,6 +386,9 @@ class ShopifyApi : Api {
 
             if (phone.isNotBlank()) {
                 customerInput.phone = phone
+            }
+            if (email.isNotBlank()) {
+                customerInput.email = email
             }
 
             val mutateQuery = getDefaultCustomerUpdateMutationQuery(session.accessToken, customerInput)

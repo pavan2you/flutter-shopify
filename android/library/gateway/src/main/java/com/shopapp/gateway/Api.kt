@@ -52,7 +52,7 @@ interface Api {
 
     fun getOrder(orderId: String, callback: ApiCallback<Order>)
 
-    fun editCustomerInfo(firstName: String, lastName: String, phone: String, callback: ApiCallback<Customer>)
+    fun editCustomerInfo(firstName: String, lastName: String, phone: String, email: String, callback: ApiCallback<Customer>)
 
     fun changePassword(password: String, callback: ApiCallback<Unit>)
 
