@@ -381,12 +381,13 @@ class Shopify {
   }
 
   static Future<Customer> editCustomerInfo(String firstName, String lastName,
-      String phone) async {
+      String phone, String email) async {
 
     Map<dynamic, dynamic> args = new Map();
     args[kArgFirstName] = firstName;
     args[kArgLastName] = lastName;
     args[kArgPhone] = phone;
+    args[kArgEmail] = email;
 
     final String responseJson = await _channel.invokeMethod(
       kMethodEditCustomerInfo, args,);
