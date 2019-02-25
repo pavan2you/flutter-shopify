@@ -17,6 +17,7 @@ import 'package:shopify/model/product.dart';
 import 'package:shopify/model/product_variant.dart';
 import 'package:shopify/model/shipping_rate.dart';
 import 'package:shopify/model/shop.dart';
+import 'package:shopify/model/sort_type.dart' as sort;
 
 void main() => runApp(new MyApp());
 
@@ -41,13 +42,14 @@ class _MyAppState extends State<MyApp> {
     params.apiPassword = "5c3061bb2e053642fc1422409ccbb89e";
     await Shopify.initialize(params);
 
+    signIn();
 //    getProductsList(); //variantList is coming  null in this call
 //    getProduct(); //variantList is present in individual product call
 //    getProductVariants();
 //    searchProductList();
 
-//    getCategories();
-//    getCategoryDetails();
+    getCategories();
+    getCategoryDetails();
 
 //    getArticleList(); //ArticleList is itself empty
 //    getArticle();
@@ -55,8 +57,8 @@ class _MyAppState extends State<MyApp> {
 //    getShopInfo();
 
 //    signUp(); // phone no with country code is mandatory
-    signIn();
-    getAccessToken();
+
+   // getAccessToken();
 //    signOut();
 //    isLoggedIn(); // is always false
 //    forgotPassword();
@@ -175,12 +177,13 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> getCategories() async {
-    List<Category> categories = await Shopify.getCategoryList(5, null);
+    List<Category> categories = await Shopify.getCategoryList(15, null);
     print('Categories - $categories');
   }
 
   Future<void> getCategoryDetails() async {
-    Category category = await Shopify.getCategoryDetails("Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzY1MTk4MTYxOTc5", 10, null, null);
+    Category category = await Shopify.getCategoryDetails(
+        "Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzY1MTk3ODY3MDY3", 15, null, sort.SortType.NAME);
     //Jewellery
     print('Category - $category');
   }
@@ -226,9 +229,11 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> signIn() async {
-    bool val = await Shopify.signIn("imei355923070770619@gmail.com", "bFppaybqvWaD6CZdAtL5T7FN1XF2");
+    //bool val = await Shopify.signIn("imei355923070770619@gmail.com", "bFppaybqvWaD6CZdAtL5T7FN1XF2");
+    bool val = await Shopify.signIn("test@gmail.com", "test123456");
+
     print('Result - $val');
-//    getCustomer();
+    getCustomer();
   }
 
   Future<void> getAccessToken() async {

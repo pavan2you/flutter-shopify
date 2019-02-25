@@ -3,7 +3,7 @@ package com.shopapp.shopify.constant
 object Constant {
     const val DEFAULT_STRING = ""
     const val DEFAULT_SCHEME = "https://"
-    const val ITEMS_COUNT = 250
+    const val ITEMS_COUNT = 50
     const val EMAIL = "email"
     const val ACCESS_TOKEN = "access_token"
     const val EXPIRES_DATE = "expires_date"
