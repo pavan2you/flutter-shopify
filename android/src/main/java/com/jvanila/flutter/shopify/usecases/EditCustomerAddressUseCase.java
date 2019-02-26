@@ -54,7 +54,7 @@ public class EditCustomerAddressUseCase extends ShopifyCallUseCase {
             @Override
             public void onFailure(Error error) {
                 System.out.println("onFailure -- " + error);
-                result.success(false);
+                result.error("EditCustomerAddressUseCase", error.getMessage(), error);
             }
         });
     }

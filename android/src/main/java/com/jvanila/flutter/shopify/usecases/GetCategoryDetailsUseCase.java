@@ -54,6 +54,7 @@ public class GetCategoryDetailsUseCase extends ShopifyCallUseCase {
                     @Override
                     public void onFailure(Error error) {
                         System.out.println("onFailure -- " + error);
+                        result.error("GetCategoryDetailsUseCase", error.getMessage(), error);
                     }
                 });
     }

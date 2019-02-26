@@ -27,7 +27,7 @@ public class GetAccessTokenUseCase extends ShopifyCallUseCase {
             @Override
             public void onFailure(Error error) {
                 System.out.println("onFailure -- " + error);
-                result.error(error.getLocalizedMessage(),input.method,"");
+                result.error("GetAccessTokenUseCase", error.getMessage(), error);
             }
         });
 

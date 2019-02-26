@@ -45,7 +45,8 @@ public class GetOrdersUseCase extends ShopifyCallUseCase {
             @Override
             public void onFailure(Error error) {
                 System.out.println("onFailure -- " + error);
-                result.success("onFailure -- " + error);
+//                result.success("onFailure -- " + error);
+                result.error("GetOrdersUseCase", error.getMessage(), error);
             }
         });
     }

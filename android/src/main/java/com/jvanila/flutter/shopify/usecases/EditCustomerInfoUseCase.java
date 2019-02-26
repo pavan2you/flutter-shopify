@@ -47,7 +47,7 @@ public class EditCustomerInfoUseCase extends ShopifyCallUseCase {
             @Override
             public void onFailure(Error error) {
                 System.out.println("onFailure -- " + error);
-                result.error("EditCustomerInfoUseCase",error.getMessage(),error);
+                result.error("EditCustomerInfoUseCase", error.getMessage(), error);
             }
         });
     }

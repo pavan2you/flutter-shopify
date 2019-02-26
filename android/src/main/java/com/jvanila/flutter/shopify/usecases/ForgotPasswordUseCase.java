@@ -29,7 +29,7 @@ public class ForgotPasswordUseCase extends ShopifyCallUseCase {
             @Override
             public void onFailure(Error error) {
                 System.out.println("onFailure -- " + error);
-                result.success(false);
+                result.error("ForgotPasswordUseCase", error.getMessage(), error);
             }
         });
     }
