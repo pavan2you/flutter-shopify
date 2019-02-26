@@ -33,7 +33,7 @@ public class UseCaseResult implements MethodChannel.Result {
         mCallerHandler.post(new Runnable() {
             @Override
             public void run() {
-                mResult.error(errorCode, errorMessage, data);
+                mResult.error(errorCode, errorMessage, "{error : "+data+"}");
             }
         });
     }
