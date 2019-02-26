@@ -388,11 +388,24 @@ class Shopify {
     args[kArgLastName] = lastName;
     args[kArgPhone] = phone;
     args[kArgEmail] = email;
-
+    print("editCustomerInfo 11111");
     final String responseJson = await _channel.invokeMethod(
-      kMethodEditCustomerInfo, args,);
+      kMethodEditCustomerInfo, args,)
+        .then((value){
+          print("Got error: ${value}");
+        }) // Future completes with two()'s error.
+        .catchError((e) {
+          print("Got error: ${e}");     // Finally, callback fires.
+      });
+
+    print("editCustomerInfo 222222 $responseJson");
+
     final responseMap = json.decode(responseJson);
+    print("editCustomerInfo 333333  $responseMap");
+
     var address = responseMap['defaultAddress'];
+    print("editCustomerInfo 4444444  $address");
+
     if (address == null) {
       responseMap['defaultAddress'] = new Map<String, dynamic>();
     }

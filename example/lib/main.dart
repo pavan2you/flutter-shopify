@@ -72,7 +72,7 @@ class _MyAppState extends State<MyApp> {
 //    editCustomerAddress();
 //    deleteCustomerAddress();
 
-//    editCustomerInfo();
+    editCustomerInfo();
 
 //    updateCustomerSettings();
 
@@ -321,7 +321,13 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> editCustomerInfo() async {
-    Customer customer = await Shopify.editCustomerInfo("pallavi", "s", "+918985941111");
+    Customer customer = await Shopify.editCustomerInfo("pallavi", "s", "+918985941111","seshu.mca@test")
+    .then((value){
+      print("Got error: ${value}");
+    }) // Future completes with two()'s error.
+    .catchError((e) {
+      print("Got error: ${e}");     // Finally, callback fires.
+    });
     print('Result - $customer');
   }
 
