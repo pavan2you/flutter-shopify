@@ -31,7 +31,7 @@ public class CreateCustomerAddressUseCase extends ShopifyCallUseCase {
         mPluginContext.api.instance.createCustomerAddress(addr, new ApiCallback<String>() {
             @Override
             public void onResult(String addressId) {
-                result.success("success - " + addressId);
+                result.success(addressId);
             }
 
             @Override
