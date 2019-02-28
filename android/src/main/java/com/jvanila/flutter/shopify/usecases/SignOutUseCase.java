@@ -25,7 +25,8 @@ public class SignOutUseCase extends ShopifyCallUseCase {
             @Override
             public void onFailure(Error error) {
                 System.out.println("onFailure -- " + error);
-                result.success(false);
+//                result.success(false);
+                result.error("SignOutUseCase", error.getMessage(), error);
             }
         });
     }

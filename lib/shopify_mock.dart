@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:intl/intl.dart';
 import 'package:shopify/model/address.dart';
 import 'package:shopify/model/category.dart';
 import 'package:shopify/model/delivery_info.dart';
@@ -227,7 +228,32 @@ class MockShopify {
     deliveryInfo.numberOfShipments = 1;
     deliveryInfo.availableDeliverySlots = [];
 
+    DateTime today = new DateTime.now();
+
     deliveryInfo.availableDeliverySlots.add("Tomorrow");
+    deliveryInfo.availableDeliverySlots.add("9.00 AM-11.30 AM");
+    deliveryInfo.availableDeliverySlots.add("11.30 AM-1.00 PM");
+    deliveryInfo.availableDeliverySlots.add("1.00 PM-3.30 PM");
+    deliveryInfo.availableDeliverySlots.add("3.30 PM-5.00 PM");
+    deliveryInfo.availableDeliverySlots.add("5.00 PM-7.30 PM");
+    deliveryInfo.availableDeliverySlots.add("7.30 PM-10.00 PM");
+
+
+    DateTime dateTime = today.add(new Duration(days: 2));
+    var formatter = new DateFormat('EEEE, dd-MM-yyyy');
+
+    String dateTimeString = formatter.format(dateTime);
+    deliveryInfo.availableDeliverySlots.add(dateTimeString);
+    deliveryInfo.availableDeliverySlots.add("9.00 AM-11.30 AM");
+    deliveryInfo.availableDeliverySlots.add("11.30 AM-1.00 PM");
+    deliveryInfo.availableDeliverySlots.add("1.00 PM-3.30 PM");
+    deliveryInfo.availableDeliverySlots.add("3.30 PM-5.00 PM");
+    deliveryInfo.availableDeliverySlots.add("5.00 PM-7.30 PM");
+    deliveryInfo.availableDeliverySlots.add("7.30 PM-10.00 PM");
+
+    DateTime dateTime1 = today.add(new Duration(days: 3));
+    String dateTime1String = formatter.format(dateTime1);
+    deliveryInfo.availableDeliverySlots.add(dateTime1String);
     deliveryInfo.availableDeliverySlots.add("9.00 AM-11.30 AM");
     deliveryInfo.availableDeliverySlots.add("11.30 AM-1.00 PM");
     deliveryInfo.availableDeliverySlots.add("1.00 PM-3.30 PM");

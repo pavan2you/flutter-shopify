@@ -65,6 +65,7 @@ public class SetShippingAddressUseCase extends ShopifyCallUseCase {
             @Override
             public void onFailure(Error error) {
                 System.out.println("onFailure -- " + error);
+                result.error("SetShippingAddressUseCase", error.getMessage(), error);
             }
         });
     }

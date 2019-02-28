@@ -47,6 +47,7 @@ public class GetCategoryListUseCase extends ShopifyCallUseCase {
             @Override
             public void onFailure(Error error) {
                 System.out.println("onFailure -- " + error);
+                result.error("GetCategoryListUseCase", error.getMessage(), error);
             }
         });
     }
