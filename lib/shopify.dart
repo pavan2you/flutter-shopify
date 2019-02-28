@@ -99,7 +99,7 @@ class Shopify {
 
     List<Product> response;
 
-    _channel.invokeMethod(
+    await _channel.invokeMethod(
       kMethodSearchProductList, args).then((value) {
       final responseMap = json.decode(value).cast<Map<String, dynamic>>();
       response = responseMap.map<Product>((json) =>
