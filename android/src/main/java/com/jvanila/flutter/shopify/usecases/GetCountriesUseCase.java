@@ -37,6 +37,7 @@ public class GetCountriesUseCase extends ShopifyCallUseCase {
             @Override
             public void onFailure(Error error) {
                 System.out.println("onFailure -- " + error);
+                result.error("GetCountriesUseCase", error.getMessage(), error);
             }
         });
     }

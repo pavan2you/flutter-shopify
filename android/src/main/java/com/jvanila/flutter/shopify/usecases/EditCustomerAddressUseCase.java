@@ -21,6 +21,7 @@ public class EditCustomerAddressUseCase extends ShopifyCallUseCase {
     private static final String ARG_ZIP = "zip";
     private static final String ARG_FIRST_NAME = "firstName";
     private static final String ARG_LAST_NAME = "lastName";
+    private static final String ARG_COMPANY = "company";
     private static final String ARG_PHONE = "phone";
 
     public EditCustomerAddressUseCase(PluginContext<ShopifyApi> pluginContext) {
@@ -38,10 +39,11 @@ public class EditCustomerAddressUseCase extends ShopifyCallUseCase {
         String firstName = input.argument(ARG_FIRST_NAME);
         String lastName = input.argument(ARG_LAST_NAME);
         String zip = input.argument(ARG_ZIP);
+        String company = input.argument(ARG_COMPANY);
         String phone = input.argument(ARG_PHONE);
 
         Address address = new Address(id, primaryAddress, secondAddress, city, country,
-                state, firstName, lastName, zip, phone);
+                state, firstName, lastName, zip, company, phone);
 
         mPluginContext.api.instance.editCustomerAddress(id, address, new ApiCallback<Unit>() {
             @Override
@@ -52,7 +54,7 @@ public class EditCustomerAddressUseCase extends ShopifyCallUseCase {
             @Override
             public void onFailure(Error error) {
                 System.out.println("onFailure -- " + error);
-                result.success(false);
+                result.error("EditCustomerAddressUseCase", error.getMessage(), error);
             }
         });
     }

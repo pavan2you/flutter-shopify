@@ -16,6 +16,8 @@ public class EditCustomerInfoUseCase extends ShopifyCallUseCase {
     private static final String ARG_FIRST_NAME = "firstName";
     private static final String ARG_LAST_NAME = "lastName";
     private static final String ARG_PHONE = "phone";
+    private static final String ARG_EMAIL = "email";
+
 
     public EditCustomerInfoUseCase(PluginContext<ShopifyApi> pluginContext) {
         super(pluginContext);
@@ -26,8 +28,10 @@ public class EditCustomerInfoUseCase extends ShopifyCallUseCase {
         String firstName = input.argument(ARG_FIRST_NAME);
         String lastName = input.argument(ARG_LAST_NAME);
         String phone = input.argument(ARG_PHONE);
+        String email = input.argument(ARG_EMAIL);
 
-        mPluginContext.api.instance.editCustomerInfo(firstName, lastName, phone, new ApiCallback<Customer>() {
+        mPluginContext.api.instance.editCustomerInfo(firstName, lastName, phone, email,
+                new ApiCallback<Customer>() {
             @Override
             public void onResult(Customer customer) {
                 if (customer != null) {
@@ -43,6 +47,7 @@ public class EditCustomerInfoUseCase extends ShopifyCallUseCase {
             @Override
             public void onFailure(Error error) {
                 System.out.println("onFailure -- " + error);
+                result.error("EditCustomerInfoUseCase", error.getMessage(), error);
             }
         });
     }

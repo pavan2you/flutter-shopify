@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
+import 'package:shopify/domain/initialize_params.dart';
 import 'package:shopify/model/address.dart';
 import 'package:shopify/model/article.dart';
 import 'package:shopify/model/card.dart';
@@ -34,14 +35,13 @@ class Shopify {
   /////////////////////////////////  INITIALIZE  ///////////////////////////////
   //////////////////////////////////////////////////////////////////////////////
 
-  static Future<String> initialize(String baseDomain,
-      String storefrontAccessToken, String apiKey, String apiPassword) async {
+  static Future<String> initialize(ShopifyInitializeParams params) async {
 
     Map<dynamic, dynamic> args = new Map();
-    args[kArgBaseDomain] = baseDomain;
-    args[kArgStorefrontAccessToken] = storefrontAccessToken;
-    args[kArgApiKey] = apiKey;
-    args[kArgApiPassword] = apiPassword;
+    args[kArgBaseDomain] = params.domainName;
+    args[kArgStorefrontAccessToken] = params.accessToken;
+    args[kArgApiKey] = params.apiKey;
+    args[kArgApiPassword] = params.apiPassword;
 
     return await _channel.invokeMethod(kMethodInitialize, args);
   }
@@ -58,9 +58,12 @@ class Shopify {
     Map<dynamic, dynamic> args = new Map();
     args[kArgPerPage] = perPage;
     args[kArgPaginationValue] = paginationValue;
-    args[kArgSortBy] = sortBy;
+
     args[kArgKeyword] = keyword;
     args[kArgExcludeKeyword] = excludeKeyword;
+
+    int sortByJson = sortBy.index;
+    args[kArgSortBy] = sortByJson;
 
     final String responseJson = await _channel.invokeMethod(
       kMethodGetProductList, args);
@@ -94,11 +97,16 @@ class Shopify {
     args[kArgPerPage] = perPage;
     args[kArgPaginationValue] = paginationValue;
 
-    final String responseJson = await _channel.invokeMethod(
-      kMethodSearchProductList, args,);
-    final responseMap = json.decode(responseJson).cast<Map<String, dynamic>>();
-    final List<Product> response = responseMap.map<Product>((json) =>
-        Product.fromJson(json),).toList();
+    List<Product> response;
+
+    await _channel.invokeMethod(
+      kMethodSearchProductList, args).then((value) {
+      final responseMap = json.decode(value).cast<Map<String, dynamic>>();
+      response = responseMap.map<Product>((json) =>
+          Product.fromJson(json),).toList();
+    }).catchError((e) {
+      throw PlatformException(code: e.code, message: e.message, details: e.details);
+    });
 
     return response;
   }
@@ -127,13 +135,31 @@ class Shopify {
     args[kArgPerPage] = perPage;
     args[kArgPaginationValue] = paginationValue;
 
-    final String responseJson = await _channel.invokeMethod(
-      kMethodGetCategoryList, args,);
-    final responseMap = json.decode(responseJson).cast<Map<String, dynamic>>();
-    final List<Category> response = responseMap.map<Category>((json) =>
-        Category.fromJson(json),).toList();
+    List<Category> response;
+
+    await _channel.invokeMethod(
+      kMethodGetCategoryList, args,).then((value) {
+      final responseMap = json.decode(value).cast<Map<String, dynamic>>();
+
+      response = responseMap.map<Category>((json) =>
+          getCategory(json),).toList();
+
+      if (response == null) {
+        response = new List();
+      }
+    }).catchError((e) {
+      throw PlatformException(code: e.code, message: e.message, details: e.details);
+    });
 
     return response;
+  }
+
+  static Category getCategory(json) {
+    var image = json['image'];
+    if (image == null) {
+      json['image'] = new Map<String, dynamic>();
+    }
+    return Category.fromJson(json);
   }
 
   static Future<Category> getCategoryDetails(String id, int perPage,
@@ -143,12 +169,25 @@ class Shopify {
     args[kArgCategoryId] = id;
     args[kArgPerPage] = perPage;
     args[kArgPaginationValue] = paginationValue;
-    args[kArgSortBy] = sortBy;
 
-    final String responseJson = await _channel.invokeMethod(
-      kMethodGetCategoryDetails, args,);
-    final responseMap = json.decode(responseJson);
-    final Category response = Category.fromJson(responseMap);
+    int sortByJson = sortBy.index;
+
+    args[kArgSortBy] = sortByJson;
+
+    Category response;
+
+    await _channel.invokeMethod(
+      kMethodGetCategoryDetails, args,).then((value) {
+      final responseMap = json.decode(value);
+      var image = responseMap['image'];
+      if (image == null) {
+        responseMap['image'] = new Map<String, dynamic>();
+      }
+      response = Category.fromJson(responseMap);
+    }).catchError((e) {
+      throw PlatformException(code: e.code, message: e.message, details: e.details);
+    });
+
 
     return response;
   }
@@ -207,7 +246,7 @@ class Shopify {
   /////////////////////////////////  ONBOARDING  ///////////////////////////////
   //////////////////////////////////////////////////////////////////////////////
 
-  static Future<bool> signUp(String firstName, String lastName, String email,
+  static Future<String> signUp(String firstName, String lastName, String email,
       String password, String phone) async {
 
     Map<dynamic, dynamic> args = new Map();
@@ -217,8 +256,12 @@ class Shopify {
     args[kArgPassword] = password;
     args[kArgPhone] = phone;
 
-    final bool response = await _channel.invokeMethod(kMethodSignUp, args);
-
+    String response;
+    await _channel.invokeMethod(kMethodSignUp, args).then((value) {
+      response = value;
+    }).catchError((e) {
+      throw PlatformException(code: e.code, message: e.message, details: e.details);
+    });
     return response;
   }
 
@@ -227,18 +270,43 @@ class Shopify {
     args[kArgEmail] = email;
     args[kArgPassword] = password;
 
-    final bool response = await _channel.invokeMethod(kMethodSignIn, args);
+    bool response;
+    await _channel.invokeMethod(kMethodSignIn, args).then((value) {
+      response = value;
+    }).catchError((e) {
+      throw PlatformException(code: e.code, message: e.message, details: e.details);
+    });
 
+    return response;
+  }
+
+  static Future<String> getAccessToken() async {
+    String response;
+    await _channel.invokeMethod(kMethodGetAccessToken).then((value) {
+      response = value;
+    }).catchError((e) {
+      throw PlatformException(code: e.code, message: e.message, details: e.details);
+    });
     return response;
   }
 
   static Future<bool> signOut() async {
-    final bool response = await _channel.invokeMethod(kMethodSignOut);
+    bool response;
+    await _channel.invokeMethod(kMethodSignOut).then((value) {
+      response = value;
+    }).catchError((e) {
+      throw PlatformException(code: e.code, message: e.message, details: e.details);
+    });;
     return response;
   }
 
   static Future<bool> isLoggedIn() async {
-    final bool response = await _channel.invokeMethod(kMethodIsLoggedIn);
+    bool response;
+    await _channel.invokeMethod(kMethodIsLoggedIn).then((value) {
+      response = value;
+    }).catchError((e) {
+      throw PlatformException(code: e.code, message: e.message, details: e.details);
+    });;
     return response;
   }
 
@@ -246,8 +314,13 @@ class Shopify {
     Map<dynamic, dynamic> args = new Map();
     args[kArgEmail] = email;
 
-    final bool response = await _channel.invokeMethod(
-      kMethodForgotPassword, args,);
+    bool response;
+    await _channel.invokeMethod(
+      kMethodForgotPassword, args,).then((value) {
+      response = value;
+    }).catchError((e) {
+      throw PlatformException(code: e.code, message: e.message, details: e.details);
+    });
     return response;
   }
 
@@ -255,8 +328,13 @@ class Shopify {
     Map<dynamic, dynamic> args = new Map();
     args[kArgPassword] = password;
 
-    final bool response = await _channel.invokeMethod(
-      kMethodChangePassword, args,);
+    bool response;
+    await _channel.invokeMethod(
+      kMethodChangePassword, args,).then((value) {
+      response = value;
+    }).catchError((e) {
+      throw PlatformException(code: e.code, message: e.message, details: e.details);
+    });
     return response;
   }
 
@@ -282,9 +360,18 @@ class Shopify {
   //////////////////////////////////////////////////////////////////////////////
 
   static Future<Customer> getCustomer() async {
-    final String responseJson = await _channel.invokeMethod(kMethodGetCustomer);
-    final responseMap = json.decode(responseJson);
-    final Customer response = Customer.fromJson(responseMap);
+    Customer response;
+    await _channel.invokeMethod(kMethodGetCustomer).then((value) {
+      final responseMap = json.decode(value);
+      //dirty fix to avoid null pointer.
+      var address = responseMap['defaultAddress'];
+      if (address == null) {
+        responseMap['defaultAddress'] = new Map<String, dynamic>();
+      }
+      response = Customer.fromJson(responseMap);
+    }).catchError((e) {
+      throw PlatformException(code: e.code, message: e.message, details: e.details);
+    });
     return response;
   }
 
@@ -292,8 +379,13 @@ class Shopify {
     Map<dynamic, dynamic> args = new Map();
     args[kArgAddressId] = addressId;
 
-    final bool response = await _channel.invokeMethod(
-      kMethodSetDefaultShippingAddress, args,);
+    bool response;
+    await _channel.invokeMethod(
+      kMethodSetDefaultShippingAddress, args,).then((value) {
+      response = value;
+    }).catchError((e) {
+      throw PlatformException(code: e.code, message: e.message, details: e.details);
+    });
 
     return response;
   }
@@ -303,8 +395,12 @@ class Shopify {
     String addressJson = json.encode(address);
     args[kArgAddressJson] = addressJson;
 
-    final String response = await _channel.invokeMethod(
-      kMethodCreateCustomerAddress, args,);
+    String response;
+    await _channel.invokeMethod(kMethodCreateCustomerAddress, args).then((value) {
+      response = value;
+    }).catchError((e) {
+      throw PlatformException(code: e.code, message: e.message, details: e.details);
+    });
 
     return response;
   }
@@ -314,7 +410,7 @@ class Shopify {
 
     Map<dynamic, dynamic> args = new Map();
     args[kArgAddressId] = addressId;
-    args[kArgPrimaryAddress] = address.primaryAddress;
+    args[kArgPrimaryAddress] = address.address;
     args[kArgSecondAddress] = address.secondAddress;
     args[kArgCity] = address.city;
     args[kArgState] = address.state;
@@ -322,10 +418,15 @@ class Shopify {
     args[kArgFirstName] = address.firstName;
     args[kArgLastName] = address.lastName;
     args[kArgZip] = address.zip;
+    args[kArgCompany] = address.company;
     args[kArgPhone] = address.phone;
 
-    final bool response = await _channel.invokeMethod(
-      kMethodEditCustomerAddress, args,);
+    bool response;
+    await _channel.invokeMethod(kMethodEditCustomerAddress, args,).then((value) {
+      response = value;
+    }).catchError((e) {
+      throw PlatformException(code: e.code, message: e.message, details: e.details);
+    });
 
     return response;
   }
@@ -334,24 +435,43 @@ class Shopify {
     Map<dynamic, dynamic> args = new Map();
     args[kArgAddressId] = addressId;
 
-    final bool response = await _channel.invokeMethod(
-      kMethodDeleteCustomerAddress, args,);
+    bool response;
+    await _channel.invokeMethod(kMethodDeleteCustomerAddress, args,).then((value) {
+      response = value;
+    }).catchError((e) {
+      throw PlatformException(code: e.code, message: e.message, details: e.details);
+    });
 
     return response;
   }
 
   static Future<Customer> editCustomerInfo(String firstName, String lastName,
-      String phone) async {
+      String phone, String email) async {
 
     Map<dynamic, dynamic> args = new Map();
     args[kArgFirstName] = firstName;
     args[kArgLastName] = lastName;
     args[kArgPhone] = phone;
+    args[kArgEmail] = email;
 
-    final String responseJson = await _channel.invokeMethod(
-      kMethodEditCustomerInfo, args,);
-    final responseMap = json.decode(responseJson);
-    Customer response = Customer.fromJson(responseMap);
+    Customer response;
+
+    await _channel.invokeMethod(
+      kMethodEditCustomerInfo, args,)
+        .then((value){
+      print("Response Value : ${value}");
+
+      final responseMap = json.decode(value);
+      var address = responseMap['defaultAddress'];
+      if (address == null) {
+        responseMap['defaultAddress'] = new Map<String, dynamic>();
+      }
+      response = Customer.fromJson(responseMap);
+    }) // Future completes with two()'s error.
+        .catchError((e) {
+      print("Got error: ${e.code}"); // Finally, callback fires.
+      throw PlatformException(code: e.code, message: e.message, details: e.details);
+    });
 
     return response;
   }
@@ -360,8 +480,12 @@ class Shopify {
     Map<dynamic, dynamic> args = new Map();
     args[kArgIsAcceptMarketing] = isAcceptMarketing;
 
-    final bool response = await _channel.invokeMethod(
-      kMethodUpdateCustomerSettings, args,);
+    bool response;
+    await _channel.invokeMethod(kMethodUpdateCustomerSettings, args,).then((value) {
+      response = value;
+    }).catchError((e) {
+      throw PlatformException(code: e.code, message: e.message, details: e.details);
+    });
 
     return response;
   }
@@ -378,10 +502,14 @@ class Shopify {
     String cartProductJson = json.encode(cartProductList);
     args[kCartProductJson] = cartProductJson;
 
-    final String responseJson = await _channel.invokeMethod(
-      kMethodCreateCheckout, args,);
-    final responseMap = json.decode(responseJson);
-    final Checkout response = Checkout.fromJson(responseMap);
+    Checkout response;
+    await _channel.invokeMethod(
+      kMethodCreateCheckout, args,).then((value) {
+      final responseMap = json.decode(value);
+      response = Checkout.fromJson(responseMap);
+    }).catchError((e) {
+      throw PlatformException(code: e.code, message: e.message, details: e.details);
+    });
 
     return response;
   }
@@ -404,7 +532,7 @@ class Shopify {
     Map<dynamic, dynamic> args = new Map();
     args[kArgCheckoutId] = checkoutId;
     args[kArgAddressId] = address.id;
-    args[kArgPrimaryAddress] = address.primaryAddress;
+    args[kArgPrimaryAddress] = address.address;
     args[kArgSecondAddress] = address.secondAddress;
     args[kArgCity] = address.city;
     args[kArgState] = address.state;
@@ -481,26 +609,14 @@ class Shopify {
       Address address, String creditCardValueToken) async {
 
     Map<dynamic, dynamic> args = new Map();
-    args[kArgCheckoutId] = checkout.checkoutId;
-    args[kArgWebUrl] = checkout.webUrl;
-    args[kArgRequiresShipping] = checkout.requiresShipping;
-    args[kArgSubtotalPrice] = checkout.subtotalPrice;
-    args[kArgTotalPrice] = checkout.totalPrice;
-    args[kArgTaxPrice] = checkout.taxPrice;
-    args[kArgCheckoutCurrency] = checkout.currency;
 
-    args[email] = email;
+    String addressJson = json.encode(address);
+    args[kArgAddressJson] = addressJson;
 
-    args[kArgAddressId] = address.id;
-    args[kArgPrimaryAddress] = address.primaryAddress;
-    args[kArgSecondAddress] = address.secondAddress;
-    args[kArgCity] = address.city;
-    args[kArgState] = address.state;
-    args[kArgCountry] = address.country;
-    args[kArgFirstName] = address.firstName;
-    args[kArgLastName] = address.lastName;
-    args[kArgZip] = address.zip;
-    args[kArgPhone] = address.phone;
+    String checkoutJson = json.encode(checkout);
+    args[kArgCheckoutJson] = checkoutJson;
+
+    args[kArgEmail] = email;
 
     args[kArgCreditCardValueToken] = creditCardValueToken;
 
@@ -524,23 +640,77 @@ class Shopify {
     args[kArgPerPage] = perPage;
     args[kArgPaginationValue] = paginationValue;
 
-    final String responseJson = await _channel.invokeMethod(
-      kMethodGetOrders, args,);
-    final responseMap = json.decode(responseJson).cast<Map<String, dynamic>>();
-    final List<Order> response = responseMap.map<Order>((json) =>
-        Order.fromJson(json)).toList();
+    List<Order> response;
+
+    await _channel.invokeMethod(
+      kMethodGetOrders, args,).then((value) {
+
+      if (value.contains("No Orders")) {
+        response = new List();
+      }
+      else if (value.contains("onFailure")) {
+        response = null;
+      }
+      else {
+        final responseMap = json.decode(value).cast<Map<String, dynamic>>();
+        response = responseMap.map<Order>((json) =>
+            getOrder1(json),).toList();
+      }
+    }).catchError((e) {
+      throw PlatformException(code: e.code, message: e.message, details: e.details);
+    });
 
     return response;
+  }
+
+  static Order getOrder1(dynamic item) {
+
+    if (item['totalShippingPrice'] == null) {
+      item['totalShippingPrice'] = 0.0;
+    }
+
+    if (item['subtotalPrice'] == null) {
+      item['subtotalPrice'] = 0.0;
+    }
+
+    if (item['totalPrice'] == null) {
+      item['totalPrice'] = 0.0;
+    }
+
+    if (item['address'] == null) {
+      item['address'] = new Map<String, dynamic>();
+    }
+
+    if (item['orderProducts'] != null) {
+      List<dynamic> list = item['orderProducts'];
+      list.forEach((item) {
+        if (item['productVariant'] == null) {
+          Map<String, dynamic> variantMap = new Map<String, dynamic>();
+          variantMap['price'] = 0;
+          variantMap['selectedOptions'] = new List();
+          variantMap['image'] = new Map<String, dynamic>();
+          variantMap['productImage'] = new Map<String, dynamic>();
+
+          item['productVariant'] = variantMap;
+        }
+      });
+    }
+
+    return Order.fromJson(item);
   }
 
   static Future<Order> getOrder(String orderId) async {
     Map<dynamic, dynamic> args = new Map();
     args[kArgOrderId] = orderId;
 
-    final String responseJson = await _channel.invokeMethod(
-      kMethodGetOrders, args,);
-    final responseMap = json.decode(responseJson);
-    final Order response = Order.fromJson(responseMap);
+    Order response;
+    await _channel.invokeMethod(
+      kMethodGetOrder, args,).then((value) {
+      final responseMap = json.decode(value);
+      response = Order.fromJson(responseMap);
+    }).catchError(((e) {
+      throw PlatformException(code: e.code, message: e.message, details: e.details);
+    }));
 
     return response;
   }

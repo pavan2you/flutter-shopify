@@ -6,9 +6,11 @@ part of 'shop.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Shop _$ShopFromJson(Map<String, dynamic> json) => new Shop(
-    name: json['name'] as String, description: json['description'] as String)
-  ..crudOperation = json['crudOperation'] as String;
+Shop _$ShopFromJson(Map<String, dynamic> json) {
+  return new Shop(
+      name: json['name'] as String, description: json['description'] as String)
+    ..crudOperation = json['crudOperation'] as String;
+}
 
 abstract class _$ShopSerializerMixin {
   String get crudOperation;

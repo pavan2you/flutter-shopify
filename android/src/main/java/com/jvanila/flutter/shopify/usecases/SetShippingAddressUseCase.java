@@ -21,6 +21,7 @@ public class SetShippingAddressUseCase extends ShopifyCallUseCase {
     private static final String ARG_STATE = "state";
     private static final String ARG_COUNTRY = "country";
     private static final String ARG_ZIP = "zip";
+    private static final String ARG_COMPANY = "company";
     private static final String ARG_ADDRESS_ID = "addressId";
     private static final String ARG_FIRST_NAME = "firstName";
     private static final String ARG_LAST_NAME = "lastName";
@@ -42,10 +43,11 @@ public class SetShippingAddressUseCase extends ShopifyCallUseCase {
         String firstName = input.argument(ARG_FIRST_NAME);
         String lastName = input.argument(ARG_LAST_NAME);
         String zip = input.argument(ARG_ZIP);
+        String company = input.argument(ARG_COMPANY);
         String phone = input.argument(ARG_PHONE);
 
         Address address = new Address(id, primaryAddress, secondAddress, city, state,
-                country, firstName, lastName, zip, phone);
+                country, firstName, lastName, zip, company, phone);
 
         mPluginContext.api.instance.setShippingAddress(checkoutId, address, new ApiCallback<Checkout>() {
             @Override
@@ -63,6 +65,7 @@ public class SetShippingAddressUseCase extends ShopifyCallUseCase {
             @Override
             public void onFailure(Error error) {
                 System.out.println("onFailure -- " + error);
+                result.error("SetShippingAddressUseCase", error.getMessage(), error);
             }
         });
     }

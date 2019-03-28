@@ -29,6 +29,7 @@ public class UpdateCustomerSettingsUseCase extends ShopifyCallUseCase {
             @Override
             public void onFailure(Error error) {
                 System.out.println("onFailure -- " + error);
+                result.error("UpdateCustomerSettingsUseCase", error.getMessage(), error);
             }
         });
     }

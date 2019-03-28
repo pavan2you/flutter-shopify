@@ -6,23 +6,26 @@ part of 'address.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Address _$AddressFromJson(Map<String, dynamic> json) => new Address(
-    id: json['id'] as String,
-    primaryAddress: json['primaryAddress'] as String,
-    secondAddress: json['secondAddress'] as String,
-    city: json['city'] as String,
-    country: json['country'] as String,
-    firstName: json['firstName'] as String,
-    lastName: json['lastName'] as String,
-    zip: json['zip'] as String,
-    phone: json['phone'] as String)
-  ..crudOperation = json['crudOperation'] as String
-  ..state = json['state'] as String;
+Address _$AddressFromJson(Map<String, dynamic> json) {
+  return new Address(
+      id: json['id'] as String,
+      address: json['address'] as String,
+      secondAddress: json['secondAddress'] as String,
+      city: json['city'] as String,
+      country: json['country'] as String,
+      firstName: json['firstName'] as String,
+      lastName: json['lastName'] as String,
+      zip: json['zip'] as String,
+      company: json['company'] as String,
+      phone: json['phone'] as String)
+    ..crudOperation = json['crudOperation'] as String
+    ..state = json['state'] as String;
+}
 
 abstract class _$AddressSerializerMixin {
   String get crudOperation;
   String get id;
-  String get primaryAddress;
+  String get address;
   String get secondAddress;
   String get city;
   String get state;
@@ -30,11 +33,12 @@ abstract class _$AddressSerializerMixin {
   String get firstName;
   String get lastName;
   String get zip;
+  String get company;
   String get phone;
   Map<String, dynamic> toJson() => <String, dynamic>{
         'crudOperation': crudOperation,
         'id': id,
-        'primaryAddress': primaryAddress,
+        'address': address,
         'secondAddress': secondAddress,
         'city': city,
         'state': state,
@@ -42,6 +46,7 @@ abstract class _$AddressSerializerMixin {
         'firstName': firstName,
         'lastName': lastName,
         'zip': zip,
+        'company': company,
         'phone': phone
       };
 }

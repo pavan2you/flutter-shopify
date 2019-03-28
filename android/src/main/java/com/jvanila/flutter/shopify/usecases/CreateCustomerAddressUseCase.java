@@ -37,6 +37,7 @@ public class CreateCustomerAddressUseCase extends ShopifyCallUseCase {
             @Override
             public void onFailure(Error error) {
                 System.out.println("onFailure -- " + error);
+                result.error("CreateCustomerAddressUseCase", error.getMessage(), error);
             }
         });
     }

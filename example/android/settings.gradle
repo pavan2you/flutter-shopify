@@ -1,4 +1,4 @@
-include ':app'
+include ':app', ':shopifylibrary', ':gateway'
 
 def flutterProjectRoot = rootProject.projectDir.parentFile.toPath()
 
@@ -12,4 +12,16 @@ plugins.each { name, path ->
     def pluginDirectory = flutterProjectRoot.resolve(path).resolve('android').toFile()
     include ":$name"
     project(":$name").projectDir = pluginDirectory
+    if(name.equals("shopify")){
+        include ':shopifylibrary'
+        project(':shopifylibrary').projectDir = new File("$pluginDirectory/library/shopifylibrary")
+        include ':gateway'
+        project(':gateway').projectDir = new File("$pluginDirectory/library/gateway")
+        println "############################# name :shopifylibrary"
+        println "############################# pluginDirectory :$pluginDirectory/library/shopifylibrary"
+        println "############################# name :gateway"
+        println "############################# pluginDirectory :$pluginDirectory/library/gateway"
+    }
+    println "############################# name :$name"
+    println "############################# pluginDirectory :$pluginDirectory"
 }

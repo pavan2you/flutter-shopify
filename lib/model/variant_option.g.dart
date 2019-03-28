@@ -6,10 +6,11 @@ part of 'variant_option.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-VariantOption _$VariantOptionFromJson(Map<String, dynamic> json) =>
-    new VariantOption(
-        name: json['name'] as String, value: json['value'] as String)
-      ..crudOperation = json['crudOperation'] as String;
+VariantOption _$VariantOptionFromJson(Map<String, dynamic> json) {
+  return new VariantOption(
+      name: json['name'] as String, value: json['value'] as String)
+    ..crudOperation = json['crudOperation'] as String;
+}
 
 abstract class _$VariantOptionSerializerMixin {
   String get crudOperation;

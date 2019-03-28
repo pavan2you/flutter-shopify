@@ -56,8 +56,9 @@ public class SignInUseCase extends ShopifyCallUseCase {
 
                     @Override
                     public void onFailure(Error error) {
-                        result.success(false);
+//                        result.success(false);
                         System.out.println("onFailure -- " + error);
+                        result.error("SignInUseCase", error.getMessage(), error);
                     }
                 });
             }

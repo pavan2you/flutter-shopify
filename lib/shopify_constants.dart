@@ -68,6 +68,9 @@ const String kMethodSignOut = "signOut";
 //isLoggedIn Method Call
 const String kMethodIsLoggedIn = "isLoggedIn";
 
+//getAccessToken Method Call
+const String kMethodGetAccessToken = "getAccessToken";
+
 //Forgot Password Method Call
 const String kMethodForgotPassword = "forgotPassword";
 
@@ -86,6 +89,7 @@ const String kArgSecondAddress = "secondAddress";
 const String kArgCity = "city";
 const String kArgState = "state";
 const String kArgCountry = "country";
+const String kArgCompany = "company";
 const String kArgZip = "zip";
 
 //Get Customer Method Call
@@ -116,6 +120,7 @@ const String kMethodUpdateCustomerSettings = "updateCustomerSettings";
 // Order Arguments
 const String kArgOrderId = "orderId";
 const String kMethodGetOrders = "getOrders";
+const String kMethodGetOrder = "getOrder";
 
 // Checkout Arguments
 const String kArgCheckout = "checkout";
@@ -166,6 +171,7 @@ const String kMethodGetCardToken = "getCardToken";
 
 
 // Checkout
+const String kArgCheckoutJson = "checkoutJson";
 
 // Checkout Arguments
 const String kArgWebUrl = "webUrl";

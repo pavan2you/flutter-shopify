@@ -19,15 +19,9 @@ import io.flutter.plugin.common.MethodChannel;
 public class CompleteCheckoutByCardUseCase extends ShopifyCallUseCase {
 
     private static final String ARG_ADDRESS_JSON = "addressJson";
-    private static final String ARG_CHECKOUT_ID = "checkoutId";
+    private static final String ARG_CHECKOUT_JSON = "checkoutJson";
     private static final String ARG_CREDIT_CARD_VALUE_TOKEN = "creditCardValueToken";
     private static final String ARG_EMAIL = "email";
-    private static final String ARG_WEB_URL = "webUrl";
-    private static final String ARG_REQUIRES_SHIPPING = "requiresShipping";
-    private static final String ARG_SUBTOTAL_PRICE = "subtotalPrice";
-    private static final String ARG_TOTAL_PRICE = "totalPrice";
-    private static final String ARG_TAX_PRICE = "taxPrice";
-    private static final String ARG_CHECKOUT_CURRENCY = "currency";
 
     public CompleteCheckoutByCardUseCase(PluginContext<ShopifyApi> pluginContext) {
         super(pluginContext);
@@ -38,23 +32,15 @@ public class CompleteCheckoutByCardUseCase extends ShopifyCallUseCase {
         String token = input.argument(ARG_CREDIT_CARD_VALUE_TOKEN);
         String email = input.argument(ARG_EMAIL);
         String addressJson = input.argument(ARG_ADDRESS_JSON);
+        String checkoutJson = input.argument(ARG_CHECKOUT_JSON);
 
         Address address = new Gson().fromJson(addressJson,
                 new TypeToken<Address>() {
                 }.getType());
 
-        String checkoutId = input.argument(ARG_CHECKOUT_ID);
-        String webUrl = input.argument(ARG_WEB_URL);
-        boolean requiresShipping = input.argument(ARG_REQUIRES_SHIPPING);
-        double subtotalPrice = input.argument(ARG_SUBTOTAL_PRICE);
-        double totalPrice = input.argument(ARG_TOTAL_PRICE);
-        double taxPrice = input.argument(ARG_TAX_PRICE);
-        String currency = input.argument(ARG_CHECKOUT_CURRENCY);
-
-        Checkout checkout = new Checkout(checkoutId, webUrl, requiresShipping,
-                new BigDecimal(subtotalPrice), new BigDecimal(totalPrice),
-                new BigDecimal(taxPrice), currency, address, new ShippingRate(
-                "shippingRate", new BigDecimal(98.9), "handled"));
+        Checkout checkout = new Gson().fromJson(checkoutJson,
+                new TypeToken<Checkout>() {
+                }.getType());
 
         mPluginContext.api.instance.completeCheckoutByCard(checkout, email, address, token,
                 new ApiCallback<Order>() {

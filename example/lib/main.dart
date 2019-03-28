@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:shopify/domain/initialize_params.dart';
 import 'package:shopify/shopify.dart';
 import 'package:shopify/model/address.dart';
 import 'package:shopify/model/article.dart';
@@ -16,6 +17,7 @@ import 'package:shopify/model/product.dart';
 import 'package:shopify/model/product_variant.dart';
 import 'package:shopify/model/shipping_rate.dart';
 import 'package:shopify/model/shop.dart';
+import 'package:shopify/model/sort_type.dart' as sort;
 
 void main() => runApp(new MyApp());
 
@@ -33,18 +35,21 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void>  initShopify() async {
-    await Shopify.initialize("porganicworld.myshopify.com",
-        "62761bc137e3dac4c66d1d1a93d8dab3",
-        "1e5f1c6facb67ef0bf9e0c4af642d192",
-        "5c3061bb2e053642fc1422409ccbb89e");
+    ShopifyInitializeParams params = new ShopifyInitializeParams();
+    params.domainName = "porganicworld.myshopify.com";
+    params.accessToken = "62761bc137e3dac4c66d1d1a93d8dab3";
+    params.apiKey = "1e5f1c6facb67ef0bf9e0c4af642d192";
+    params.apiPassword = "5c3061bb2e053642fc1422409ccbb89e";
+    await Shopify.initialize(params);
 
+    signIn();
 //    getProductsList(); //variantList is coming  null in this call
 //    getProduct(); //variantList is present in individual product call
 //    getProductVariants();
 //    searchProductList();
 
-//    getCategories();
-//    getCategoryDetails();
+    getCategories();
+    getCategoryDetails();
 
 //    getArticleList(); //ArticleList is itself empty
 //    getArticle();
@@ -52,7 +57,8 @@ class _MyAppState extends State<MyApp> {
 //    getShopInfo();
 
 //    signUp(); // phone no with country code is mandatory
-//    signIn();
+
+   // getAccessToken();
 //    signOut();
 //    isLoggedIn(); // is always false
 //    forgotPassword();
@@ -66,7 +72,7 @@ class _MyAppState extends State<MyApp> {
 //    editCustomerAddress();
 //    deleteCustomerAddress();
 
-//    editCustomerInfo();
+    editCustomerInfo();
 
 //    updateCustomerSettings();
 
@@ -85,7 +91,7 @@ class _MyAppState extends State<MyApp> {
 //    getCardToken(); //exception
 //    completeCheckoutByCard(); //exception
 
-  startShopping();
+//  startShopping();
   }
 
   Future<void> startShopping() async {
@@ -171,12 +177,13 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> getCategories() async {
-    List<Category> categories = await Shopify.getCategoryList(5, null);
+    List<Category> categories = await Shopify.getCategoryList(15, null);
     print('Categories - $categories');
   }
 
   Future<void> getCategoryDetails() async {
-    Category category = await Shopify.getCategoryDetails("Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzY1MTk4MTYxOTc5", 10, null, null);
+    Category category = await Shopify.getCategoryDetails(
+        "Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzY1MTk3ODY3MDY3", 15, null, sort.SortType.NAME);
     //Jewellery
     print('Category - $category');
   }
@@ -222,7 +229,15 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> signIn() async {
-    bool val = await Shopify.signIn("pallavis@purnatva.com", "abc123-");
+    //bool val = await Shopify.signIn("imei355923070770619@gmail.com", "bFppaybqvWaD6CZdAtL5T7FN1XF2");
+    bool val = await Shopify.signIn("test@gmail.com", "test123456");
+
+    print('Result - $val');
+    getCustomer();
+  }
+
+  Future<void> getAccessToken() async {
+    String val = await Shopify.getAccessToken();
     print('Result - $val');
   }
 
@@ -232,7 +247,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> signUp() async {
-    bool val = await Shopify.signUp("pragna", "katreddy", "pragna.0303@gmail.com", "12345", "+918985940000");
+    String val = await Shopify.signUp("pragna", "katreddy", "pragna.0303@gmail.com", "12345", "+918985940000");
     print('Result - $val');
   }
 
@@ -269,8 +284,7 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> createCustomerAddress() async {
     Address address = new Address();
-    address.id = "3";
-    address.primaryAddress = "primary address";
+    address.address = "primary address";
     address.secondAddress = "second Address";
     address.city = "blr city";
     address.state = "Karnataka";
@@ -286,7 +300,7 @@ class _MyAppState extends State<MyApp> {
   Future<void> editCustomerAddress() async {
     Address address = new Address();
     address.id = "Z2lkOi8vc2hvcGlmeS9NYWlsaW5nQWRkcmVzcy83OTcwMTE2MDc2MTE/bW9kZWxfbmFtZT1DdXN0b21lckFkZHJlc3MmY3VzdG9tZXJfYWNjZXNzX3Rva2VuPTZDUEtFaUJxRk9LdEVpQTRIYks1MHdCVTJubkI3Yzc3NW84ZXNnZUxfMUVFbEFtOWhRcExzRFgyOEozejhkTnE2SFRwX2J4SThqc0NlcTlIUE9mWW9vM3F4bXdraUs3aktJQ1E0SVVzMktqS19RLVFCeDhWdW9sWjRDNjdkbjVRWTJROUJkSHYxaGpSQUlELXlsb19YaDBiZGRZWjB2alltdE5Ueklsbm5ZZnlwSzlaM09adVdmUXVFRVlLeE9NYkFTbG5lTGhDNDgyQ1J0QUhTYS1ZTl9yS3dQNW9RbVVmb0QxRDRlaHZlbGdNS0hVY0xtcEgzOHJMWUJKbDJBazI=";
-    address.primaryAddress = "primary address changed";
+    address.address = "primary address changed";
     address.secondAddress = "second Address changed";
     address.city = "blr city";
     address.state = "Karnataka";
@@ -294,6 +308,7 @@ class _MyAppState extends State<MyApp> {
     address.firstName = "pallavi";
     address.lastName = "s";
     address.zip = "560078";
+    address.company = "Office";
     address.phone = "+918985940000";
     bool val = await Shopify.editCustomerAddress(address.id, address);
     print('Result - $val');
@@ -306,7 +321,13 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> editCustomerInfo() async {
-    Customer customer = await Shopify.editCustomerInfo("pallavi", "s", "+918985941111");
+    Customer customer = await Shopify.editCustomerInfo("pallavi", "s", "+918985941111","seshu.mca@test")
+    .then((value){
+      print("Got error: ${value}");
+    }) // Future completes with two()'s error.
+    .catchError((e) {
+      print("Got error: ${e}");     // Finally, callback fires.
+    });
     print('Result - $customer');
   }
 
@@ -356,7 +377,7 @@ class _MyAppState extends State<MyApp> {
   Future<void> setShippingAddress() async {
     Address address = new Address();
     address.id = "Z2lkOi8vc2hvcGlmeS9NYWlsaW5nQWRkcmVzcy83OTcwMTE2MDc2MTE/bW9kZWxfbmFtZT1DdXN0b21lckFkZHJlc3MmY3VzdG9tZXJfYWNjZXNzX3Rva2VuPTZDUEtFaUJxRk9LdEVpQTRIYks1MHdCVTJubkI3Yzc3NW84ZXNnZUxfMUVFbEFtOWhRcExzRFgyOEozejhkTnE2SFRwX2J4SThqc0NlcTlIUE9mWW9vM3F4bXdraUs3aktJQ1E0SVVzMktqS19RLVFCeDhWdW9sWjRDNjdkbjVRWTJROUJkSHYxaGpSQUlELXlsb19YaDBiZGRZWjB2alltdE5Ueklsbm5ZZnlwSzlaM09adVdmUXVFRVlLeE9NYkFTbG5lTGhDNDgyQ1J0QUhTYS1ZTl9yS3dQNW9RbVVmb0QxRDRlaHZlbGdNS0hVY0xtcEgzOHJMWUJKbDJBazI=";
-    address.primaryAddress = "primary address changed";
+    address.address = "primary address changed";
     address.secondAddress = "second Address changed";
     address.city = "blr city";
     address.state = "Karnataka";
@@ -394,11 +415,11 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> completeCheckoutByCard() async {
-    Checkout checkout = await Shopify.getCheckout("Z2lkOi8vc2hvcGlmeS9DaGVja291dC9hNjc0NjY4MDcwZThhMjcyNzAyZmM0ZWMwYTAwOTNhMj9rZXk9Nzc2YzJkNWJmZWY2OTNlZjMxY2U0NmViMDBjMjMyMGY=");
+    Checkout checkout = await Shopify.getCheckout("Z2lkOi8vc2hvcGlmeS9DaGVja291dC8zYzA3NGI5ZjYyNDA5MmVhYWFkMzM4MTkxNDVlMDBhZT9rZXk9N2I3MDkwNGEyMDQ1NzkzYmZmMzFiOGI1NmQ1ZTgzMTE=");
 
     Address address = new Address();
     address.id = "Z2lkOi8vc2hvcGlmeS9NYWlsaW5nQWRkcmVzcy83OTcwMTE2MDc2MTE/bW9kZWxfbmFtZT1DdXN0b21lckFkZHJlc3MmY3VzdG9tZXJfYWNjZXNzX3Rva2VuPTZDUEtFaUJxRk9LdEVpQTRIYks1MHdCVTJubkI3Yzc3NW84ZXNnZUxfMUVFbEFtOWhRcExzRFgyOEozejhkTnE2SFRwX2J4SThqc0NlcTlIUE9mWW9vM3F4bXdraUs3aktJQ1E0SVVzMktqS19RLVFCeDhWdW9sWjRDNjdkbjVRWTJROUJkSHYxaGpSQUlELXlsb19YaDBiZGRZWjB2alltdE5Ueklsbm5ZZnlwSzlaM09adVdmUXVFRVlLeE9NYkFTbG5lTGhDNDgyQ1J0QUhTYS1ZTl9yS3dQNW9RbVVmb0QxRDRlaHZlbGdNS0hVY0xtcEgzOHJMWUJKbDJBazI=";
-    address.primaryAddress = "primary address changed";
+    address.address = "primary address changed";
     address.secondAddress = "second Address changed";
     address.city = "blr city";
     address.state = "Karnataka";

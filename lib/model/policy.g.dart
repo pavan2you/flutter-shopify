@@ -6,11 +6,13 @@ part of 'policy.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Policy _$PolicyFromJson(Map<String, dynamic> json) => new Policy(
-    title: json['title'] as String,
-    body: json['body'] as String,
-    url: json['url'] as String)
-  ..crudOperation = json['crudOperation'] as String;
+Policy _$PolicyFromJson(Map<String, dynamic> json) {
+  return new Policy(
+      title: json['title'] as String,
+      body: json['body'] as String,
+      url: json['url'] as String)
+    ..crudOperation = json['crudOperation'] as String;
+}
 
 abstract class _$PolicySerializerMixin {
   String get crudOperation;

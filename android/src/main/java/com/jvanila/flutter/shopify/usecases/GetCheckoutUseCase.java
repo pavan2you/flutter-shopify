@@ -38,6 +38,7 @@ public class GetCheckoutUseCase extends ShopifyCallUseCase {
             @Override
             public void onFailure(Error error) {
                 System.out.println("onFailure -- " + error);
+                result.error("GetCheckoutUseCase", error.getMessage(), error);
             }
         });
     }

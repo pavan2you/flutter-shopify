@@ -43,6 +43,7 @@ public class GetProductUseCase extends ShopifyCallUseCase {
             @Override
             public void onFailure(Error error) {
                 System.out.println("onFailure -- " + error);
+                result.error("GetProductUseCase", error.getMessage(), error);
             }
         });
     }

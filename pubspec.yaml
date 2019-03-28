@@ -11,8 +11,17 @@ dependencies:
   flutter:
     sdk: flutter
 
+#  http: ^0.12.0
+
   json_annotation: ^0.2.3
   shared_preferences: ^0.4.2
+  flutter_webview_plugin: ^0.3.0+2
+  flutter_pagewise: 1.0.0
+  intl: ^0.15.6
+  loadmore: ^1.0.1
+  jvanila_flutter:
+    git: git://github.com/pavan2you/flutter-mvp-framework
+#    path: ../flutter-mvp-framework
 
 dev_dependencies:
   flutter_test:

@@ -12,6 +12,7 @@ import com.jvanila.flutter.shopify.usecases.EditCustomerAddressUseCase;
 import com.jvanila.flutter.shopify.usecases.EditCustomerInfoUseCase;
 import com.jvanila.flutter.shopify.usecases.ForgotPasswordUseCase;
 import com.jvanila.flutter.shopify.usecases.GetAcceptedCardTypesUseCase;
+import com.jvanila.flutter.shopify.usecases.GetAccessTokenUseCase;
 import com.jvanila.flutter.shopify.usecases.GetArticleListUseCase;
 import com.jvanila.flutter.shopify.usecases.GetArticleUseCase;
 import com.jvanila.flutter.shopify.usecases.GetCardTokenUseCase;
@@ -52,6 +53,7 @@ import static com.jvanila.flutter.shopify.ShopifyConstants.METHOD_EDIT_CUSTOMER_
 import static com.jvanila.flutter.shopify.ShopifyConstants.METHOD_EDIT_CUSTOMER_INFO;
 import static com.jvanila.flutter.shopify.ShopifyConstants.METHOD_FORGOT_PASSWORD;
 import static com.jvanila.flutter.shopify.ShopifyConstants.METHOD_GET_ACCEPTED_CARD_TYPES;
+import static com.jvanila.flutter.shopify.ShopifyConstants.METHOD_GET_ACCESS_TOKEN;
 import static com.jvanila.flutter.shopify.ShopifyConstants.METHOD_GET_ARTICLE;
 import static com.jvanila.flutter.shopify.ShopifyConstants.METHOD_GET_ARTICLE_LIST;
 import static com.jvanila.flutter.shopify.ShopifyConstants.METHOD_GET_CARD_TOKEN;
@@ -118,6 +120,7 @@ public class ShopifyPlugin extends Plugin<ShopifyApi> {
         provider.register(METHOD_SIGN_IN, new SignInUseCase(pluginContext));
         provider.register(METHOD_SIGN_OUT, new SignOutUseCase(pluginContext));
         provider.register(METHOD_IS_LOGGED_IN, new IsLoggedInUseCase(pluginContext));
+        provider.register(METHOD_GET_ACCESS_TOKEN, new GetAccessTokenUseCase(pluginContext));
         provider.register(METHOD_FORGOT_PASSWORD, new ForgotPasswordUseCase(pluginContext));
         provider.register(METHOD_CHANGE_PASSWORD, new ChangePasswordUseCase(pluginContext));
         provider.register(METHOD_GET_COUNTRIES, new GetCountriesUseCase(pluginContext));
