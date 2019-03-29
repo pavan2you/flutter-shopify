@@ -1,20 +1,32 @@
+//
+//  ShopifyPlugin.m
+//  Runner
+//
+//  Created by pavan on 29/03/19.
+//  Copyright © 2019 The Chromium Authors. All rights reserved.
+//
+
 #import "ShopifyPlugin.h"
+#import "ShopifyConstants.h"
+#import "ClosePluginUseCase.h"
+#import "GetPlatformVersionUseCase.h"
 
 @implementation ShopifyPlugin
+
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
-  FlutterMethodChannel* channel = [FlutterMethodChannel
-      methodChannelWithName:@"shopify"
-            binaryMessenger:[registrar messenger]];
-  ShopifyPlugin* instance = [[ShopifyPlugin alloc] init];
-  [registrar addMethodCallDelegate:instance channel:channel];
+    ShopifyPlugin *plugin = [[ShopifyPlugin alloc]
+                             initWith:@"shopify"
+                             withRegistrar:registrar
+                             withApi:[[Api alloc] init]];
+    [plugin description];//patch fix
 }
 
-- (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
-  if ([@"getPlatformVersion" isEqualToString:call.method]) {
-    result([@"iOS " stringByAppendingString:[[UIDevice currentDevice] systemVersion]]);
-  } else {
-    result(FlutterMethodNotImplemented);
-  }
+-(void)onCreateUseCasesWith:(UseCaseProvider *)provider
+{
+    [provider registerUseCase:@"close"
+        with:[[ClosePluginUseCase alloc] initWith:self.mPluginContext]];
+    [provider registerUseCase:@"getPlatformVersion"
+        with:[[GetPlatformVersionUseCase alloc] initWith:self.mPluginContext]];
 }
 
 @end

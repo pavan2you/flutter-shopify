@@ -4,14 +4,14 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/android.iml" filepath="$PROJECT_DIR$/android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../../../../flutter/.pub-cache/hosted/pub.dartlang.org/connectivity-0.3.2/android/connectivity.iml" filepath="$PROJECT_DIR$/../../../../../flutter/.pub-cache/hosted/pub.dartlang.org/connectivity-0.3.2/android/connectivity.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../../../../flutter/.pub-cache/hosted/pub.dartlang.org/flutter_webview_plugin-0.3.0+2/android/flutter_webview_plugin-0.3.0+2-flutter_webview_plugin.iml" filepath="$PROJECT_DIR$/../../../../../flutter/.pub-cache/hosted/pub.dartlang.org/flutter_webview_plugin-0.3.0+2/android/flutter_webview_plugin-0.3.0+2-flutter_webview_plugin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../android/library/gateway/library-gateway.iml" filepath="$PROJECT_DIR$/../../android/library/gateway/library-gateway.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../android/library/shopifylibrary/library-shopifylibrary.iml" filepath="$PROJECT_DIR$/../../android/library/shopifylibrary/library-shopifylibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../../../../flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-0.4.1/android/path_provider.iml" filepath="$PROJECT_DIR$/../../../../../flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-0.4.1/android/path_provider.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../../../../flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.4.3/android/shared_preferences.iml" filepath="$PROJECT_DIR$/../../../../../flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.4.3/android/shared_preferences.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../../../SDKs/flutter/.pub-cache/hosted/pub.dartlang.org/connectivity-0.4.2/android/connectivity.iml" filepath="$PROJECT_DIR$/../../../../../SDKs/flutter/.pub-cache/hosted/pub.dartlang.org/connectivity-0.4.2/android/connectivity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../../../SDKs/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_webview_plugin-0.3.3/android/flutter_webview_plugin.iml" filepath="$PROJECT_DIR$/../../../../../SDKs/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_webview_plugin-0.3.3/android/flutter_webview_plugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../android/library/gateway/gateway.iml" filepath="$PROJECT_DIR$/../../android/library/gateway/gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../../../SDKs/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-0.4.1/android/path_provider.iml" filepath="$PROJECT_DIR$/../../../../../SDKs/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-0.4.1/android/path_provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../../../SDKs/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.4.3/android/shared_preferences.iml" filepath="$PROJECT_DIR$/../../../../../SDKs/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.4.3/android/shared_preferences.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../android/shopify.iml" filepath="$PROJECT_DIR$/../../android/shopify.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../../../../flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-0.13.0/android/sqflite.iml" filepath="$PROJECT_DIR$/../../../../../flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-0.13.0/android/sqflite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../android/library/shopifylibrary/shopifylibrary.iml" filepath="$PROJECT_DIR$/../../android/library/shopifylibrary/shopifylibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../../../SDKs/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-1.1.3/android/sqflite.iml" filepath="$PROJECT_DIR$/../../../../../SDKs/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-1.1.3/android/sqflite.iml" />
     </modules>
   </component>
 </project>

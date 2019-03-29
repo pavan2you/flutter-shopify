@@ -35,6 +35,11 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void>  initShopify() async {
+
+    await Shopify.platformVersion.then((val) {
+      print(val);
+    });
+
     ShopifyInitializeParams params = new ShopifyInitializeParams();
     params.domainName = "porganicworld.myshopify.com";
     params.accessToken = "62761bc137e3dac4c66d1d1a93d8dab3";

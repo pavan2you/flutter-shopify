@@ -89,7 +89,7 @@ public class ShopifyPlugin extends Plugin<ShopifyApi> {
      * Plugin registration.
      */
     public static void registerWith(Registrar registrar) {
-        new ShopifyPlugin(registrar, "shopify", new Api<ShopifyApi>());
+        new ShopifyPlugin(registrar, "shopify", new Api<>());
     }
 
     private ShopifyPlugin(Registrar registrar, String name, Api<ShopifyApi> api) {
