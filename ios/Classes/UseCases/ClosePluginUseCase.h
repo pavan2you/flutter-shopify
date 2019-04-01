@@ -1,14 +1,14 @@
 //
-//  ShopifyPlugin.h
+//  ClosePluginUseCase.h
 //  Runner
 //
 //  Created by pavan on 29/03/19.
 //  Copyright © 2019 The Chromium Authors. All rights reserved.
 //
 
-#import "Plugin.h"
-@class Plugin;
+#import <UIKit/UIKit.h>
+#import "UseCase.h"
 
-@interface ShopifyPlugin : Plugin
+@interface ClosePluginUseCase : UseCase
 
 @end
