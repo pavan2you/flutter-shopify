@@ -90,21 +90,21 @@ artifacts {
 
 project.afterEvaluate {
     android.libraryVariants.all { variant ->
-        def realVariantName = variant.name
-        def variantName = variant.name.capitalize()
+//        def realVariantName = variant.name
+//        def variantName = variant.name.capitalize()
 
-        def task = project.tasks["jacocoTest${variantName}UnitTestReport"]
-        def defaultExcludes = task.classDirectories.excludes
+//        def task = project.tasks["jacocoTest${variantName}UnitTestReport"]
+        /*def defaultExcludes = task.classDirectories.excludes*/
 
-        def additionalExcludes = [
-            'com/shopify/buy3/**/*'
-        ]
+//        def additionalExcludes = [
+//            'com/shopify/buy3/**/*'
+//        ]
 
-        def excludes = defaultExcludes + additionalExcludes
+//        def excludes = defaultExcludes + additionalExcludes
 
-        def kotlinDebugTree = fileTree(dir: "${buildDir}/tmp/kotlin-classes/${realVariantName}", excludes: excludes)
+//        def kotlinDebugTree = fileTree(dir: "${buildDir}/tmp/kotlin-classes/${realVariantName}", excludes: excludes)
 
-        task.classDirectories.excludes = excludes
-        task.classDirectories += kotlinDebugTree
+        /*task.classDirectories.excludes = excludes*/
+//        task.classDirectories += kotlinDebugTree
     }
 }

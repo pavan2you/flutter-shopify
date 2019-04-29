@@ -1,5 +1,5 @@
 # Uncomment this line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '10.0'
 
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
@@ -52,12 +52,39 @@ target 'Runner' do
     File.symlink(p[:path], symlink)
     pod p[:name], :path => File.join(symlink, 'ios')
   }
+  
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Shopify
+  pod "ShopApp_Shopify", "~> 1.0"
+
+  # DI
+  pod 'Swinject', '2.2'
+
+  # Architecture
+  pod 'RxSwift', '~> 4.1'
+  pod 'RxCocoa', '~> 4.1'
+
+  # Crash&Beta
+  pod 'Fabric', '~> 1.7'
+  pod 'Crashlytics', '~> 3.9'
+
+  # Developer tools
+  pod 'SwiftLint', '~> 0.24'
+
+  # Database
+  pod 'CoreStore', '~> 4.2'
+
 end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
       config.build_settings['ENABLE_BITCODE'] = 'NO'
+      if ['RxSwift'].include? target.name
+          config.build_settings['SWIFT_VERSION'] = '4.0'
+      end
     end
   end
 end
