@@ -474,9 +474,11 @@ class MockShopify {
   }
 
   static String getMockMessageToShare() {
-    return 'Hello, \n\n Please check this following link for wide '
-        'range of Organic products at an afforable price range.\n\nRegards '
-        '\nTOW.';
+    String towLink = 'https://theorganicworld.com';
+
+    return 'Hello, \n\n Please check this following link '
+        '$towLink for wide range of Organic products at '
+        'an afforable price range.\n\nRegards \nTOW.';
   }
 
 //////////////////////// CUSTOMER SERVICE ////////////////////////////////
