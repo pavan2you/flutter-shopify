@@ -29,6 +29,7 @@ internal object QueryHelper {
             .weight()
             .weightUnit()
             .availableForSale()
+            .compareAtPrice()
             .selectedOptions({ optionsQuery -> optionsQuery.name().value() })
             .image({ getDefaultImageQuery(it) })
             .product({ productQuery ->

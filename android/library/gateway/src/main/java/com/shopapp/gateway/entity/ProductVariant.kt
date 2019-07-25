@@ -8,6 +8,7 @@ data class ProductVariant(
     var id: String,
     var title: String,
     var price: BigDecimal,
+    var compareAtPrice: BigDecimal,
     var isAvailable: Boolean,
     var selectedOptions: List<VariantOption>,
     var image: Image? = null,
@@ -18,6 +19,7 @@ data class ProductVariant(
     constructor(source: Parcel) : this(
         source.readString(),
         source.readString(),
+        source.readSerializable() as BigDecimal,
         source.readSerializable() as BigDecimal,
         1 == source.readInt(),
         source.createTypedArrayList(VariantOption.CREATOR),
@@ -32,6 +34,7 @@ data class ProductVariant(
         writeString(id)
         writeString(title)
         writeSerializable(price)
+        writeSerializable(compareAtPrice)
         writeInt((if (isAvailable) 1 else 0))
         writeTypedList(selectedOptions)
         writeParcelable(image, 0)

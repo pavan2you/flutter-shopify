@@ -12,6 +12,7 @@ class ProductVariant extends DataObject with _$ProductVariantSerializerMixin  {
   String id;
   String title;
   double price;
+  double compareAtPrice;
   bool isAvailable;
   List<VariantOption> selectedOptions;
   ImageDTO image;
@@ -19,7 +20,7 @@ class ProductVariant extends DataObject with _$ProductVariantSerializerMixin  {
   String productId;
   int noOfQuantities;
 
-  ProductVariant({this.id, this.title, this.price, this.isAvailable,
+  ProductVariant({this.id, this.title, this.price, this.compareAtPrice, this.isAvailable,
     this.selectedOptions, this.image, this.productImage, this.productId});
 
   factory ProductVariant.fromJson(Map<String, dynamic> json) => _$ProductVariantFromJson(json);
@@ -35,6 +36,7 @@ class ProductVariant extends DataObject with _$ProductVariantSerializerMixin  {
     map["id"] = id;
     map["title"] = title;
     map["price"] = price;
+    map["compareAtPrice"] = compareAtPrice;
     map["isAvailable"] = isAvailable;
     map["selectedOptions"] = selectedOptions;
     map["image"] = image;
@@ -51,6 +53,7 @@ class ProductVariant extends DataObject with _$ProductVariantSerializerMixin  {
 
     result = 31 * result + title.hashCode;
     result = 31 * result + price.hashCode;
+    result = 31 * result + compareAtPrice.hashCode;
     result = 31 * result + isAvailable.hashCode;
     result = 31 * result + selectedOptions.hashCode;
     result = 31 * result + (image != null ? image.hashCode : 0);
@@ -75,6 +78,8 @@ class ProductVariant extends DataObject with _$ProductVariantSerializerMixin  {
     if (title != productVariant.title) return false;
     if (price != productVariant.price)
       return false;
+    if (compareAtPrice != productVariant.compareAtPrice)
+      return false;
     if (isAvailable != productVariant.isAvailable) return false;
     if (selectedOptions != productVariant.selectedOptions) return false;
     if (image != productVariant?.image) return false;
@@ -89,6 +94,7 @@ class ProductVariant extends DataObject with _$ProductVariantSerializerMixin  {
         " id ='" + id + '\'' +
         ", title ='" + title + '\'' +
         ", price ='" + price.toString() + '\'' +
+        ", compareAtPrice ='" + compareAtPrice.toString() + '\'' +
         ", productId ='" + productId + '\'' +
         '}';
   }

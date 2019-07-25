@@ -1,4 +1,4 @@
-package com.jvanila.flutter.shopifyexample;
+package com.jvanila.shopifyexample;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

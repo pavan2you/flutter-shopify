@@ -11,6 +11,7 @@ object ProductVariantAdapter {
             adaptee.id.toString(),
             adaptee.title,
             adaptee.price,
+            adaptee.compareAtPrice,
             adaptee.availableForSale == true,
             VariantOptionListAdapter.adapt(adaptee.selectedOptions),
             ImageAdapter.adapt(adaptee.image),

@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/flutter-shopify-variants.iml" filepath="$PROJECT_DIR$/.idea/flutter-shopify-variants.iml" />
+      <module fileurl="file://$PROJECT_DIR$/example/android/app/src/main/java/com/com.iml" filepath="$PROJECT_DIR$/example/android/app/src/main/java/com/com.iml" />
+      <module fileurl="file://$PROJECT_DIR$/example/android/shopifylibrary/src/main/main.iml" filepath="$PROJECT_DIR$/example/android/shopifylibrary/src/main/main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shopify.iml" filepath="$PROJECT_DIR$/shopify.iml" />
     </modules>
   </component>
 </project>
