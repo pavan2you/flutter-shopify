@@ -32,12 +32,7 @@ public abstract class UseCase<I extends MethodCall, O extends MethodChannel.Resu
     }
 
     private Runnable buildRunnableUseCase(final I input, final O result) {
-        return new Runnable() {
-                @Override
-                public void run() {
-                    call(input, result);
-                }
-            };
+        return () -> call(input, result);
     }
 
     protected abstract void call(I input, O result);

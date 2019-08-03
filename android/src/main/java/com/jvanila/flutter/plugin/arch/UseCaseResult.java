@@ -21,30 +21,15 @@ public class UseCaseResult implements MethodChannel.Result {
      * Make sure to respond in the caller thread
      */
     public void success(final Object results) {
-        mCallerHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                mResult.success(results);
-            }
-        });
+        mCallerHandler.post(() -> mResult.success(results));
     }
 
     public void error(final String errorCode, final String errorMessage, final Object data) {
-        mCallerHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                mResult.error(errorCode, errorMessage, "{error : "+data+"}");
-            }
-        });
+        mCallerHandler.post(() -> mResult.error(errorCode, errorMessage, "{error : "+data+"}"));
     }
 
     @Override
     public void notImplemented() {
-        mCallerHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                mResult.notImplemented();
-            }
-        });
+        mCallerHandler.post(() -> mResult.notImplemented());
     }
 }
