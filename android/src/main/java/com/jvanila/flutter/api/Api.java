@@ -1,4 +1,4 @@
-package com.jvanila.flutter.shopify;
+package com.jvanila.flutter.api;
 
 /**
  * Created by pavan on 22/09/18

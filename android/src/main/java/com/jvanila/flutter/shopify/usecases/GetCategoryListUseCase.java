@@ -2,7 +2,7 @@ package com.jvanila.flutter.shopify.usecases;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.jvanila.flutter.plugin.arch.PluginContext;
+import com.jvanila.flutter.pluginarch.PluginContext;
 import com.shopapp.gateway.ApiCallback;
 import com.shopapp.gateway.entity.Category;
 import com.shopapp.gateway.entity.Error;

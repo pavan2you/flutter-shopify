@@ -11,7 +11,7 @@ ProductVariant _$ProductVariantFromJson(Map<String, dynamic> json) {
       id: json['id'] as String,
       title: json['title'] as String,
       price: (json['price'] as num).toDouble(),
-      compareAtPrice: (json['compareAtPrice'] as num).toDouble(),
+      compareAtPrice: json['compareAtPrice'] == null ? (json['price'] as num).toDouble() : (json['compareAtPrice'] as num).toDouble(),
       isAvailable: json['isAvailable'] as bool,
       selectedOptions: (json['selectedOptions'] as List)
           .map((e) => new VariantOption.fromJson(e as Map<String, dynamic>))

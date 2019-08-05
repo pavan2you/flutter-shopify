@@ -1,4 +1,4 @@
-package com.jvanila.flutter.plugin.arch;
+package com.jvanila.flutter.pluginarch;
 
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;

@@ -1,9 +1,9 @@
-package com.jvanila.flutter.plugin.arch;
+package com.jvanila.flutter.pluginarch;
 
 import android.content.Context;
 import android.os.Handler;
 
-import com.jvanila.flutter.shopify.Api;
+import com.jvanila.flutter.api.Api;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -12,6 +12,8 @@ import java.util.Objects;
 
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
+
+//import com.jvanila.flutter.shopify.Api;
 
 /**
  * Created by pavan on 23/09/18

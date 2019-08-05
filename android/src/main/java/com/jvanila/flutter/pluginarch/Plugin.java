@@ -1,10 +1,10 @@
-package com.jvanila.flutter.plugin.arch;
+package com.jvanila.flutter.pluginarch;
 
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.support.annotation.NonNull;
 
-import com.jvanila.flutter.shopify.Api;
+import com.jvanila.flutter.api.Api;
 
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
@@ -68,7 +68,7 @@ public abstract class Plugin<T> implements MethodChannel.MethodCallHandler {
     }
 
     protected abstract void onCreateUseCases(PluginContext<T> pluginContext,
-            UseCaseProvider<MethodCall, MethodChannel.Result, T> provider);
+                                             UseCaseProvider<MethodCall, MethodChannel.Result, T> provider);
 
     private void initDefaultUseCases() {
         mUseCaseProvider.register("debug", new DebugPluginUseCase(

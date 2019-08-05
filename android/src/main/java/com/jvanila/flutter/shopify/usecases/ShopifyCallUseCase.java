@@ -1,7 +1,7 @@
 package com.jvanila.flutter.shopify.usecases;
 
-import com.jvanila.flutter.plugin.arch.PluginContext;
-import com.jvanila.flutter.plugin.arch.UseCase;
+import com.jvanila.flutter.pluginarch.PluginContext;
+import com.jvanila.flutter.pluginarch.UseCase;
 import com.shopapp.shopify.api.ShopifyApi;
 
 import io.flutter.plugin.common.MethodCall;

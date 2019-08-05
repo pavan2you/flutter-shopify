@@ -2,7 +2,7 @@ package com.jvanila.flutter.shopify.usecases;
 
 import android.os.Handler;
 
-import com.jvanila.flutter.plugin.arch.PluginContext;
+import com.jvanila.flutter.pluginarch.PluginContext;
 import com.shopapp.gateway.ApiCallback;
 import com.shopapp.gateway.entity.Error;
 import com.shopapp.shopify.api.ShopifyApi;

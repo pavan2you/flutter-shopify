@@ -1,8 +1,8 @@
-package com.jvanila.flutter.plugin.arch;
+package com.jvanila.flutter.pluginarch;
 
 import android.os.Handler;
 
-import com.jvanila.flutter.shopify.Api;
+import com.jvanila.flutter.api.Api;
 
 
 /**

@@ -83,6 +83,10 @@ class Shopify {
     final String responseJson = await _channel.invokeMethod(
       kMethodGetProductVariantList, args);
     final responseMap = json.decode(responseJson).cast<Map<String, dynamic>>();
+    var compareToPrice = responseMap['compareToPrice'];
+    if (compareToPrice == null) {
+      responseMap['compareToPrice'] = 0.0;
+    }
     final List<ProductVariant> response = responseMap.map<ProductVariant>((
         json) => ProductVariant.fromJson(json)).toList();
 
