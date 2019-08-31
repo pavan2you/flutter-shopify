@@ -2,10 +2,10 @@ package com.jvanila.flutter.plugin.arch;
 
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.support.annotation.NonNull;
 
 import com.jvanila.flutter.shopify.Api;
 
+import androidx.annotation.NonNull;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.PluginRegistry;
