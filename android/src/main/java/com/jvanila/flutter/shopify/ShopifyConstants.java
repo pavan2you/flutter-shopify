@@ -1,4 +1,4 @@
-package com.jvanila.flutter.api;
+package com.jvanila.flutter.shopify;
 
 class ShopifyConstants {
 

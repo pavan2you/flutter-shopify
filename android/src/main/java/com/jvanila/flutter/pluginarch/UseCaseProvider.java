@@ -3,7 +3,7 @@ package com.jvanila.flutter.pluginarch;
 import android.content.Context;
 import android.os.Handler;
 
-import com.jvanila.flutter.api.Api;
+import com.jvanila.flutter.shopify.Api;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
