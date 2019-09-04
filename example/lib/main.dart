@@ -234,7 +234,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> signIn() async {
-    //bool val = await Shopify.signIn("imei355923070770619@gmail.com", "bFppaybqvWaD6CZdAtL5T7FN1XF2");
+    //bool val = await Shopify.signIn("imei3559230619@gmail.com", "bFppaybqvWaD6CZXF2");
     bool val = await Shopify.signIn("test@gmail.com", "test123456");
 
     print('Result - $val');
@@ -252,7 +252,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> signUp() async {
-    String val = await Shopify.signUp("pragna", "katreddy", "pragna.0303@gmail.com", "12345", "+918985940000");
+    String val = await Shopify.signUp("first_name", "last_name", "test@gmail.com", "test123456", "+911234567890");
     print('Result - $val');
   }
 
@@ -262,12 +262,12 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> forgotPassword() async {
-    bool val = await Shopify.forgotPassword("pallavis@purnatva.com");
+    bool val = await Shopify.forgotPassword("test@gmail.com");
     print('Result - $val');
   }
 
   Future<void> changePassword() async {
-    bool val = await Shopify.changePassword("abc123-");
+    bool val = await Shopify.changePassword("abc123");
     print('Result - $val');
   }
 
@@ -291,13 +291,13 @@ class _MyAppState extends State<MyApp> {
     Address address = new Address();
     address.address = "primary address";
     address.secondAddress = "second Address";
-    address.city = "blr city";
-    address.state = "Karnataka";
-    address.country = "INDIA";
-    address.firstName = "pragna";
-    address.lastName = "k";
-    address.zip = "560078";
-    address.phone = "+918985940000";
+    address.city = "my city";
+    address.state = "my state";
+    address.country = "my country";
+    address.firstName = "my first name";
+    address.lastName = "my last name";
+    address.zip = "123456";
+    address.phone = "+911234567890";
     String addressId = await Shopify.createCustomerAddress(address);
     print('Result - $addressId');
   }
@@ -307,14 +307,14 @@ class _MyAppState extends State<MyApp> {
     address.id = "Z2lkOi8vc2hvcGlmeS9NYWlsaW5nQWRkcmVzcy83OTcwMTE2MDc2MTE/bW9kZWxfbmFtZT1DdXN0b21lckFkZHJlc3MmY3VzdG9tZXJfYWNjZXNzX3Rva2VuPTZDUEtFaUJxRk9LdEVpQTRIYks1MHdCVTJubkI3Yzc3NW84ZXNnZUxfMUVFbEFtOWhRcExzRFgyOEozejhkTnE2SFRwX2J4SThqc0NlcTlIUE9mWW9vM3F4bXdraUs3aktJQ1E0SVVzMktqS19RLVFCeDhWdW9sWjRDNjdkbjVRWTJROUJkSHYxaGpSQUlELXlsb19YaDBiZGRZWjB2alltdE5Ueklsbm5ZZnlwSzlaM09adVdmUXVFRVlLeE9NYkFTbG5lTGhDNDgyQ1J0QUhTYS1ZTl9yS3dQNW9RbVVmb0QxRDRlaHZlbGdNS0hVY0xtcEgzOHJMWUJKbDJBazI=";
     address.address = "primary address changed";
     address.secondAddress = "second Address changed";
-    address.city = "blr city";
-    address.state = "Karnataka";
-    address.country = "INDIA";
-    address.firstName = "pallavi";
-    address.lastName = "s";
-    address.zip = "560078";
+    address.city = "my city";
+    address.state = "my state";
+    address.country = "my country";
+    address.firstName = "my first name1";
+    address.lastName = "my last name1";
+    address.zip = "654321";
     address.company = "Office";
-    address.phone = "+918985940000";
+    address.phone = "+910123456789";
     bool val = await Shopify.editCustomerAddress(address.id, address);
     print('Result - $val');
   }
@@ -326,7 +326,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> editCustomerInfo() async {
-    Customer customer = await Shopify.editCustomerInfo("pallavi", "s", "+918985941111","seshu.mca@test")
+    Customer customer = await Shopify.editCustomerInfo("name", "last_name", "+911234567890","test123@gmail.com")
     .then((value){
       print("Got error: ${value}");
     }) // Future completes with two()'s error.
@@ -384,13 +384,13 @@ class _MyAppState extends State<MyApp> {
     address.id = "Z2lkOi8vc2hvcGlmeS9NYWlsaW5nQWRkcmVzcy83OTcwMTE2MDc2MTE/bW9kZWxfbmFtZT1DdXN0b21lckFkZHJlc3MmY3VzdG9tZXJfYWNjZXNzX3Rva2VuPTZDUEtFaUJxRk9LdEVpQTRIYks1MHdCVTJubkI3Yzc3NW84ZXNnZUxfMUVFbEFtOWhRcExzRFgyOEozejhkTnE2SFRwX2J4SThqc0NlcTlIUE9mWW9vM3F4bXdraUs3aktJQ1E0SVVzMktqS19RLVFCeDhWdW9sWjRDNjdkbjVRWTJROUJkSHYxaGpSQUlELXlsb19YaDBiZGRZWjB2alltdE5Ueklsbm5ZZnlwSzlaM09adVdmUXVFRVlLeE9NYkFTbG5lTGhDNDgyQ1J0QUhTYS1ZTl9yS3dQNW9RbVVmb0QxRDRlaHZlbGdNS0hVY0xtcEgzOHJMWUJKbDJBazI=";
     address.address = "primary address changed";
     address.secondAddress = "second Address changed";
-    address.city = "blr city";
-    address.state = "Karnataka";
-    address.country = "INDIA";
-    address.firstName = "pallavi";
-    address.lastName = "s";
-    address.zip = "560078";
-    address.phone = "+918985940000";
+    address.city = "my city";
+    address.state = "my state";
+    address.country = "my country";
+    address.firstName = "my name";
+    address.lastName = "my last name";
+    address.zip = "678901";
+    address.phone = "+919876543210";
     Checkout checkout = await Shopify.setShippingAddress("Z2lkOi8vc2hvcGlmeS9DaGVja291dC9hNjc0NjY4MDcwZThhMjcyNzAyZmM0ZWMwYTAwOTNhMj9rZXk9Nzc2YzJkNWJmZWY2OTNlZjMxY2U0NmViMDBjMjMyMGY=", address);
     print('Result - $checkout');
   }
@@ -426,13 +426,13 @@ class _MyAppState extends State<MyApp> {
     address.id = "Z2lkOi8vc2hvcGlmeS9NYWlsaW5nQWRkcmVzcy83OTcwMTE2MDc2MTE/bW9kZWxfbmFtZT1DdXN0b21lckFkZHJlc3MmY3VzdG9tZXJfYWNjZXNzX3Rva2VuPTZDUEtFaUJxRk9LdEVpQTRIYks1MHdCVTJubkI3Yzc3NW84ZXNnZUxfMUVFbEFtOWhRcExzRFgyOEozejhkTnE2SFRwX2J4SThqc0NlcTlIUE9mWW9vM3F4bXdraUs3aktJQ1E0SVVzMktqS19RLVFCeDhWdW9sWjRDNjdkbjVRWTJROUJkSHYxaGpSQUlELXlsb19YaDBiZGRZWjB2alltdE5Ueklsbm5ZZnlwSzlaM09adVdmUXVFRVlLeE9NYkFTbG5lTGhDNDgyQ1J0QUhTYS1ZTl9yS3dQNW9RbVVmb0QxRDRlaHZlbGdNS0hVY0xtcEgzOHJMWUJKbDJBazI=";
     address.address = "primary address changed";
     address.secondAddress = "second Address changed";
-    address.city = "blr city";
-    address.state = "Karnataka";
-    address.country = "INDIA";
-    address.firstName = "pallavi";
-    address.lastName = "s";
-    address.zip = "560078";
-    address.phone = "+918985940000";
+    address.city = "my city";
+    address.state = "my state";
+    address.country = "my country";
+    address.firstName = "my first name";
+    address.lastName = "my last name";
+    address.zip = "123456";
+    address.phone = "+911234567980";
 
     Order order = await Shopify.completeCheckoutByCard(checkout, "hello@hi.com", address, "ccValueToken");
     print('Result - $order');
