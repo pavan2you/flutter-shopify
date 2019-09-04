@@ -21,8 +21,8 @@ public abstract class Plugin<T> implements MethodChannel.MethodCallHandler {
 
     private int mApiReferenceCount = -1;
     private HandlerThread mHandlerThread;
-//    private Handler mBgHandler;
-    private Handler mainHandler = new Handler();
+    private Handler mBgHandler;
+//    private Handler mainHandler = new Handler();
 
     private PluginRegistry.Registrar mRegistrar;
     private MethodChannel mChannel;
@@ -49,7 +49,7 @@ public abstract class Plugin<T> implements MethodChannel.MethodCallHandler {
     private PluginContext<T> newPluginContext(Api<T> api) {
         PluginContext<T> pluginContext = new PluginContext<>();
         pluginContext.api = api;
-        pluginContext.executor = mainHandler;
+        pluginContext.executor = mBgHandler;
         pluginContext.plugin = this;
         return pluginContext;
     }
@@ -60,7 +60,7 @@ public abstract class Plugin<T> implements MethodChannel.MethodCallHandler {
                 mHandlerThread = new HandlerThread(name);
                 mHandlerThread.start();
 
-//                mBgHandler = new Handler(mHandlerThread.getLooper());
+                mBgHandler = new Handler(mHandlerThread.getLooper().getMainLooper());
 
                 /*if (Debug.LOGV) {
                     Log.d(Constant.TAG, "starting thread" + mHandlerThread);
@@ -68,7 +68,7 @@ public abstract class Plugin<T> implements MethodChannel.MethodCallHandler {
             }
         }
 
-        mUseCaseProvider = new UseCaseProvider<>(registrar.activeContext(), api, mainHandler);
+        mUseCaseProvider = new UseCaseProvider<>(registrar.activeContext(), api, mBgHandler);
     }
 
     protected abstract void onCreateUseCases(PluginContext<T> pluginContext,
@@ -88,7 +88,7 @@ public abstract class Plugin<T> implements MethodChannel.MethodCallHandler {
                     Log.d(Constant.TAG, "stopping thread" + handlerThread);
                 }*/
 //                mBgHandler = null;
-                mainHandler = null;
+                mBgHandler = null;
                 mHandlerThread.quit();
                 mHandlerThread = null;
             }
