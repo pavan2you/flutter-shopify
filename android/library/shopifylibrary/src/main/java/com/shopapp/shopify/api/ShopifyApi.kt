@@ -575,7 +575,7 @@ class ShopifyApi : Api {
 
     override fun searchProductList(perPage: Int, paginationValue: Any?,
                                    searchQuery: String, callback: ApiCallback<List<Product>>) {
-        queryProducts(perPage, paginationValue, searchQuery, false, SortType.NAME, callback)
+        queryProducts(perPage, paginationValue, searchQuery, true, SortType.RELEVANT , callback)
     }
 
     /* CATEGORY */
