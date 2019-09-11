@@ -8,7 +8,7 @@ part of 'image.dart';
 
 ImageDTO _$ImageDTOFromJson(Map<String, dynamic> json) {
   return new ImageDTO(
-      id: json['id'] as String,
+      id: json['id'] == null ? "" : json['id'] as String,
       src: json['src'] as String,
       alt: json['alt'] as String)
     ..crudOperation = json['crudOperation'] as String;
