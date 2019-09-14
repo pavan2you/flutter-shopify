@@ -1,0 +1,4 @@
+framework module Shopify_Provider {
+  header "Shopify_Provider-Swift.h"
+  requires objc
+}

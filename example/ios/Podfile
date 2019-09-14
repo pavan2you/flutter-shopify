@@ -57,24 +57,24 @@ target 'Runner' do
   use_frameworks!
 
   # Shopify
-  pod "ShopApp_Shopify", "~> 1.0"
+  pod "ShopApp_Shopify"
 
   # DI
-  pod 'Swinject', '2.2'
+  pod 'Swinject'
 
   # Architecture
-  pod 'RxSwift', '~> 4.1'
-  pod 'RxCocoa', '~> 4.1'
+  pod 'RxSwift'
+  pod 'RxCocoa'
 
   # Crash&Beta
-  pod 'Fabric', '~> 1.7'
-  pod 'Crashlytics', '~> 3.9'
+  pod 'Fabric'
+  pod 'Crashlytics'
 
   # Developer tools
-  pod 'SwiftLint', '~> 0.24'
+  pod 'SwiftLint'
 
   # Database
-  pod 'CoreStore', '~> 4.2'
+  pod 'CoreStore'
 
 end
 

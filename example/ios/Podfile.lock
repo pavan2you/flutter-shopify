@@ -1,0 +1,67 @@
+PODS:
+  - Alamofire (4.8.2)
+  - CoreStore (6.3.1)
+  - Crashlytics (3.13.4):
+    - Fabric (~> 1.10.2)
+  - Fabric (1.10.2)
+  - KeychainSwift (14.0.2)
+  - Mobile-Buy-SDK (3.1.5)
+  - RxCocoa (5.0.0):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.0.0):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.0)
+  - ShopApp_Gateway (1.0.6)
+  - ShopApp_Shopify (1.0.6):
+    - Alamofire (~> 4.8)
+    - KeychainSwift (~> 14.0)
+    - Mobile-Buy-SDK (= 3.1.5)
+    - ShopApp_Gateway (~> 1.0)
+  - SwiftLint (0.34.0)
+  - Swinject (2.6.2)
+
+DEPENDENCIES:
+  - CoreStore
+  - Crashlytics
+  - Fabric
+  - RxCocoa
+  - RxSwift
+  - ShopApp_Shopify
+  - SwiftLint
+  - Swinject
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - CoreStore
+    - Crashlytics
+    - Fabric
+    - KeychainSwift
+    - Mobile-Buy-SDK
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - ShopApp_Gateway
+    - ShopApp_Shopify
+    - SwiftLint
+    - Swinject
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  CoreStore: 1ce7b77a95f0939d90b2d1e04e66a4a5bc1614d7
+  Crashlytics: 2dfd686bcb918dc10ee0e76f7f853fe42c7bd552
+  Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
+  KeychainSwift: b90e7ed24e6ec9f98c304b580c86a3ada081a3e5
+  Mobile-Buy-SDK: ea84d7635b110fddffe37a445c020fc0c5e5a8d3
+  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
+  RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
+  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  ShopApp_Gateway: 0a03a4099219e21bb619de9475ce54225c0de9be
+  ShopApp_Shopify: a26a9c6a01a74a1db0fee018a5a0641eb9f90cad
+  SwiftLint: 79d48a17c6565dc286c37efb8322c7b450f95c67
+  Swinject: cf7458774b1b00323080a9c67e47a1ee7f9d2af1
+
+PODFILE CHECKSUM: a17401d04a4945f552b3c63439ff815d4a0aa4b3
+
+COCOAPODS: 1.5.3
