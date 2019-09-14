@@ -8,7 +8,7 @@ data class ProductVariant(
     var id: String,
     var title: String,
     var price: BigDecimal,
-    var compareAtPrice: BigDecimal,
+    var compareAtPrice: BigDecimal? = null,
     var isAvailable: Boolean,
     var selectedOptions: List<VariantOption>,
     var image: Image? = null,

@@ -1,8 +1,9 @@
 package com.jvanila.flutter.shopify;
 
-import com.jvanila.flutter.plugin.arch.Plugin;
-import com.jvanila.flutter.plugin.arch.PluginContext;
-import com.jvanila.flutter.plugin.arch.UseCaseProvider;
+import com.jvanila.flutter.pluginarch.Plugin;
+
+import com.jvanila.flutter.pluginarch.PluginContext;
+import com.jvanila.flutter.pluginarch.UseCaseProvider;
 import com.jvanila.flutter.shopify.usecases.ChangePasswordUseCase;
 import com.jvanila.flutter.shopify.usecases.CompleteCheckoutByCardUseCase;
 import com.jvanila.flutter.shopify.usecases.CreateCheckoutUseCase;
@@ -98,7 +99,7 @@ public class ShopifyPlugin extends Plugin<ShopifyApi> {
 
     @Override
     protected void onCreateUseCases(PluginContext<ShopifyApi> pluginContext,
-            UseCaseProvider<MethodCall, Result, ShopifyApi> provider) {
+                                    UseCaseProvider<MethodCall, Result, ShopifyApi> provider) {
 
         provider.register(METHOD_INITIALIZE, new InitializeUseCase(pluginContext));
         provider.register(METHOD_GET_SHOP_INFO, new GetShopInfoUseCase(pluginContext));

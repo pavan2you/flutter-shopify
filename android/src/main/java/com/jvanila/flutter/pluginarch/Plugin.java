@@ -1,11 +1,13 @@
-package com.jvanila.flutter.plugin.arch;
+package com.jvanila.flutter.pluginarch;
 
 import android.os.Handler;
 import android.os.HandlerThread;
+//import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 import com.jvanila.flutter.shopify.Api;
 
-import androidx.annotation.NonNull;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.PluginRegistry;
@@ -20,6 +22,7 @@ public abstract class Plugin<T> implements MethodChannel.MethodCallHandler {
     private int mApiReferenceCount = -1;
     private HandlerThread mHandlerThread;
     private Handler mBgHandler;
+//    private Handler mainHandler = new Handler();
 
     private PluginRegistry.Registrar mRegistrar;
     private MethodChannel mChannel;
@@ -41,6 +44,7 @@ public abstract class Plugin<T> implements MethodChannel.MethodCallHandler {
         initDefaultUseCases();
     }
 
+    /*@NonNull*/
     @NonNull
     private PluginContext<T> newPluginContext(Api<T> api) {
         PluginContext<T> pluginContext = new PluginContext<>();
@@ -56,7 +60,7 @@ public abstract class Plugin<T> implements MethodChannel.MethodCallHandler {
                 mHandlerThread = new HandlerThread(name);
                 mHandlerThread.start();
 
-                mBgHandler = new Handler(mHandlerThread.getLooper());
+                mBgHandler = new Handler(mHandlerThread.getLooper().getMainLooper());
 
                 /*if (Debug.LOGV) {
                     Log.d(Constant.TAG, "starting thread" + mHandlerThread);
@@ -68,7 +72,7 @@ public abstract class Plugin<T> implements MethodChannel.MethodCallHandler {
     }
 
     protected abstract void onCreateUseCases(PluginContext<T> pluginContext,
-            UseCaseProvider<MethodCall, MethodChannel.Result, T> provider);
+                                             UseCaseProvider<MethodCall, MethodChannel.Result, T> provider);
 
     private void initDefaultUseCases() {
         mUseCaseProvider.register("debug", new DebugPluginUseCase(
@@ -83,6 +87,7 @@ public abstract class Plugin<T> implements MethodChannel.MethodCallHandler {
                 /*if (Debug.LOGV) {
                     Log.d(Constant.TAG, "stopping thread" + handlerThread);
                 }*/
+//                mBgHandler = null;
                 mBgHandler = null;
                 mHandlerThread.quit();
                 mHandlerThread = null;

@@ -8,7 +8,7 @@ part of 'product_option.dart';
 
 ProductOption _$ProductOptionFromJson(Map<String, dynamic> json) {
   return new ProductOption(
-      id: json['id'] as String,
+      id: json['id'] == null ? "" : json['id'] as String,
       name: json['name'] as String,
       values: (json['values'] as List).map((e) => e as String).toList())
     ..crudOperation = json['crudOperation'] as String;

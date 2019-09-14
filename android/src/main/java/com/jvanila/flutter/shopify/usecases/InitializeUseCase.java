@@ -1,6 +1,7 @@
 package com.jvanila.flutter.shopify.usecases;
 
-import com.jvanila.flutter.plugin.arch.PluginContext;
+
+import com.jvanila.flutter.pluginarch.PluginContext;
 import com.shopapp.shopify.api.ShopifyApi;
 
 import io.flutter.plugin.common.MethodCall;
@@ -31,6 +32,8 @@ public class InitializeUseCase extends ShopifyCallUseCase {
 
         mPluginContext.api.instance = new ShopifyApi(mPluginContext.plugin.getRegistrar().context(),
                 baseDomain, storeFrontAccessToken, apiKey, apiPassword, DEFAULT_SCHEME);
+
+        System.out.println("mApi initialized " + mPluginContext.api.instance.toString());
 
         result.success("mApi initialized " + mPluginContext.api.toString());
     }

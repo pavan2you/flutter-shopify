@@ -8,7 +8,7 @@ apply plugin: 'jacoco-android'
 group = 'com.github.rubygarage'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 28
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 26

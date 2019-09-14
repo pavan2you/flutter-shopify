@@ -2,16 +2,13 @@ package com.jvanila.flutter.shopify.usecases;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.jvanila.flutter.plugin.arch.PluginContext;
+import com.jvanila.flutter.pluginarch.PluginContext;
 import com.shopapp.gateway.ApiCallback;
 import com.shopapp.gateway.entity.Address;
 import com.shopapp.gateway.entity.Checkout;
 import com.shopapp.gateway.entity.Error;
 import com.shopapp.gateway.entity.Order;
-import com.shopapp.gateway.entity.ShippingRate;
 import com.shopapp.shopify.api.ShopifyApi;
-
-import java.math.BigDecimal;
 
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
